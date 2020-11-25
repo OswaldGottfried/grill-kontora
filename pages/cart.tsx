@@ -1,5 +1,14 @@
+import Head from 'next/head';
+
 const Cart = () => {
-  return <h1>У вас отличный вкус!</h1>;
+  return (
+    <>
+      <Head>
+        <title>Корзина</title>
+      </Head>
+      <h1>У вас отличный вкус!</h1>
+    </>
+  );
 };
 
 export default Cart;
