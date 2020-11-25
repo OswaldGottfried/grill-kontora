@@ -1,0 +1,16 @@
+{
+  "singleQuote": true,
+  "parser": "flow",
+  "tabWidth": 2,
+  "bracketSpacing": false,
+  "printWidth": 100,
+  "trailingComma": "all",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "options": {
+        "parser": "typescript"
+      }
+    }
+  ]
+}
