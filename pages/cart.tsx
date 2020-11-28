@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import {Heading} from 'grommet';
 
 const Cart = () => {
   return (
@@ -6,7 +7,10 @@ const Cart = () => {
       <Head>
         <title>Корзина</title>
       </Head>
-      <h1>У вас отличный вкус!</h1>
+
+      <section className="pl-16 pr-16 pt-16">
+        <Heading>У вас отличный вкус!</Heading>
+      </section>
     </>
   );
 };
