@@ -1,47 +1,21 @@
-import {FC, useState, MouseEvent, useEffect, useMemo} from 'react';
-import Link from 'next/link';
+import {FC} from 'react';
 import useSWR from 'swr';
 
-import {API} from 'constants/endpoint';
-import {ResponseType, ProductType} from 'types';
+import {ProductType} from 'types';
 
-import instance from 'lib/axios';
 import fetchProducts from 'pages/api/fetchProducts';
 
 import Price from '@/components/common/price/price';
-import {Button, Box, Card} from 'grommet';
-import Image from 'next/image';
+import {Button} from 'grommet';
 import s from './categoryItems.module.css';
 
 type PropsType = {
   selected: string;
   products: ProductType[];
 };
-// const getData = async (category_id: string) => {
-//   const response = await handler(getApiUrl('getProducts', {token: TOKEN, category_id}));
-//   return response.json();
-// };
 
 const CategoryItems: FC<PropsType> = ({products, selected}) => {
-  const {data, error} = useSWR([selected], () => fetchProducts(selected));
-
-  console.log({data, error});
-
-  // const fetchCategoryItems = async (category_id: string) => {
-  //   await fetch(getApiUrl('getProducts', {category_id}), {method: 'GET'}).then((products) =>
-  //     setProducts(products),
-  //   );
-  // };
-
-  // useEffect(() => {
-  //   fetchCategoryItems(props.selected);
-  // }, []);
-
-  // const data = useSWR([getApiUrl('getProducts'), () => getData('0')]);
-
-  // console.log(products);
-
-  // console.log(props);
+  // const {data, error} = useSWR([selected], () => fetchProducts(selected));
 
   return (
     <ul className={s.items}>

@@ -2,7 +2,6 @@ import {FC, MouseEvent} from 'react';
 
 import {CategoryType} from 'types';
 
-import {Text} from 'grommet';
 import s from './categoryList.module.css';
 
 type PropsType = {
@@ -28,7 +27,7 @@ const CategoryList: FC<PropsType> = ({categories, selected, setCategory}) => {
             value={category_id}
             onClick={onClick}
           >
-            <Text>{category_name}</Text>
+            <h2 className={s.title}>{category_name}</h2>
           </button>
         </li>
       ))}
