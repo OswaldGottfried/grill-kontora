@@ -1,17 +1,17 @@
 import axios from 'axios';
 
 export const baseURL = 'https://joinposter.com/api';
-export const token = '385421:2369748d639f5bf119c69639277af0f5';
 
 const axiosClient = axios.create({
   baseURL,
   params: {
-    token,
+    token: process.env.TOKEN,
   },
 
   headers: {
-    'Access-Control-Allow-Origin': baseURL,
-    'Access-Control-Allow-Credentials': true,
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+    'Access-Control-Allow-Headers': 'Content-Type',
   },
 });
 

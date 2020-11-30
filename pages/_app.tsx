@@ -10,7 +10,7 @@ export type PropsType = {
   pageProps: any;
 };
 
-const MyApp: FC<PropsType> = ({Component, pageProps}) => {
+const App: FC<PropsType> = ({Component, pageProps}) => {
   return (
     <ThemeProvider enableSystem attribute="class">
       <Layout>
@@ -20,4 +20,4 @@ const MyApp: FC<PropsType> = ({Component, pageProps}) => {
   );
 };
 
-export default MyApp;
+export default App;

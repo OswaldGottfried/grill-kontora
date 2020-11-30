@@ -1,9 +1,10 @@
-import {Heading} from 'grommet';
-import {FC, useState} from 'react';
+import {FC} from 'react';
 
 import {CategoryType, ProductType} from 'types';
 import CategoryList from '@/components/category/categoryList/categoryList';
 import CategoryItems from '@/components/category/categoryItems/categoryItems';
+import {useRouter} from 'next/router';
+import {DEFAULT_CATEGORY} from 'constants/category';
 
 type PropsType = {
   categories: CategoryType[];
@@ -11,17 +12,14 @@ type PropsType = {
 };
 
 const Category: FC<PropsType> = ({categories, products}) => {
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]?.category_id);
+  const {query} = useRouter();
+  const selected = typeof query.id === 'string' ? query.id : DEFAULT_CATEGORY;
 
   return (
-    <section className="p-16">
-      <Heading>Меню</Heading>
-      <CategoryList
-        categories={categories}
-        selected={selectedCategory}
-        setCategory={setSelectedCategory}
-      />
-      <CategoryItems selected={selectedCategory} products={products} />
+    <section className="p-16 xl:p-12 md:p-6 sm:p-4 mt-4">
+      <h1>Меню</h1>
+      <CategoryList categories={categories} selected={selected} />
+      <CategoryItems products={products} />
     </section>
   );
 };

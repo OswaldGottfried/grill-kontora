@@ -1,7 +1,7 @@
 import {Carousel, Image as GrommetImage} from 'grommet';
 import Image from 'next/image';
 
-const Promotions = () => (
+const Promotions = (): JSX.Element => (
   <section className="inline-flex rounded-2xl justify-center shadow-2xl w-full">
     <div className="w-2/4 relative">
       <Image

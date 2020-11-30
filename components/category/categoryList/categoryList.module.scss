@@ -1,0 +1,43 @@
+:local {
+    .tabs {
+        display: inline-flex;
+        overflow: hidden;
+        align-items: baseline;
+        width: 100%;
+        height: 80px;
+        margin-top: 2em;
+        padding: 0 2px;
+        list-style: none;
+        white-space: nowrap;
+        word-wrap: none;
+
+        @media (max-width: 640px) {
+            overflow-x: auto;
+        }
+
+        &:hover {
+            overflow-x: auto;
+        }
+    }
+
+    .tab {
+        display: inline-block;
+        padding: 10px 0;
+        vertical-align: middle;
+        white-space: nowrap;
+        border-bottom: .2rem solid transparent;
+        font-size: 1.3rem;
+        font-stretch: condensed;
+        line-height: 1;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            margin-right: 2rem;
+        }
+
+        &[aria-selected="true"] {
+            color: var(--color-red);
+            border-bottom-color: var(--color-red);
+        }
+    }
+}

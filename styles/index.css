@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&dispay=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&dispay=swap');
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
 @import "./colors.css";
+
 
 :root {
     /* Your default theme */
@@ -14,14 +19,33 @@
     --foreground: white;
 }
 
+body {
+    transition: all 1000ms ease;
+    transition-property: background;
+}
+
 html,
 body {
     color: var(--color-black);
     background: var(--color-white);
+    font-family: 'Montserrat';
+    transition: background-color 400ms ease;
 }
 
 [data-theme='dark'],
 [data-theme='dark'] body {
     color: var(--color-white);
     background: var(--color-black);
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 56px;
+    font-family: 'Lato';
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
 }

@@ -1,28 +1,31 @@
 {
   "name": "grill-contora",
   "version": "0.1.0",
-  "private": true,
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "yarn eslint",
+    "eslint": "eslint ./ --no-ignore --color --cache --ext .jsx,.js,.tsx,.ts"
   },
   "dependencies": {
     "autoprefixer": "^10.0.2",
     "axios": "^0.21.0",
-    "cors": "^2.8.5",
+    "classnames": "^2.2.6",
     "grommet": "^2.16.0",
-    "micro-cors": "^0.1.1",
     "next": "10.0.3",
+    "next-dark-mode": "^2.3.2",
     "next-themes": "^0.0.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "sass": "^1.29.0",
     "styled-components": "^5.2.1",
     "swr": "^0.3.9",
     "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/cors": "^2.8.8",
     "@types/node": "^14.14.10",
     "@types/react": "^17.0.0",

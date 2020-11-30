@@ -1,24 +1,13 @@
-import {memo} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {PHONE} from 'constants/contacts';
-import DarkModeToggle from './darkModeToggle';
+import DarkModeToggle from './darkModeToggle/darkModeToggle';
 
-// const LINKS = [
-//   {href: '/login', title: 'Sign In'},
-//   {href: '/register', title: 'Sign Up'},
-// ];
-
-const Header = memo(() => (
+const Header = (): JSX.Element => (
   <header>
     <nav className="h-full pr-10 items-center inline-flex w-full justify-between uppercase  text-gray-100 bg-black">
       <DarkModeToggle />
       <ul className="w-full inline-flex items-center justify-between">
-        {/* {LINKS.map(({href, title}) => (
-          <li key={href} className=" hover:text-gray-400 transition-colors mr-8">
-            <Link href={href}>{title}</Link>
-          </li>
-        ))} */}
         <li className="ml-auto mr-auto">
           <Link href="/">
             <h1 className="flex items-center hover:text-gray-400 transition-colors mt-2 mb-2 cursor-pointer">
@@ -35,6 +24,6 @@ const Header = memo(() => (
       </ul>
     </nav>
   </header>
-));
+);
 
 export default Header;

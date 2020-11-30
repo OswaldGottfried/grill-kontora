@@ -1,29 +1,27 @@
 import {FC} from 'react';
-import useSWR from 'swr';
 
 import {ProductType} from 'types';
-
-import fetchProducts from 'pages/api/fetchProducts';
+import Link from 'next/link';
 
 import Price from '@/components/common/price/price';
 import {Button} from 'grommet';
-import s from './categoryItems.module.css';
+import s from './categoryItems.module.scss';
 
 type PropsType = {
-  selected: string;
   products: ProductType[];
 };
 
-const CategoryItems: FC<PropsType> = ({products, selected}) => {
-  // const {data, error} = useSWR([selected], () => fetchProducts(selected));
-
-  return (
+const CategoryItems: FC<PropsType> = ({products}) =>
+  products ? (
     <ul className={s.items}>
       {products.map((product) => (
         <li key={product.product_id} className={s.item}>
-          <img className={s.image} src={product.photo} alt={product.product_name} />
-
-          <h3 className={s.title}>{product.product_name}</h3>
+          <Link href="/product/[id]" as={`/product/${product.product_id}`}>
+            <img className={s.image} src={product.photo} alt={product.product_name} />
+          </Link>
+          <Link href="/product/[id]" as={`/product/${product.product_id}`}>
+            <h3 className={s.title}>{product.product_name}</h3>
+          </Link>
           <div className={s.cta}>
             <Price price={Number(product.cost)} isExact={product.modifications?.length > 0} />
             <Button primary label="Добавить в корзину" />
@@ -31,12 +29,6 @@ const CategoryItems: FC<PropsType> = ({products, selected}) => {
         </li>
       ))}
     </ul>
-  );
-};
-
-// export const getServerSideProps = async () => {
-//   const data = await fetch(getApiUrl('getProducts', {category_id: '1'}), {method: 'GET'});
-//   return {props: {data}};
-// };
+  ) : null;
 
 export default CategoryItems;

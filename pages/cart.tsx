@@ -1,7 +1,6 @@
 import Head from 'next/head';
-import {Heading} from 'grommet';
 
-const Cart = () => {
+const Cart = (): JSX.Element => {
   return (
     <>
       <Head>
@@ -9,7 +8,7 @@ const Cart = () => {
       </Head>
 
       <section className="pl-16 pr-16 pt-16">
-        <Heading>У вас отличный вкус!</Heading>
+        <h1>У вас отличный вкус!</h1>
       </section>
     </>
   );

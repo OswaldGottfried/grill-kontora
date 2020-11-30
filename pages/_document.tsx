@@ -17,6 +17,7 @@ class MyDocument extends Document {
     return (
       <Html lang="ru">
         <Head>
+          <link rel="icon" href="/favicon.jpg" />
           <meta
             name="description"
             content="Доставка еды в Ревде. Гриль контора - это вкусно, уютно, тепло."
