@@ -2,7 +2,7 @@ import {FC} from 'react';
 
 import {CategoryType, ProductType} from 'types';
 import CategoryList from '@/components/category/categoryList/categoryList';
-import CategoryItems from '@/components/category/categoryItems/categoryItems';
+import ProductItems from '@/components/category/productItems/productItems';
 import {useRouter} from 'next/router';
 import {DEFAULT_CATEGORY} from 'constants/category';
 
@@ -19,7 +19,7 @@ const Category: FC<PropsType> = ({categories, products}) => {
     <section className="p-16 xl:p-12 md:p-6 sm:p-4 mt-4">
       <h1>Меню</h1>
       <CategoryList categories={categories} selected={selected} />
-      <CategoryItems products={products} />
+      <ProductItems products={products} />
     </section>
   );
 };

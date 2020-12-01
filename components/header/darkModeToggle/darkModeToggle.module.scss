@@ -2,12 +2,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 400ms ease;
-    color: #808080;
+    transition: all 400ms ease;
+    transition-property: background-color, color;
+    color: #dadada;
 
 
     &.dark {
-        background: #101010;
+        background-color: #101010;
 
         > .switch {
             border-color: #e0e0e0;
@@ -20,9 +21,10 @@
     }
     &.light {
 
+        color: #101010;
         > .switch {
             border-color: #282828;
-            background: #e0e0e0;
+            background-color: #e0e0e0;
         }
 
         .label:hover {
@@ -32,7 +34,6 @@
 }
 
 .switch {
-osition: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +70,7 @@ osition: relative;
     height: 60px;
 
     &.auto {
-        transform: translate3d(0rem, 0, 0);
+        transform: translate3d(0.5rem, 0, 0);
         background-image: url(./assets/auto.svg);
         
     }
@@ -79,7 +80,7 @@ osition: relative;
         
     }
     &.light {
-        transform: translate3d(9rem, 0, 0);
+        transform: translate3d(8.5rem, 0, 0);
         background-image: url(./assets/light.svg);
 
     }
