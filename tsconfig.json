@@ -3,6 +3,7 @@
     "allowJs": true,
     "baseUrl": ".",
     "esModuleInterop": true,
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -10,14 +11,12 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
-    "paths": {
-      "@/components/*": ["components/*"],
-      "@/utils/*": ["utils/*"]
-    },
+    "paths": {"@/components/*": ["components/*"],"@/utils/*": ["utils/*"]},
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES2015"
+    "target": "ES2015",
+    "useDefineForClassFields": true
   },
   "include": [
     "next-env.d.ts",

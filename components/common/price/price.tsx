@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import s from './price.module.css';
+import s from './price.module.scss';
 
 type PropsType = {
   price: number;

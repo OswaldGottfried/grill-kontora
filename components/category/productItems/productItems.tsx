@@ -1,18 +1,50 @@
-import {FC} from 'react';
+import {useCallback, MouseEvent} from 'react';
 import {Button} from 'grommet';
 
 import {ProductType} from 'types';
 import Price from '@/components/common/price/price';
 import Link from 'next/link';
 
+import {observer} from 'mobx-react-lite';
+
+import CartStore from 'stores/CartStore';
 import s from './productItems.module.scss';
 
 type PropsType = {
   products: ProductType[];
 };
 
-const ProductItems: FC<PropsType> = ({products}) =>
-  products ? (
+const getPrice = (product: ProductType) => {
+  if (product.modifications?.length > 0)
+    return Number(product.modifications[0].spots[0].price) / 100;
+
+  return Number(product.price[1]) / 100;
+};
+
+const ProductItems = observer<PropsType>(({products}) => {
+  const {addToCart} = CartStore;
+
+  const onClick = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      const selectedProduct = products.find(
+        ({product_id}) => product_id === event.currentTarget.value,
+      );
+
+      if (selectedProduct) {
+        addToCart({
+          name: selectedProduct.product_name,
+          id: selectedProduct.product_id,
+          count: 1,
+          price: getPrice(selectedProduct),
+        });
+      }
+    },
+    [products, addToCart],
+  );
+
+  if (!products) return null;
+
+  return (
     <ul className={s.items}>
       {products.map((product) => (
         <li key={product.product_id} className={s.item}>
@@ -21,7 +53,11 @@ const ProductItems: FC<PropsType> = ({products}) =>
               className={s.image}
               width={300}
               height={300}
-              src={product.photo || './buffalo.jpeg'}
+              src={
+                product.photo
+                  ? `https://gril-kontora.joinposter.com${product.photo}`
+                  : './buffalo.jpeg'
+              }
               alt={product.product_name}
             />
           </Link>
@@ -29,12 +65,18 @@ const ProductItems: FC<PropsType> = ({products}) =>
             <h3 className={s.title}>{product.product_name}</h3>
           </Link>
           <div className={s.cta}>
-            <Price price={Number(product.cost)} isExact={product.modifications?.length > 0} />
-            <Button primary label="Добавить в корзину" />
+            <Price price={getPrice(product)} isExact={!product.modifications} />
+            <Button
+              primary
+              label="Добавить в корзину"
+              value={product.product_id}
+              onClick={onClick}
+            />
           </div>
         </li>
       ))}
     </ul>
-  ) : null;
+  );
+});
 
 export default ProductItems;

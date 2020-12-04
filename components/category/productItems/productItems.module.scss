@@ -3,7 +3,7 @@
         display: grid;
         max-width: 1920px;
         margin: 0 auto;
-        margin-top: 2em;
+        margin-top: 1em;
 
         --box-min-width: 360px;
         grid-template-columns: repeat(auto-fill, minmax(var(--box-min-width), 1fr));
