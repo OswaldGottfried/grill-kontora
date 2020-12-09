@@ -26,9 +26,7 @@ const Home: FC<PropsType> = ({categories, products}) => {
 };
 
 export async function getStaticProps(): Promise<{props: PropsType}> {
-  const categories = await (await fetchCategories()).sort(
-    (a, b) => Number(a.sort_order) - Number(b.sort_order),
-  );
+  const categories = await fetchCategories();
   const products = await fetchProducts(DEFAULT_CATEGORY);
 
   return {

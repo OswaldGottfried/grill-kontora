@@ -4,7 +4,7 @@ import {FC} from 'react';
 import Layout from 'components/layout';
 
 import 'styles/index.css';
-import {StoresProvider, stores} from 'stores';
+import {Provider, rootStore} from '../models';
 
 export type PropsType = {
   Component: any;
@@ -14,9 +14,9 @@ export type PropsType = {
 const App: FC<PropsType> = ({Component, pageProps}) => (
   <ThemeProvider defaultTheme="dark" attribute="class">
     <Layout>
-      <StoresProvider value={stores}>
+      <Provider value={rootStore}>
         <Component {...pageProps} />
-      </StoresProvider>
+      </Provider>
     </Layout>
   </ThemeProvider>
 );

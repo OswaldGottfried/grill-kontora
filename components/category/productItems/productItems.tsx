@@ -2,11 +2,11 @@ import {useCallback, MouseEvent} from 'react';
 import {Button} from 'grommet';
 import Link from 'next/link';
 
-import {useStore} from 'hooks';
 import {observer} from 'mobx-react-lite';
 import {ProductType} from 'types';
 import Price from '@/components/common/price/price';
 
+import {useStore} from 'models';
 import s from './productItems.module.scss';
 
 type PropsType = {
@@ -21,9 +21,7 @@ const getPrice = (product: ProductType) => {
 };
 
 const ProductItems = observer<PropsType>(({products}) => {
-  const {add, info} = useStore('cart');
-
-  console.log(info);
+  const {addItem} = useStore('cart');
 
   const onClick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
@@ -32,7 +30,7 @@ const ProductItems = observer<PropsType>(({products}) => {
       );
 
       if (selectedProduct) {
-        add({
+        addItem({
           name: selectedProduct.product_name,
           id: selectedProduct.product_id,
           count: 1,
@@ -40,7 +38,7 @@ const ProductItems = observer<PropsType>(({products}) => {
         });
       }
     },
-    [products, add],
+    [products, addItem],
   );
 
   if (!products) return null;

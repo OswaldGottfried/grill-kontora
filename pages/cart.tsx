@@ -1,11 +1,10 @@
 import Head from 'next/head';
 import {observer} from 'mobx-react-lite';
 import {CartType} from 'types/cart';
-
-import {useStore} from 'hooks';
+import {useStore} from 'models';
 
 const Cart = observer(() => {
-  const {info, remove} = useStore('cart');
+  const {totalPrice, items, totalItems, remove} = useStore('cart');
 
   return (
     <>
@@ -14,9 +13,9 @@ const Cart = observer(() => {
       </Head>
 
       <section className="pl-16 pr-16 pt-16">
-        {info.length === 0 ? <h1>Корзина пуста</h1> : <h1>У вас отличный вкус!</h1>}
+        {totalItems === 0 ? <h1>Корзина пуста</h1> : <h1>У вас отличный вкус!</h1>}
 
-        {info.map((item) => (
+        {items.map((item) => (
           <ul key={item.id}>
             {Object.keys(item).map((key) => (
               <li key={key}>{`${key}: ${item[key as keyof CartType]}`} </li>
@@ -31,6 +30,8 @@ const Cart = observer(() => {
             </button>
           </ul>
         ))}
+
+        <p>{totalPrice}</p>
       </section>
     </>
   );
