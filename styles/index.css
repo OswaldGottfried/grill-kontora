@@ -4,36 +4,13 @@
 
 @import "./colors.css";
 
-
-:root {
-    /* Your default theme */
-    --background: white;
-    --foreground: black;
-}
-
-[data-theme='dark'] {
-    --background: black;
-    --foreground: white;
-}
-
-body {
-    transition: all 1000ms ease;
-    transition-property: background;
-}
-
 html,
 body {
-    color: var(--color-black);
-    background: var(--color-white);
+    color: var(--color-white);
+    background: var(--color-black);
     font-family: 'Lato';
     transition: background-color 400ms ease;
     font-display: swap;
-}
-
-[data-theme='dark'],
-[data-theme='dark'] body {
-    color: var(--color-white);
-    background: var(--color-black);
 }
 
 h1 {
