@@ -1,12 +1,12 @@
 import {useCallback, MouseEvent} from 'react';
 import {Button} from 'grommet';
 import Link from 'next/link';
-
 import {observer} from 'mobx-react-lite';
+
 import {ProductType} from 'types';
 import Price from '@/components/common/price/price';
-
 import {useStore} from 'models';
+
 import s from './productItems.module.scss';
 
 type PropsType = {
@@ -47,7 +47,11 @@ const ProductItems = observer<PropsType>(({products}) => {
     <ul className={s.items}>
       {products.map((product) => (
         <li key={product.product_id} className={s.item}>
-          <Link href="/product/[id]" as={`/product/${product.product_id}`}>
+          <Link
+            href={`/?productId=${product.product_id}`}
+            as={`/product/${product.product_id}`}
+            scroll={false}
+          >
             <img
               className={s.image}
               width={300}
@@ -60,7 +64,11 @@ const ProductItems = observer<PropsType>(({products}) => {
               alt={product.product_name}
             />
           </Link>
-          <Link href="/product/[id]" as={`/product/${product.product_id}`}>
+          <Link
+            href={`/?productId=${product.product_id}`}
+            as={`/product/${product.product_id}`}
+            scroll={false}
+          >
             <h3 className={s.title}>{product.product_name}</h3>
           </Link>
           <div className={s.cta}>

@@ -4,6 +4,8 @@ import {FC} from 'react';
 
 import {ProductType, MayBe} from 'types';
 import fetchProduct from 'pages/api/fetchProduct';
+import Product from '@/components/product/product';
+import Link from 'next/link';
 
 type PropsType = {
   product: MayBe<ProductType>;
@@ -17,14 +19,10 @@ const ProductPage: FC<PropsType> = ({product}) => {
       <Head>
         <title>{product.product_name}</title>
       </Head>
-      <section>
-        <h1>{product.product_name}</h1>
-        <ul>
-          {Object.keys(product).map((key) => (
-            <li key={key}>{`${key}: ${product[key as keyof ProductType]}`}</li>
-          ))}
-        </ul>
-      </section>
+      <Link href={`/category/${product.menu_category_id}`}>
+        <a aria-label="в категорию">{'<'}</a>
+      </Link>
+      <Product product={product} />
     </>
   );
 };

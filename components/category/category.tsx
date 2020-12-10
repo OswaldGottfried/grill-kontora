@@ -17,7 +17,7 @@ const Category: FC<PropsType> = ({categories, products}) => {
 
   return (
     <section className="p-16 xl:p-12 md:p-6 sm:p-4 mt-4">
-      <h1>Меню</h1>
+      <h1 id="menu">Меню</h1>
       <CategoryList categories={categories} selected={selected} />
       <ProductItems products={products} />
     </section>

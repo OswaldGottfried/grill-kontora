@@ -4,7 +4,7 @@
         overflow: hidden;
         align-items: baseline;
         width: 100%;
-        height: 80px;
+        height: 70px;
         margin-top: 1em;
         padding: 0 2px;
         list-style: none;
@@ -13,6 +13,7 @@
 
         @media (max-width: 938px) {
             overflow-x: auto;
+            margin-right: 1rem;
         }
 
         &:hover {
@@ -30,14 +31,16 @@
         font-stretch: condensed;
         line-height: 1;
         cursor: pointer;
+        text-transform: uppercase;
+        position: relative;
 
         &:not(:last-child) {
             margin-right: 2rem;
         }
 
         &[aria-selected="true"] {
-            color: var(--color-red);
-            border-bottom-color: var(--color-red);
+            color: var(--color-punch);
+            border-bottom-color: var(--color-punch);
         }
     }
 
