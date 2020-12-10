@@ -1,4 +1,5 @@
 import {FC} from 'react';
+import {Element} from 'react-scroll';
 
 import {CategoryType, ProductType} from 'types';
 import CategoryList from '@/components/category/categoryList/categoryList';
@@ -17,7 +18,9 @@ const Category: FC<PropsType> = ({categories, products}) => {
 
   return (
     <section className="p-16 xl:p-12 md:p-6 sm:p-4 mt-4">
-      <h1 id="menu">Меню</h1>
+      <h2>
+        <Element name="menu">Меню</Element>
+      </h2>
       <CategoryList categories={categories} selected={selected} />
       <ProductItems products={products} />
     </section>

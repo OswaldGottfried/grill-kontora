@@ -41,7 +41,7 @@ export const Cart = types
   }))
   .views((self) => ({
     get totalItems() {
-      return self.items.length;
+      return self.items.reduce((sum, {count}) => sum + count, 0);
     },
     get totalPrice() {
       return self.items.reduce((sum, {price, count}) => sum + price * count, 0);

@@ -6,11 +6,10 @@
 
 html,
 body {
+    transition: background-color 400ms ease;
     color: var(--color-white);
     background: var(--color-black);
     font-family: 'Lato';
-    transition: background-color 400ms ease;
-    font-display: swap;
 }
 
 h1 {
@@ -24,3 +23,18 @@ h3 {
     font-weight: 600;
 }
 
+@media only screen and (max-width: 400px) {
+    h1 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    h2 {
+        font-size: 36px;
+        line-height: 30px;
+    }
+    
+    h3 {
+        font-size: 20px;
+    }
+}

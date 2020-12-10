@@ -10,11 +10,12 @@
             height: 100vh;
             font-size: 12px;
 
-            
+
             .container {
+                max-width: 300px;
+                height: 80%;
                 margin-right: auto;
                 margin-left: auto;
-                max-width: 300px;
 
                 .title {
                     color: var(--color-white);
@@ -23,7 +24,20 @@
         }
 
         @media (max-width: 640px) {
-            background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .25) 60%, rgba(0, 0, 0, .35) 80%, rgba(0, 0, 0, .45) 100%), url('/banner-mobile.jpg');
+            background: linear-gradient(to top, rgba(0, 0, 0, .70) 0%, rgba(0, 0, 0, .25) 60%, rgba(0, 0, 0, .35) 80%, rgba(0, 0, 0, .45) 100%), url('/banner-mobile.jpg');
+            background-size: cover;
+
+            .container {
+                font-size: 10px;
+
+                .title {
+                    line-height: 50px;
+                }
+
+                .subTitle {
+                    line-height: 30px;
+                }
+            };
         }
     }
 
@@ -39,9 +53,9 @@
 
         .title {
             margin-bottom: 10px;
+            margin-bottom: 20px;
             color: var(--color-california);
             font-size: 6em;
-            font-weight: 900;
             line-height: 80px;
         }
 
@@ -54,12 +68,15 @@
         .title,
         .subTitle,
         .button {
-            font-weight: 900;
             text-shadow: 0 0 2px var(--color-primary-cod-gray);
+            font-weight: 900;
         }
 
 
         .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 200px;
             height: 50px;
             margin-right: auto;

@@ -15,8 +15,8 @@ const Cart = observer(() => {
       </Head>
 
       <Header />
-      <section className="pl-16 pr-16 pt-16">
-        {totalItems === 0 ? <h1>Корзина пуста</h1> : <h1>У вас отличный вкус!</h1>}
+      <section className="pl-16 pr-16 pt-16 sm:p-4 sm:mb-12">
+        {totalItems === 0 ? <h1>Корзина пуста</h1> : <h1 className="mb-8">У вас отличный вкус!</h1>}
 
         {items.map((item) => (
           <ul key={item.id}>
@@ -34,7 +34,7 @@ const Cart = observer(() => {
           </ul>
         ))}
 
-        <p>{totalPrice}</p>
+        {totalItems > 0 && <p>{totalPrice}</p>}
       </section>
     </>
   );

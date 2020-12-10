@@ -16,7 +16,7 @@ const CategoryList: FC<PropsType> = ({categories, selected}) =>
       {categories.map(({category_id, category_name}) => (
         <li role="tab" key={category_id} className={s.tab} aria-selected={category_id === selected}>
           <Link href="/category/[id]" as={`/category/${category_id}`} scroll={false}>
-            <h2>{category_name}</h2>
+            <h3>{category_name}</h3>
           </Link>
         </li>
       ))}
