@@ -1,12 +1,35 @@
 /* eslint-disable no-param-reassign */
 import {types, SnapshotIn, destroy, Instance} from 'mobx-state-tree';
 
+const Spot = types.model({
+  spot_id: types.string,
+  price: types.string,
+  profit: types.string,
+  profit_netto: types.string,
+  visible: types.string,
+});
+
+const Modifications = types.model({
+  modificator_id: types.string,
+  modificator_name: types.string,
+  modificator_selfprice: types.string,
+  modificator_selfprice_netto: types.string,
+  order: types.string,
+  modificator_barcode: types.string,
+  modificator_product_code: types.string,
+  spots: types.array(Spot),
+  ingredient_id: types.string,
+  fiscal_code: types.string,
+});
+
 export const CartItem = types
   .model({
     id: types.string,
     name: types.string,
     price: types.number,
     count: types.number,
+    image: types.string,
+    modifications: types.array(Modifications),
   })
   .actions((self) => ({
     changePrice(price: number) {

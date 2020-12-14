@@ -10,6 +10,9 @@
         list-style: none;
         white-space: nowrap;
         word-wrap: none;
+        scroll-snap-type: x;
+        gap: 1rem;
+        -webkit-overflow-scrolling: touch; /* Important for iOS devices */
 
         @media (max-width: 938px) {
             overflow-x: auto;
@@ -33,9 +36,10 @@
         cursor: pointer;
         text-transform: uppercase;
         position: relative;
+        scroll-snap-align: start;
 
         &:not(:last-child) {
-            margin-right: 2rem;
+            margin-right: 1rem;
         }
 
         &[aria-selected="true"] {

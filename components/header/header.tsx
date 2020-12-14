@@ -8,7 +8,7 @@ const Header = (): JSX.Element => (
   <header>
     <nav className="h-full pr-10 sm:pr-8 items-center inline-flex w-full justify-between uppercase bg-transparent">
       <ul className="w-full inline-flex items-center justify-between">
-        <li className="ml-auto mr-auto">
+        <li className="ml-4 mr-auto">
           <Link href="/">
             <h1 className="flex items-center hover:text-gray-400 transition-colors mt-2 mb-2 cursor-pointer">
               <Image src="/logo.png" alt="Гриль контора" width={205} height={65} />

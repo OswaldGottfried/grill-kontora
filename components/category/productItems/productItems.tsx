@@ -7,17 +7,13 @@ import {ProductType} from 'types';
 import Price from '@/components/common/price/price';
 import {useStore} from 'models';
 
+import CircleButton from '@/components/common/buttons/circleButton/circleButton';
+import getPrice from 'lib/getPrice';
+
 import s from './productItems.module.scss';
 
 type PropsType = {
   products: ProductType[];
-};
-
-const getPrice = (product: ProductType) => {
-  if (product.modifications?.length > 0)
-    return Number(product.modifications[0].spots[0].price) / 100;
-
-  return Number(product.price[1]) / 100;
 };
 
 const ProductItems = observer<PropsType>(({products}) => {
@@ -35,6 +31,8 @@ const ProductItems = observer<PropsType>(({products}) => {
           id: selectedProduct.product_id,
           count: 1,
           price: getPrice(selectedProduct),
+          modifications: [],
+          image: `https://gril-kontora.joinposter.com${selectedProduct.photo}`,
         });
       }
     },
@@ -47,11 +45,7 @@ const ProductItems = observer<PropsType>(({products}) => {
     <ul className={s.items}>
       {products.map((product) => (
         <li key={product.product_id} className={s.item}>
-          <Link
-            href={`/?productId=${product.product_id}`}
-            as={`/product/${product.product_id}`}
-            scroll={false}
-          >
+          <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
             <img
               className={s.image}
               width={300}
@@ -64,21 +58,29 @@ const ProductItems = observer<PropsType>(({products}) => {
               alt={product.product_name}
             />
           </Link>
-          <Link
-            href={`/?productId=${product.product_id}`}
-            as={`/product/${product.product_id}`}
-            scroll={false}
-          >
-            <h3 className={s.title}>{product.product_name}</h3>
+          <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
+            <h3 className={s.title}>
+              <button type="button">{product.product_name}</button>
+            </h3>
           </Link>
           <div className={s.cta}>
-            <Price price={getPrice(product)} isExact={!product.modifications} />
-            <Button
-              primary
-              label="Добавить в корзину"
-              value={product.product_id}
-              onClick={onClick}
-            />
+            <Price price={getPrice(product)} isExact={Boolean(product.modifications)} />
+
+            {product.modifications ? (
+              <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
+                <CircleButton
+                  label={`ссылка на ${product.product_name}`}
+                  value={product.product_id}
+                  onClick={onClick}
+                />
+              </Link>
+            ) : (
+              <CircleButton
+                label="Добавить в корзину"
+                value={product.product_id}
+                onClick={onClick}
+              />
+            )}
           </div>
         </li>
       ))}

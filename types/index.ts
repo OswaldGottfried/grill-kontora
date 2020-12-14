@@ -4,4 +4,4 @@ import {ResponseType} from './response';
 
 export type {CategoryType, ProductType, ResponseType};
 
-export type MayBe<T> = T | null;
+export type Maybe<T> = T | null;

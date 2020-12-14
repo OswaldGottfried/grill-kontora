@@ -2,26 +2,24 @@ import Head from 'next/head';
 import {GetStaticProps, GetStaticPaths} from 'next';
 import {FC} from 'react';
 
-import {ProductType, MayBe} from 'types';
+import {ProductType, Maybe} from 'types';
 import fetchProduct from 'pages/api/fetchProduct';
 import Product from '@/components/product/product';
-import Link from 'next/link';
 
 type PropsType = {
-  product: MayBe<ProductType>;
+  product: Maybe<ProductType>;
 };
 
 const ProductPage: FC<PropsType> = ({product}) => {
   if (!product) return null;
+
+  console.log(product);
 
   return (
     <>
       <Head>
         <title>{product.product_name}</title>
       </Head>
-      <Link href={`/category/${product.menu_category_id}`}>
-        <a aria-label="в категорию">{'<'}</a>
-      </Link>
       <Product product={product} />
     </>
   );
@@ -46,4 +44,5 @@ export const getStaticProps: GetStaticProps<PropsType> = async (context) => {
     },
   };
 };
+
 export default ProductPage;

@@ -1,21 +1,12 @@
-import {Link, Element, Events, animateScroll as scroll, scrollSpy, scroller} from 'react-scroll';
+import {Link} from 'react-scroll';
 
 import Header from '@/components/header/header';
 import s from './topBanner.module.scss';
 
 const TopBanner = (): JSX.Element => {
-  const scrollToMenu = () => {
-    const menu = document.getElementById('menu');
-    if (menu) {
-      menu.scrollIntoView({
-        behavior: 'smooth',
-      });
-    }
-  };
-
   return (
     <section className={s.topBanner}>
-      <Header />
+      {/* <Header /> */}
       <div className={s.container}>
         <h1 className={s.title}>Гриль контора</h1>
         <h2 className={s.subTitle}>

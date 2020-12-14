@@ -6,7 +6,7 @@ type Spot = {
   visible: string;
 };
 
-type Modification = {
+export type Modification = {
   modificator_id: string;
   modificator_name: string;
   modificator_selfprice: string;
@@ -43,7 +43,7 @@ export type ProductType = {
   color: string;
   ingredient_id: string;
   different_spots_prices: string;
-  modifications: Modification[];
+  modifications?: Modification[];
   out: number;
   price: {1: string};
   profit: {1: string};

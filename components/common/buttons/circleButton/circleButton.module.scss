@@ -1,0 +1,31 @@
+.button {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    padding: 1.4rem;
+    transition-timing-function: ease;
+    transition-duration: .3s;
+    transition-property: box-shadow,border-width;
+    border-radius: 10rem;
+    box-shadow: 0 4px 6px 0 rgba(255,255,255,.08);
+    
+    &:hover {
+        box-shadow: 0 4px 6px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    &:active {
+        box-shadow: 0 2px 6px 0 rgba(255, 255, 255, 0.8);
+
+    }
+
+    > svg {
+        fill: var(--color-white);
+        width: 1.6em;
+        height: 1.6em;
+    }
+}
