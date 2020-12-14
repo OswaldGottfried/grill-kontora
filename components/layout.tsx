@@ -13,7 +13,7 @@ const Layout: FC<PropsType> = ({children}) => {
       <Header />
       <main
         style={{minHeight: 'calc(100vh - 129px)'}}
-        className="bg-gray-300 dark:bg-gray-900 text-black dark:text-white"
+        className="bg-gray-300 dark:bg-gray-900 text-black dark:text-white pt-20"
       >
         {children}
       </main>

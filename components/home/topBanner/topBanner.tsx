@@ -1,12 +1,10 @@
 import {Link} from 'react-scroll';
 
-import Header from '@/components/header/header';
 import s from './topBanner.module.scss';
 
 const TopBanner = (): JSX.Element => {
   return (
     <section className={s.topBanner}>
-      {/* <Header /> */}
       <div className={s.container}>
         <h1 className={s.title}>Гриль контора</h1>
         <h2 className={s.subTitle}>

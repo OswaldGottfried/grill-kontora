@@ -1,5 +1,4 @@
 import {useCallback, MouseEvent} from 'react';
-import {Button} from 'grommet';
 import Link from 'next/link';
 import {observer} from 'mobx-react-lite';
 
@@ -8,12 +7,18 @@ import Price from '@/components/common/price/price';
 import {useStore} from 'models';
 
 import CircleButton from '@/components/common/buttons/circleButton/circleButton';
-import getPrice from 'lib/getPrice';
 
 import s from './productItems.module.scss';
 
 type PropsType = {
   products: ProductType[];
+};
+
+const getPrice = (product: ProductType): number => {
+  if (product.modifications && product.modifications.length > 0)
+    return Number(product.modifications[0].spots[0].price) / 100;
+
+  return Number(product.price[1]) / 100;
 };
 
 const ProductItems = observer<PropsType>(({products}) => {
@@ -31,7 +36,6 @@ const ProductItems = observer<PropsType>(({products}) => {
           id: selectedProduct.product_id,
           count: 1,
           price: getPrice(selectedProduct),
-          modifications: [],
           image: `https://gril-kontora.joinposter.com${selectedProduct.photo}`,
         });
       }
@@ -71,7 +75,6 @@ const ProductItems = observer<PropsType>(({products}) => {
                 <CircleButton
                   label={`ссылка на ${product.product_name}`}
                   value={product.product_id}
-                  onClick={onClick}
                 />
               </Link>
             ) : (

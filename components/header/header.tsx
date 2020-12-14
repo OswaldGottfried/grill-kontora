@@ -5,7 +5,7 @@ import {PHONE} from 'constants/contacts';
 import CartIcon from './cartIcon/cartIcon';
 
 const Header = (): JSX.Element => (
-  <header>
+  <header className="absolute top-0 w-full">
     <nav className="h-full pr-10 sm:pr-8 items-center inline-flex w-full justify-between uppercase bg-transparent">
       <ul className="w-full inline-flex items-center justify-between">
         <li className="ml-4 mr-auto">

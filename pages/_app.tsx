@@ -13,11 +13,11 @@ export type PropsType = {
 
 const App: FC<PropsType> = ({Component, pageProps}) => (
   <ThemeProvider defaultTheme="dark" attribute="class">
-    <Layout>
-      <Provider value={rootStore}>
+    <Provider value={rootStore}>
+      <Layout>
         <Component {...pageProps} />
-      </Provider>
-    </Layout>
+      </Layout>
+    </Provider>
   </ThemeProvider>
 );
 
