@@ -19,7 +19,7 @@ const Home: FC<PropsType> = ({categories, products}) => {
         <title>Гриль контора в Ревде</title>
       </Head>
       <TopBanner />
-      <Category categories={categories} products={products} />;
+      <Category categories={categories} products={products} />
     </>
   );
 };

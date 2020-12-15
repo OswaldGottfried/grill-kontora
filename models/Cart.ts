@@ -8,6 +8,7 @@ export const CartItem = types
     price: types.number,
     count: types.number,
     image: types.string,
+    modId: types.optional(types.string, ''),
   })
   .actions((self) => ({
     changePrice(price: number) {
@@ -27,12 +28,23 @@ export const Cart = types
   })
   .actions((self) => ({
     addItem(cartItem: SnapshotIn<typeof CartItem> | Instance<typeof CartItem>) {
-      const index = self.items.findIndex(({id}) => id === cartItem.id);
+      const index = self.items.findIndex(
+        ({id, modId}) => id === cartItem.id && cartItem.modId === modId,
+      );
 
       if (index === -1) {
         self.items.push(cartItem);
       } else {
-        self.items[index].count += 1;
+        self.items[index].count += cartItem.count;
+      }
+    },
+    decrease(cartItem: SnapshotIn<typeof CartItem> | Instance<typeof CartItem>) {
+      const index = self.items.findIndex(
+        ({id, modId}) => id === cartItem.id && cartItem.modId === modId,
+      );
+
+      if (index !== -1 && self.items[index].count > 0) {
+        self.items[index].count -= 1;
       }
     },
     remove(id: string) {
@@ -43,6 +55,9 @@ export const Cart = types
   .views((self) => ({
     get totalItems() {
       return self.items.reduce((sum, {count}) => sum + count, 0);
+    },
+    count(id: string, modId: string): number {
+      return self.items.find((item) => item.id === id && item.modId === modId)?.count || 0;
     },
     get totalPrice() {
       return self.items.reduce((sum, {price, count}) => sum + price * count, 0);

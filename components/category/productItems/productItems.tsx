@@ -72,10 +72,12 @@ const ProductItems = observer<PropsType>(({products}) => {
 
             {product.modifications ? (
               <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
-                <CircleButton
-                  label={`ссылка на ${product.product_name}`}
-                  value={product.product_id}
-                />
+                <a href={`/product/${product.product_id}`}>
+                  <CircleButton
+                    label={`ссылка на ${product.product_name}`}
+                    value={product.product_id}
+                  />
+                </a>
               </Link>
             ) : (
               <CircleButton

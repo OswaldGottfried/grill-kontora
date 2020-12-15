@@ -20,7 +20,10 @@ const Cart = observer(() => {
 
         <ul>
           {items.map((item) => (
-            <li key={item.id} className="inline-flex w-full justify-between items-center">
+            <li
+              key={`${item.id}_${item.modId}`}
+              className="inline-flex w-full justify-between items-center"
+            >
               <Link href={`/product/${item.id}`} as={`/product/${item.id}`}>
                 <h2 className="cursor-pointer w-2/6">{item.name}</h2>
               </Link>

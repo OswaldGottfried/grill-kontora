@@ -6,7 +6,7 @@ import s from './circleButton.module.scss';
 
 type PropsType = {
   label: string;
-  value: string | number;
+  value?: string | number;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   className?: string;
 };

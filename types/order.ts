@@ -1,5 +1,3 @@
-import {CartType} from 'types/cart';
-
 export enum ServiceMode {
   DineIn = 1,
   Takeaway = 2,
@@ -9,7 +7,12 @@ export enum ServiceMode {
 type OrderDineInType = {
   spot_id: number;
   phone: string;
-  products: CartType[];
+  products: {
+    product_id: string;
+    modificator_id: string;
+    count: number;
+    price: number;
+  }[];
   service_mode: ServiceMode.DineIn | ServiceMode.Takeaway;
   first_name?: string;
   last_name?: string;

@@ -6,11 +6,11 @@ import CartIcon from './cartIcon/cartIcon';
 
 const Header = (): JSX.Element => (
   <header className="absolute top-0 w-full">
-    <nav className="h-full pr-10 sm:pr-8 items-center inline-flex w-full justify-between uppercase bg-transparent">
+    <nav className="h-full pr-20 sm:pr-8 items-center inline-flex w-full justify-between uppercase bg-transparent">
       <ul className="w-full inline-flex items-center justify-between">
-        <li className="ml-4 mr-auto">
+        <li className="ml-auto mr-auto">
           <Link href="/">
-            <h1 className="flex items-center hover:text-gray-400 transition-colors mt-2 mb-2 cursor-pointer">
+            <h1 className="flex ml-36 sm:ml-0 items-center hover:text-gray-400 transition-colors mt-2 mb-2 cursor-pointer">
               <Image src="/logo.png" alt="Гриль контора" width={205} height={65} />
             </h1>
           </Link>
