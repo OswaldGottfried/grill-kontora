@@ -1,11 +1,13 @@
 import {FC} from 'react';
+import dynamic from 'next/dynamic';
 import {Element} from 'react-scroll';
+import {useRouter} from 'next/router';
 
 import {CategoryType, ProductType} from 'types';
-import CategoryList from '@/components/category/categoryList/categoryList';
-import ProductItems from '@/components/category/productItems/productItems';
-import {useRouter} from 'next/router';
 import {DEFAULT_CATEGORY} from 'constants/category';
+
+const CategoryList = dynamic(() => import('@/components/category/categoryList/categoryList'));
+const ProductItems = dynamic(() => import('@/components/category/productItems/productItems'));
 
 type PropsType = {
   categories: CategoryType[];

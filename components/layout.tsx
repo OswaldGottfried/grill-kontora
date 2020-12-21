@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-import Header from '@/components/header/header';
+import Header from '@/components/header/header/header';
 import Footer from '@/components/footer';
 
 type PropsType = {
@@ -11,7 +11,10 @@ const Layout: FC<PropsType> = ({children}) => {
   return (
     <>
       <Header />
-      <main className="bg-gray-300 min-h-screen dark:bg-gray-900 text-black dark:text-white pt-20">
+      <main
+        // style={{backgroundImage: 'linear-gradient(170deg, #250000 0%, #000 76%);'}}
+        className="min-h-screen text-black bg-black dark:text-white -mt-40 pt-40"
+      >
         {children}
       </main>
       <Footer />

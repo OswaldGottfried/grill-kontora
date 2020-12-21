@@ -1,11 +1,13 @@
 :local {
     .topBanner {
         width: 100%;
-        height: 900px;
+        height: 100vh;
+        min-height: 800px;
+        max-height: 1080px;
         background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .55) 59%, rgba(0, 0, 0, .75) 100%), url('/banner.jpg');
         background-repeat: no-repeat;
         background-size: cover;
-        margin-top: -7em;
+        margin-top: -81px;
 
         @media (max-width: 800px) {
             height: 100vh;
@@ -14,7 +16,7 @@
 
             .container {
                 max-width: 300px;
-                height: 80%;
+                height: 100%;
                 margin-right: auto;
                 margin-left: auto;
 

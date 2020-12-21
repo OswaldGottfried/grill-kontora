@@ -15,6 +15,12 @@ const TopBanner = (): JSX.Element => {
           Посмотреть меню
         </Link>
       </div>
+      {/* <picture className={s.bg}>
+        <source srcSet="/banner.webp" type="image/webp" />
+        <source srcSet="/banner.jpg" type="image/jpg" />
+
+        <img srcSet="/banner.jpg" alt="banner" />
+      </picture> */}
     </section>
   );
 };

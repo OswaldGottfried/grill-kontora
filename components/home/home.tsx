@@ -1,9 +1,11 @@
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import {FC} from 'react';
 
 import {CategoryType, ProductType} from 'types';
-import Category from '@/components/category/category';
-import TopBanner from '@/components/home/topBanner/topBanner';
+
+const TopBanner = dynamic(() => import('@/components/home/topBanner/topBanner'));
+const Category = dynamic(() => import('@/components/category/category'));
 
 type PropsType = {
   categories: CategoryType[];

@@ -1,29 +1,28 @@
-import Head from 'next/head';
 import {GetStaticProps, GetStaticPaths} from 'next';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import {FC} from 'react';
 
 import {ProductType, Maybe} from 'types';
 import fetchProduct from 'pages/api/fetchProduct';
-import Product from '@/components/product/product';
+
+const Product = dynamic(
+  () => import(/* webpackChunkName: "ProductPage" */ '@/components/product/product'),
+);
 
 type PropsType = {
   product: Maybe<ProductType>;
 };
 
-const ProductPage: FC<PropsType> = ({product}) => {
-  if (!product) return null;
-
-  console.log(product);
-
-  return (
+const ProductPage: FC<PropsType> = ({product}) =>
+  product ? (
     <>
       <Head>
         <title>{product.product_name}</title>
       </Head>
       <Product product={product} />
     </>
-  );
-};
+  ) : null;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
