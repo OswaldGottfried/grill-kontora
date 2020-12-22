@@ -17,11 +17,7 @@ class MyDocument extends Document {
     return (
       <Html lang="ru">
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Lato&dispay=swap"
-            as="style"
-            rel="preload"
-          />
+          <link href="https://fonts.googleapis.com/css2?family=Lato" as="style" rel="preload" />
 
           <link rel="icon" href="/favicon.jpg" />
           <meta

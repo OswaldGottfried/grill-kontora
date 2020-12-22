@@ -1,0 +1,33 @@
+.cartItem {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px ;
+
+    .image {
+        height: 100px;
+    }
+
+    .counter {
+        max-width: 28rem;
+        margin-right: auto;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(var(--color-white-rgb), .2);
+    }
+
+    @media (max-width: 650px) {
+        .counter {
+            flex-basis: 60%;
+            margin-top: 24px;
+            margin-right: 0;
+            margin-left: auto;
+
+            order: 1;
+        }
+    }
+}

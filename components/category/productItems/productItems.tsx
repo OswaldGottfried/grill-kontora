@@ -8,17 +8,11 @@ import {useStore} from 'models';
 
 import CircleButton from '@/components/common/buttons/circleButton/circleButton';
 
+import getPrice from 'lib/getPriceFromProduct';
 import s from './productItems.module.scss';
 
 type PropsType = {
   products: ProductType[];
-};
-
-const getPrice = (product: ProductType): number => {
-  if (product.modifications && product.modifications.length > 0)
-    return Number(product.modifications[0].spots[0].price) / 100;
-
-  return Number(product.price[1]) / 100;
 };
 
 const ProductItems = observer<PropsType>(({products}) => {
@@ -54,11 +48,7 @@ const ProductItems = observer<PropsType>(({products}) => {
               className={s.image}
               width={300}
               height={300}
-              src={
-                product.photo
-                  ? `https://gril-kontora.joinposter.com${product.photo}`
-                  : './buffalo.jpeg'
-              }
+              src={`https://gril-kontora.joinposter.com${product.photo}`}
               alt={product.product_name}
             />
           </Link>

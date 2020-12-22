@@ -1,0 +1,53 @@
+.counter {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: 200px;
+    width: 100%;
+    height: 30px;
+    min-height: 40px;
+    border-radius: 25px;
+    background-color: var(--color-white);
+}
+
+.button {
+    z-index: 3;
+    height: 100%;
+    transition: box-shadow 1s ease;
+    border-radius: 10rem;
+    border-radius: 100%;
+    transition: transform .5s ease;
+
+    &.delete {
+        fill: var(--color-punch);
+        transform: rotate(45deg);
+    }
+
+    > svg {
+        height: 40%;
+    }
+
+    &:hover {
+        box-shadow: 0 0 6px 3px rgba(var(--color-white-rgb), .4);
+    }
+
+    &:active {
+        box-shadow: 0 0 6px 3px rgba(var(--color-white-rgb), .8);
+        fill: rgba(var(--color-black-rgb), .6);
+    }
+    
+    &:disabled {
+        fill: rgba(var(--color-black-rgb), .2);
+        
+    }
+}
+
+.count {
+    text-align: center;
+    color: var(--color-black);
+    font-size: 1.5rem;
+    font-stretch: condensed;
+}

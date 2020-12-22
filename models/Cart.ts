@@ -32,6 +32,8 @@ export const Cart = types
         ({id, modId}) => id === cartItem.id && cartItem.modId === modId,
       );
 
+      console.log({index});
+
       if (index === -1) {
         self.items.push(cartItem);
       } else {
@@ -43,8 +45,12 @@ export const Cart = types
         ({id, modId}) => id === cartItem.id && cartItem.modId === modId,
       );
 
-      if (index !== -1 && self.items[index].count > 0) {
+      if (index === -1) return;
+
+      if (self.items[index].count > 1) {
         self.items[index].count -= 1;
+      } else {
+        this.remove(self.items[index].id);
       }
     },
     remove(id: string) {
@@ -63,3 +69,5 @@ export const Cart = types
       return self.items.reduce((sum, {price, count}) => sum + price * count, 0);
     },
   }));
+
+export type CartItemType = Instance<typeof CartItem>;

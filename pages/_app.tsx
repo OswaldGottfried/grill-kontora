@@ -1,4 +1,3 @@
-import {ThemeProvider} from 'next-themes';
 import {FC} from 'react';
 
 import Layout from 'components/layout';
@@ -12,13 +11,11 @@ export type PropsType = {
 };
 
 const App: FC<PropsType> = ({Component, pageProps}) => (
-  <ThemeProvider defaultTheme="dark" attribute="class">
-    <Provider value={rootStore}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </Provider>
-  </ThemeProvider>
+  <Provider value={rootStore}>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  </Provider>
 );
 
 export default App;

@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import {PHONE} from 'constants/contacts';
@@ -5,7 +6,7 @@ import {PHONE} from 'constants/contacts';
 import {createRef, RefObject, useEffect} from 'react';
 import s from './header.module.scss';
 
-import CartIcon from '../cartIcon/cartIcon';
+const CartIcon = dynamic(() => import('../cartIcon/cartIcon'), {ssr: false});
 
 const Header = (): JSX.Element => {
   const ref: RefObject<HTMLElement> = createRef();
@@ -51,6 +52,7 @@ const Header = (): JSX.Element => {
                 height="30"
                 stroke="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
+                fill="none"
                 strokeWidth="2"
               >
                 <path d="m28.526 21.741v4.0808a2.7205 2.7205 0 0 1-2.9654 2.7205 26.919 26.919 0 0 1-11.739-4.176 26.525 26.525 0 0 1-8.1615-8.1615 26.919 26.919 0 0 1-4.176-11.793 2.7205 2.7205 0 0 1 2.7069-2.9654h4.0808a2.7205 2.7205 0 0 1 2.7205 2.3396 17.466 17.466 0 0 0 0.95218 3.8223 2.7205 2.7205 0 0 1-0.61212 2.8701l-1.7275 1.7275a21.764 21.764 0 0 0 8.1615 8.1615l1.7275-1.7275a2.7205 2.7205 0 0 1 2.8701-0.61212 17.466 17.466 0 0 0 3.8223 0.95218 2.7205 2.7205 0 0 1 2.3396 2.7613z" />

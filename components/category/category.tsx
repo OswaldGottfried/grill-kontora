@@ -19,8 +19,8 @@ const Category: FC<PropsType> = ({categories, products}) => {
   const selected = typeof query.id === 'string' ? query.id : DEFAULT_CATEGORY;
 
   return (
-    <section className="p-16 xl:p-12 md:p-6 sm:p-4 mt-4">
-      <h2>
+    <section className="p-16 xl:p-12 md:p-6 sm:p-4 bg-black">
+      <h2 id="menu">
         <Element name="menu">Меню</Element>
       </h2>
       <CategoryList categories={categories} selected={selected} />

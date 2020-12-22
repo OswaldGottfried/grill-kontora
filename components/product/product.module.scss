@@ -8,7 +8,6 @@
 
     .image {
         position: relative;
-        display: -webkit-flex;
         display: flex;
         flex-direction: column;
         width: 40%;
@@ -42,6 +41,10 @@
         .description {
             width: 100%;
         }
+
+        .title {
+            font-size: 20px;
+        }
         
         .description {
             margin: 10px;
@@ -50,11 +53,10 @@
 
         .link {
             position: absolute;
-            z-index: 2;
-            top: 30px;
+            top: 20px;
             right: 0;
-            width: 30px;
-            height: 30px;
+            width: 20px;
+            height: 20px;
             background-image: url("./img/close.svg");
         }
     }
