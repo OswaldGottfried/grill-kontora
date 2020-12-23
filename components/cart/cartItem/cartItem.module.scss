@@ -11,7 +11,8 @@
 
     .counter {
         max-width: 28rem;
-        margin-right: auto;
+        margin-right: 0;
+        margin-left: auto;
     }
 
     &:not(:last-child) {
@@ -20,14 +21,13 @@
         border-bottom: 1px solid rgba(var(--color-white-rgb), .2);
     }
 
-    @media (max-width: 650px) {
-        .counter {
-            flex-basis: 60%;
-            margin-top: 24px;
-            margin-right: 0;
-            margin-left: auto;
+    @media (max-width: 639px) {
+        .price {
+            margin-left: 1rem;
+        }
 
-            order: 1;
+        .counter {
+            margin-right: auto;
         }
     }
 }

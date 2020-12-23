@@ -1,4 +1,5 @@
 import {FC} from 'react';
+import {AnimateSharedLayout} from 'framer-motion';
 
 import Layout from 'components/layout';
 
@@ -11,11 +12,13 @@ export type PropsType = {
 };
 
 const App: FC<PropsType> = ({Component, pageProps}) => (
-  <Provider value={rootStore}>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  </Provider>
+  <AnimateSharedLayout>
+    <Provider value={rootStore}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
+  </AnimateSharedLayout>
 );
 
 export default App;

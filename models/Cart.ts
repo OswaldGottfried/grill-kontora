@@ -27,17 +27,15 @@ export const Cart = types
     items: types.optional(types.array(CartItem), []),
   })
   .actions((self) => ({
-    addItem(cartItem: SnapshotIn<typeof CartItem> | Instance<typeof CartItem>) {
+    increase(cartItem: SnapshotIn<typeof CartItem> | Instance<typeof CartItem>) {
       const index = self.items.findIndex(
         ({id, modId}) => id === cartItem.id && cartItem.modId === modId,
       );
 
-      console.log({index});
-
       if (index === -1) {
         self.items.push(cartItem);
       } else {
-        self.items[index].count += cartItem.count;
+        self.items[index].count += 1;
       }
     },
     decrease(cartItem: SnapshotIn<typeof CartItem> | Instance<typeof CartItem>) {

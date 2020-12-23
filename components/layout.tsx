@@ -12,7 +12,10 @@ const Layout: FC<PropsType> = ({children}) => {
     <>
       <Header />
       <main
-        style={{backgroundImage: 'linear-gradient(170deg, #250000 0%, #000 76%)'}}
+        style={{
+          backgroundImage:
+            'linear-gradient(170deg, rgba(var(--color-california-rgb), 0.2) 0%, var(--color-black) 76%)',
+        }}
         className="min-h-screen text-white bg-black  -mt-40 pt-40"
       >
         {children}

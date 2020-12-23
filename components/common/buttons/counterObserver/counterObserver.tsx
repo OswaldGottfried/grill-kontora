@@ -2,7 +2,7 @@ import {useCallback, MouseEvent} from 'react';
 import {observer} from 'mobx-react-lite';
 import classNames from 'classnames';
 
-import {ProductType, Maybe} from 'types';
+import {ProductType} from 'types';
 
 import {useStore} from 'models';
 
@@ -10,6 +10,7 @@ import {CartType} from 'types/cart';
 
 import getPrice from 'lib/getPriceFromProduct';
 import {CartItemType} from 'models/Cart';
+import {motion, useAnimation} from 'framer-motion';
 import Plus from './svg/plus.svg';
 import Minus from './svg/minus.svg';
 
@@ -47,15 +48,28 @@ const CounterObserver = observer<PropsType>((props) => {
     [props],
   );
   const {value, modId = ''} = props;
-  const {addItem, count, decrease} = useStore('cart');
+  const {increase, count, decrease} = useStore('cart');
   const counter = count(id, modId);
+  const controls = useAnimation();
+  const animate = (from: number) => {
+    controls.start({
+      translateY: 0,
+      transition: {
+        type: 'keyframes',
+        from,
+        to: 0,
+      },
+    });
+  };
 
   const onIncrease = (event: MouseEvent<HTMLButtonElement>) => {
-    addItem(item(event.currentTarget.value));
+    increase(item(event.currentTarget.value));
+    animate(-30);
   };
 
   const onDecrease = (event: MouseEvent<HTMLButtonElement>) => {
     decrease(item(event.currentTarget.value));
+    animate(30);
   };
 
   return (
@@ -70,7 +84,10 @@ const CounterObserver = observer<PropsType>((props) => {
       >
         {counter <= 1 ? <Plus /> : <Minus />}
       </button>
-      <span className={s.count}>{counter}</span>
+      <motion.span animate={controls} className={s.count}>
+        {counter}
+      </motion.span>
+      {/* <span className={s.count}></span> */}
       <button
         className={s.button}
         type="button"

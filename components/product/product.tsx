@@ -1,6 +1,8 @@
 import {useCallback} from 'react';
 import {observer} from 'mobx-react-lite';
 import {useRouter} from 'next/router';
+import {motion} from 'framer-motion';
+import Image from 'next/image';
 
 import Link from 'next/link';
 
@@ -20,13 +22,14 @@ type PropsType = {
 };
 
 const ProductPage = observer<PropsType>(({product}) => {
-  const {addItem} = useStore('cart');
+  const {increase, items} = useStore('cart');
   const isHasModifications = product.modifications && product.modifications.length > 0;
   const router = useRouter();
 
   const addToCart = useCallback(() => {
-    if (!isHasModifications) {
-      addItem({
+    const selectedProduct = items.find((item) => item.id === product.product_id);
+    if (!isHasModifications && !selectedProduct) {
+      increase({
         name: product.product_name,
         id: product.product_id,
         count: 1,
@@ -36,7 +39,7 @@ const ProductPage = observer<PropsType>(({product}) => {
     }
 
     router.push('/cart');
-  }, [addItem, product, isHasModifications, router]);
+  }, [increase, product, isHasModifications, router, items]);
 
   return (
     <>
@@ -44,13 +47,27 @@ const ProductPage = observer<PropsType>(({product}) => {
         <Link href={`/category/${product.menu_category_id}#menu`}>
           <button type="button" className={s.link} aria-label="в категорию" />
         </Link>
-        <img
-          src={`https://gril-kontora.joinposter.com${product.photo}`}
-          className={s.image}
-          alt={product.product_name}
-        />
+        <motion.figure className="image md:w-full w-2/5" layoutId={product.product_name}>
+          {/* <img
+            src={`https://gril-kontora.joinposter.com${product.photo}`}
+            className={s.image}
+            alt={product.product_name}
+          /> */}
+          <Image
+            src={
+              product.photo ? `https://gril-kontora.joinposter.com${product.photo}` : '/burger.jpg'
+            }
+            layout="responsive"
+            width={300}
+            height={200}
+            alt={product.product_name}
+          />
+        </motion.figure>
         <div className={s.description}>
-          <h1>{product.product_name}</h1>
+          <motion.h1 className={s.title} layoutId={product.product_name}>
+            {product.product_name}
+          </motion.h1>
+
           {isHasModifications ? (
             <ul className={s.modifications}>
               {product.modifications &&
@@ -59,7 +76,7 @@ const ProductPage = observer<PropsType>(({product}) => {
                     <div className="w-full inline-flex whitespace-nowrap items-center justify-between">
                       <div>
                         <h3 className={s.title}>{modificator_name}</h3>
-                        <div className="w-40 mr-20">
+                        <div className="w-40">
                           <CounterObserver
                             value={modificator_id}
                             modId={modificator_id}
@@ -73,7 +90,7 @@ const ProductPage = observer<PropsType>(({product}) => {
                 ))}
             </ul>
           ) : (
-            <div className="mt-12 mb-12 inline-flex w-full justify-between">
+            <div className="mt-12 mb-12 sm:mt-6 sm:mb-6 inline-flex w-full justify-between">
               <div className="max-w-md">
                 <CounterObserver value={product.product_id} product={product} />
               </div>
@@ -81,7 +98,7 @@ const ProductPage = observer<PropsType>(({product}) => {
             </div>
           )}
 
-          <div className="flex w-full justify-center mt-12 mb-12">
+          <div className="flex w-full justify-center sm:mt-6 sm:mb-6 mt-12 mb-12">
             <Button onClick={addToCart} value={product.product_id}>
               <p className="sm:text-lg">Перейти корзину</p>
             </Button>

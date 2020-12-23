@@ -30,12 +30,7 @@
         height: 40%;
     }
 
-    &:hover {
-        box-shadow: 0 0 6px 3px rgba(var(--color-white-rgb), .4);
-    }
-
     &:active {
-        box-shadow: 0 0 6px 3px rgba(var(--color-white-rgb), .8);
         fill: rgba(var(--color-black-rgb), .6);
     }
     

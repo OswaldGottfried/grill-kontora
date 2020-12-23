@@ -5,6 +5,8 @@ import {useStore} from 'models';
 import CartItem from '@/components/cart/cartItem/cartItem';
 import Price from '@/components/common/price/price';
 import formatPrice from 'lib/formatPrice';
+import Button from '@/components/common/buttons/button/button';
+import Link from 'next/link';
 
 const Cart = observer(() => {
   const {totalPrice, items, totalItems} = useStore('cart');
@@ -20,8 +22,8 @@ const Cart = observer(() => {
           <h1>Корзина пуста</h1>
         ) : (
           <>
-            <h1 className="mb-8">У вас отличный вкус!</h1>
-            <ul>
+            <h1>У вас отличный вкус!</h1>
+            <ul className="mt-12 md:mt-8">
               {items.map((item) => (
                 <CartItem item={item} />
               ))}
@@ -33,6 +35,13 @@ const Cart = observer(() => {
                 )}
               </li>
             </ul>
+            <div className="flex w-full justify-end mt-12 mb-12 sm:mt-6 sm:mb-6">
+              <Link href="/checkout">
+                <Button>
+                  <p className="sm:text-lg">Оформить заказ</p>
+                </Button>
+              </Link>
+            </div>
           </>
         )}
       </section>
