@@ -2,8 +2,8 @@ import {FC} from 'react';
 
 import {CategoryType, ProductType} from 'types';
 import HomeLayout from '@/components/home/home';
-import fetchCategories from 'pages/api/fetchCategories';
-import fetchProducts from 'pages/api/fetchProducts';
+import {fetchCategories} from 'pages/api/category';
+import {fetchProducts} from 'pages/api/products/[id]';
 import {GetStaticProps, GetStaticPaths} from 'next';
 
 type PropsType = {
@@ -23,9 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
-  const categories = await (await fetchCategories()).sort(
-    (a, b) => Number(a.sort_order) - Number(b.sort_order),
-  );
+  const categories = await fetchCategories();
   let products = null;
   if (params && typeof params.id === 'string') {
     products = await fetchProducts(params.id);

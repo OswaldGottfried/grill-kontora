@@ -3,8 +3,8 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import {FC} from 'react';
 
+import {fetchProduct} from 'pages/api/product/[id]';
 import {ProductType, Maybe} from 'types';
-import fetchProduct from 'pages/api/fetchProduct';
 
 const Product = dynamic(
   () => import(/* webpackChunkName: "ProductPage" */ '@/components/product/product'),

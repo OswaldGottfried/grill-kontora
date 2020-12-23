@@ -34,7 +34,7 @@ const ProductPage = observer<PropsType>(({product}) => {
         id: product.product_id,
         count: 1,
         price: Number(product.price['1']),
-        image: `https://gril-kontora.joinposter.com${product.photo}`,
+        image: product.photo || '',
       });
     }
 
@@ -49,7 +49,9 @@ const ProductPage = observer<PropsType>(({product}) => {
         </Link>
         <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.product_name}`}>
           <Image
-            src={`https://gril-kontora.joinposter.com${product.photo}` || ''}
+            src={
+              product.photo ? `https://gril-kontora.joinposter.com${product.photo}` : '/burger.svg'
+            }
             layout="responsive"
             width={300}
             height={200}

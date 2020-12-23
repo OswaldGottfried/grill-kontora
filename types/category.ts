@@ -7,8 +7,8 @@ export type CategoryType = {
   category_photo_origin: Maybe<string>;
   parent_category: string;
   category_color: string;
-  category_hidden: string;
-  sort_order: string;
+  category_hidden: string | boolean;
+  sort_order: string | number;
   fiscal: string;
   nodiscount: string;
   tax_id: string;

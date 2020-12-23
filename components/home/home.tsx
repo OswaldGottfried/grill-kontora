@@ -14,7 +14,6 @@ type PropsType = {
 
 const Home: FC<PropsType> = ({categories, products}) => {
   if (!categories || !products) return null;
-
   return (
     <>
       <Head>

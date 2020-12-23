@@ -2,9 +2,8 @@ import {FC} from 'react';
 
 import {CategoryType, ProductType} from 'types';
 import HomeLayout from '@/components/home/home';
-import fetchCategories from 'pages/api/fetchCategories';
-import fetchProducts from 'pages/api/fetchProducts';
-import {DEFAULT_CATEGORY} from 'constants/category';
+import {fetchCategories} from 'pages/api/category';
+import {fetchProducts} from 'pages/api/products/[id]';
 
 type PropsType = {
   categories: CategoryType[];
@@ -17,7 +16,7 @@ const Home: FC<PropsType> = ({categories, products}) => (
 
 export async function getStaticProps(): Promise<{props: PropsType}> {
   const categories = await fetchCategories();
-  const products = await fetchProducts(DEFAULT_CATEGORY);
+  const products = await fetchProducts(categories[0].category_id);
 
   return {
     props: {

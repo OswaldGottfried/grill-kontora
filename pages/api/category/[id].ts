@@ -1,5 +1,5 @@
 import {NextApiRequest, NextApiResponse} from 'next';
-import fetchProducts from 'pages/api/fetchProducts';
+import {fetchProducts} from 'pages/api/products/[id]';
 
 export default function handler(request: NextApiRequest, response: NextApiResponse): void {
   fetchProducts(request.query.id.toString()).then((res) => {

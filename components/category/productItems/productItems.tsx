@@ -10,6 +10,7 @@ import {useStore} from 'models';
 import {ProductType} from 'types';
 import getPrice from 'lib/getPriceFromProduct';
 
+import CounterObserver from '@/components/common/buttons/counterObserver/counterObserver';
 import s from './productItems.module.scss';
 
 type PropsType = {
@@ -17,7 +18,7 @@ type PropsType = {
 };
 
 const ProductItems = observer<PropsType>(({products}) => {
-  const {increase: addItem} = useStore('cart');
+  const {increase, count} = useStore('cart');
 
   const onClick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
@@ -26,16 +27,16 @@ const ProductItems = observer<PropsType>(({products}) => {
       );
 
       if (selectedProduct) {
-        addItem({
+        increase({
           name: selectedProduct.product_name,
           id: selectedProduct.product_id,
           count: 1,
-          price: getPrice(selectedProduct),
-          image: `https://gril-kontora.joinposter.com${selectedProduct.photo}`,
+          price: Number(selectedProduct.price[1]),
+          image: selectedProduct.photo || '',
         });
       }
     },
-    [products, addItem],
+    [products, increase],
   );
 
   if (!products) return null;
@@ -50,7 +51,11 @@ const ProductItems = observer<PropsType>(({products}) => {
               layoutId={`image_${product.product_name}`}
             >
               <Image
-                src={`https://gril-kontora.joinposter.com${product.photo}` || ''}
+                src={
+                  product.photo
+                    ? `https://gril-kontora.joinposter.com${product.photo}`
+                    : '/burger.svg'
+                }
                 width={400}
                 height={300}
                 alt={product.product_name}
@@ -75,11 +80,17 @@ const ProductItems = observer<PropsType>(({products}) => {
                 </a>
               </Link>
             ) : (
-              <CircleButton
-                label="Добавить в корзину"
-                value={product.product_id}
-                onClick={onClick}
-              />
+              <div className="max-w-xs h-14 flex items-center">
+                {count(product.product_id) === 0 ? (
+                  <CircleButton
+                    label="Добавить в корзину"
+                    value={product.product_id}
+                    onClick={onClick}
+                  />
+                ) : (
+                  <CounterObserver product={product} value={product.product_id} />
+                )}
+              </div>
             )}
           </div>
         </li>

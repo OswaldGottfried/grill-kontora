@@ -8,7 +8,6 @@ import {useStore} from 'models';
 
 import {CartType} from 'types/cart';
 
-import getPrice from 'lib/getPriceFromProduct';
 import {CartItemType} from 'models/Cart';
 import {motion, useAnimation} from 'framer-motion';
 import Plus from './svg/plus.svg';
@@ -35,8 +34,8 @@ const formatToCartType = (product: ProductType, id: string): CartType => {
     id: product.product_id,
     modId: activeMod ? activeMod.modificator_id : '',
     count: 1,
-    price: activeMod ? Number(activeMod.spots[0].price) : getPrice(product),
-    image: `https://gril-kontora.joinposter.com${product.photo}`,
+    price: activeMod ? Number(activeMod.spots[0].price) : Number(product.price[1]),
+    image: product.photo || '',
   };
 };
 

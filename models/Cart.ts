@@ -60,7 +60,7 @@ export const Cart = types
     get totalItems() {
       return self.items.reduce((sum, {count}) => sum + count, 0);
     },
-    count(id: string, modId: string): number {
+    count(id: string, modId = ''): number {
       return self.items.find((item) => item.id === id && item.modId === modId)?.count || 0;
     },
     get totalPrice() {
