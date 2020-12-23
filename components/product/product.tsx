@@ -47,16 +47,9 @@ const ProductPage = observer<PropsType>(({product}) => {
         <Link href={`/category/${product.menu_category_id}#menu`}>
           <button type="button" className={s.link} aria-label="в категорию" />
         </Link>
-        <motion.figure className="image md:w-full w-2/5" layoutId={product.product_name}>
-          {/* <img
-            src={`https://gril-kontora.joinposter.com${product.photo}`}
-            className={s.image}
-            alt={product.product_name}
-          /> */}
+        <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.product_name}`}>
           <Image
-            src={
-              product.photo ? `https://gril-kontora.joinposter.com${product.photo}` : '/burger.jpg'
-            }
+            src={`https://gril-kontora.joinposter.com${product.photo}` || ''}
             layout="responsive"
             width={300}
             height={200}

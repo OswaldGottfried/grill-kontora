@@ -14,14 +14,9 @@ type PropsType = {item: CartItemType};
 
 const CartItem: FC<PropsType> = ({item}) => (
   <li key={`${item.id}_${item.modId}`} className={s.cartItem}>
-    <motion.figure className="image cursor-pointer" layoutId={item.name}>
+    <motion.figure className="image cursor-pointer" layoutId={`image_${item.image}`}>
       <Link href={`/product/${item.id}`} as={`/product/${item.id}`}>
-        <Image
-          src={item.image ? item.image : '/burger.jpg'}
-          width={150}
-          height={100}
-          alt={item.name}
-        />
+        <Image src={item.image || ''} width={150} height={100} alt={item.name} />
       </Link>
     </motion.figure>
     <div className="inline-flex flex-wrap items-center w-full justify-around">
@@ -33,7 +28,6 @@ const CartItem: FC<PropsType> = ({item}) => (
           <motion.h3 layoutId={item.name}>{item.name}</motion.h3>
         </a>
       </Link>
-      <img src={`https://gril-kontora.joinposter.com${item.image}`} alt="" />
       <div className={s.price}>
         <Price price={formatPrice(item.price)} />
       </div>
