@@ -13,23 +13,15 @@ type PropsType = {
 const CategoryList: FC<PropsType> = ({categories, selected}) =>
   categories ? (
     <ul className={s.tabs} role="tablist">
-      {categories.map(
-        ({category_id, category_name, category_hidden}) =>
-          category_hidden !== true && (
-            <li
-              role="tab"
-              key={category_id}
-              className={s.tab}
-              aria-selected={category_id === selected}
-            >
-              <Link href="/category/[id]" as={`/category/${category_id}`} scroll={false}>
-                <h3>
-                  <button type="button">{category_name}</button>
-                </h3>
-              </Link>
-            </li>
-          ),
-      )}
+      {categories.map(({category_id, category_name}) => (
+        <li role="tab" key={category_id} className={s.tab} aria-selected={category_id === selected}>
+          <Link href="/category/[id]" as={`/category/${category_id}`} scroll={false}>
+            <h3>
+              <button type="button">{category_name}</button>
+            </h3>
+          </Link>
+        </li>
+      ))}
     </ul>
   ) : null;
 

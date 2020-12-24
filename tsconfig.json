@@ -12,7 +12,7 @@
     "moduleResolution": "node",
     "noEmit": true,
     "noImplicitReturns": true,
-    "paths": {"@/components/*": ["components/*"],"@/utils/*": ["utils/*"]},
+    "paths": {"@/*": ["components/*"],"@/utils/*": ["utils/*"]},
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

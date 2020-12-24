@@ -7,13 +7,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import {ProductType} from 'types';
-import Price from '@/components/common/price/price';
+import Price from '@/common/price/price';
 import {useStore} from 'models';
 import formatPrice from 'lib/formatPrice';
 
-import Button from '@/components/common/buttons/button/button';
+import Button from '@/common/buttons/button/button';
 
-import CounterObserver from '@/components/common/buttons/counterObserver/counterObserver';
+import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 import getPrice from 'lib/getPriceFromProduct';
 import s from './product.module.scss';
 
@@ -44,7 +44,7 @@ const ProductPage = observer<PropsType>(({product}) => {
   return (
     <>
       <section className={s.wrap}>
-        <Link href={`/category/${product.menu_category_id}#menu`}>
+        <Link href={`/category/${product.menu_category_id}`}>
           <button type="button" className={s.link} aria-label="в категорию" />
         </Link>
         <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.product_name}`}>

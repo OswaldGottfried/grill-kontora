@@ -6,9 +6,7 @@ import {FC} from 'react';
 import {fetchProduct} from 'pages/api/product/[id]';
 import {ProductType, Maybe} from 'types';
 
-const Product = dynamic(
-  () => import(/* webpackChunkName: "ProductPage" */ '@/components/product/product'),
-);
+const Product = dynamic(() => import('@/product/product'));
 
 type PropsType = {
   product: Maybe<ProductType>;

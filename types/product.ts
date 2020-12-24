@@ -26,7 +26,7 @@ export type ProductType = {
   cost: string;
   cost_netto: string;
   fiscal: string;
-  hidden: string;
+  hidden: string | boolean;
   menu_category_id: string;
   workshop: string;
   nodiscount: string;

@@ -1,10 +1,12 @@
 import {FC} from 'react';
 
 import {CategoryType, ProductType} from 'types';
-import HomeLayout from '@/components/home/home';
 import {fetchCategories} from 'pages/api/category';
 import {fetchProducts} from 'pages/api/products/[id]';
 import {GetStaticProps, GetStaticPaths} from 'next';
+import dynamic from 'next/dynamic';
+
+const HomeLayout = dynamic(() => import('@/home/home'));
 
 type PropsType = {
   categories: CategoryType[];

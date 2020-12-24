@@ -1,7 +1,7 @@
 import {FC} from 'react';
 
 import {CategoryType, ProductType} from 'types';
-import HomeLayout from '@/components/home/home';
+import HomeLayout from '@/home/home';
 import {fetchCategories} from 'pages/api/category';
 import {fetchProducts} from 'pages/api/products/[id]';
 

@@ -2,10 +2,10 @@ import Head from 'next/head';
 import {observer} from 'mobx-react-lite';
 
 import {useStore} from 'models';
-import CartItem from '@/components/cart/cartItem/cartItem';
-import Price from '@/components/common/price/price';
+import CartItem from '@/cart/cartItem/cartItem';
+import Price from '@/common/price/price';
 import formatPrice from 'lib/formatPrice';
-import Button from '@/components/common/buttons/button/button';
+import Button from '@/common/buttons/button/button';
 import Link from 'next/link';
 
 const Cart = observer(() => {

@@ -45,7 +45,7 @@ const Header = (): JSX.Element => {
               </h1>
             </Link>
           </li>
-          <li className=" ml-4">
+          <li className="ml-4">
             <a href={`tel:${PHONE.href}`} aria-label="заказ по телефону">
               <svg
                 width="30"

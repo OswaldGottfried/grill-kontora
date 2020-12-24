@@ -5,8 +5,8 @@ import {useRouter} from 'next/router';
 
 import {CategoryType, ProductType} from 'types';
 
-const CategoryList = dynamic(() => import('@/components/category/categoryList/categoryList'));
-const ProductItems = dynamic(() => import('@/components/category/productItems/productItems'));
+const CategoryList = dynamic(() => import('@/category/categoryList/categoryList'));
+const ProductItems = dynamic(() => import('@/category/productItems/productItems'));
 
 type PropsType = {
   categories: CategoryType[];

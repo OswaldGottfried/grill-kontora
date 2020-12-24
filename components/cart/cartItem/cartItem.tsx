@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 import {CartItemType} from 'models/Cart';
 import formatPrice from 'lib/formatPrice';
-import Price from '@/components/common/price/price';
+import Price from '@/common/price/price';
 
-import CounterObserver from '@/components/common/buttons/counterObserver/counterObserver';
+import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 import s from './cartItem.module.scss';
 
 type PropsType = {item: CartItemType};
