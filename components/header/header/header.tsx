@@ -36,7 +36,7 @@ const Header = (): JSX.Element => {
 
   return (
     <header ref={ref} className="w-full">
-      <nav className="h-full pr-20 sm:pr-8 items-center inline-flex w-full justify-between uppercase bg-transparent">
+      <nav className="h-full pr-20 sm:pr-0 items-center inline-flex w-full justify-between uppercase bg-transparent">
         <ul className="w-full inline-flex items-center justify-between">
           <li className="ml-auto mr-auto">
             <Link href="/">

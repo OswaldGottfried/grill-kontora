@@ -18,7 +18,6 @@ class MyDocument extends Document {
       <Html lang="ru">
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Lato" as="style" rel="preload" />
-
           <link rel="icon" href="/favicon.jpg" />
           <meta
             name="description"

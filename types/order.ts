@@ -13,16 +13,17 @@ type OrderDineInType = {
     count: number;
     price: number;
   }[];
-  service_mode: ServiceMode.DineIn | ServiceMode.Takeaway;
+  service_mode: ServiceMode.Takeaway;
   first_name?: string;
   last_name?: string;
-  address?: string;
+  email?: string;
   comment?: string;
 };
 
 type OrderDeliveryType = OrderDineInType & {
   service_mode: ServiceMode.Delivery;
   delivery_price: number;
+  address?: string;
 };
 
 export type OrderType = OrderDeliveryType | OrderDineInType;

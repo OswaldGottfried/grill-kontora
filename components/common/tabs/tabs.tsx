@@ -5,9 +5,11 @@ import s from './tabs.module.scss';
 
 type PropsType = {
   activeIndex?: number;
+  onClick: (value: string) => void;
+  className?: string;
   children: ReactNode;
 };
-const Tabs = memo<PropsType>(({activeIndex = 0, children}) => {
+const Tabs = memo<PropsType>(({activeIndex = 0, children, onClick, className}) => {
   const [activeTab, setActiveTab] = useState(activeIndex);
   const [activeContent, setActiveContent] = useState<ReactNode>();
   const [activeTitle, setActiveTitle] = useState<ReactText>();
@@ -18,24 +20,28 @@ const Tabs = memo<PropsType>(({activeIndex = 0, children}) => {
         active: activeTab === index,
         activeIndex,
         onActivate: () => setActiveTab(index),
+        tabsCount: Children.map.length,
         setActiveContent,
         setActiveTitle,
+        onClick,
       }}
     >
-      {child && isValidElement(child) ? cloneElement(child, {active: activeTab === index}) : child}
+      {child && isValidElement(child) ? cloneElement(child) : child}
     </TabsContext.Provider>
   ));
 
   const tabContentTitle = `${activeTitle || ''} Tab Contents`;
 
   return (
-    <div role="tablist">
-      <div>{tabs}</div>
-      <div aria-label={tabContentTitle} role="tabpanel">
+    <div role="tablist" className={className}>
+      <div className={s.tabs}>{tabs}</div>
+      <div aria-label={tabContentTitle} role="tabpanel" className={s.content}>
         {activeContent}
       </div>
     </div>
   );
 });
+
+Tabs.displayName = 'Tabs';
 
 export default Tabs;

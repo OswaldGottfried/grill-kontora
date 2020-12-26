@@ -5,8 +5,8 @@ import {useRouter} from 'next/router';
 
 import {CategoryType, ProductType} from 'types';
 
-const CategoryList = dynamic(() => import('@/category/categoryList/categoryList'));
-const ProductItems = dynamic(() => import('@/category/productItems/productItems'));
+const CategoryList = dynamic(() => import('@/category/categoryList/categoryList'), {ssr: false});
+const ProductItems = dynamic(() => import('@/category/productItems/productItems'), {ssr: false});
 
 type PropsType = {
   categories: CategoryType[];
@@ -19,9 +19,9 @@ const Category: FC<PropsType> = ({categories, products}) => {
 
   return (
     <section className="p-16 xl:p-12 md:p-6 sm:p-4 bg-black">
-      <h2 id="menu" className="sm: mt-6">
-        <Element name="menu">Меню</Element>
-      </h2>
+      <Element id="menu" className="sm: mt-6" name="menu">
+        <h2>Меню</h2>
+      </Element>
       <CategoryList categories={categories} selected={selected} />
       <ProductItems products={products} />
     </section>

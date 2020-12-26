@@ -4,7 +4,7 @@ import instance from 'lib/axios';
 import {ResponseType, CategoryType} from 'types';
 import {API} from 'constants/endpoint';
 
-const categorySortRule = {
+export const categorySortRule = {
   '8': {
     sort_order: 1,
   },

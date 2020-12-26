@@ -1,10 +1,11 @@
 import {FC} from 'react';
+import {GetStaticProps, GetStaticPaths} from 'next';
+import dynamic from 'next/dynamic';
 
 import {CategoryType, ProductType} from 'types';
 import {fetchCategories} from 'pages/api/category';
 import {fetchProducts} from 'pages/api/products/[id]';
-import {GetStaticProps, GetStaticPaths} from 'next';
-import dynamic from 'next/dynamic';
+import {categorySortRule} from '../api/category';
 
 const HomeLayout = dynamic(() => import('@/home/home'));
 
@@ -18,9 +19,10 @@ const Home: FC<PropsType> = ({categories, products}) => (
 );
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const ids = Object.keys(categorySortRule);
   return {
-    paths: [],
-    fallback: true,
+    paths: ids.map((id) => ({params: {id}})),
+    fallback: false,
   };
 };
 

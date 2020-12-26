@@ -6,7 +6,9 @@ import dynamic from 'next/dynamic';
 import {useStore} from 'models';
 import isServer from 'lib/isServer';
 
-const CheckoutLayout = dynamic(() => import('@/checkout/checkoutLayout/checkoutLayout'));
+const CheckoutLayout = dynamic(() => import('@/checkout/checkoutLayout/checkoutLayout'), {
+  ssr: false,
+});
 
 const Checkout = observer(() => {
   const {totalItems} = useStore('cart');

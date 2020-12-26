@@ -1,14 +1,17 @@
 import {MouseEvent, memo, useContext, useEffect, ReactNode} from 'react';
+import classNames from 'classnames';
 
 import TabsContext from '../tabsContext';
 import s from './tab.module.scss';
 
 type PropsType = {
   title: string;
+  value: string | number;
   children: ReactNode;
+  className?: string;
 };
-const Tab = memo<PropsType>(({title, children}) => {
-  const {active, setActiveContent, activeIndex, setActiveTitle, onActivate} = useContext(
+const Tab = memo<PropsType>(({title, value, children, className}) => {
+  const {active, setActiveContent, activeIndex, setActiveTitle, onActivate, onClick} = useContext(
     TabsContext,
   );
 
@@ -21,10 +24,8 @@ const Tab = memo<PropsType>(({title, children}) => {
   }, [active, activeIndex, children, setActiveContent, setActiveTitle, title]);
 
   const onClickTab = (event: MouseEvent<HTMLButtonElement>) => {
-    if (event) {
-      event.preventDefault();
-    }
     onActivate();
+    onClick(event.currentTarget.value);
   };
 
   return (
@@ -33,11 +34,15 @@ const Tab = memo<PropsType>(({title, children}) => {
       role="tab"
       aria-selected={active}
       aria-expanded={active}
+      value={value}
       onClick={onClickTab}
+      className={classNames(s.tab, className)}
     >
       {title}
     </button>
   );
 });
+
+Tab.displayName = 'Tab';
 
 export default Tab;

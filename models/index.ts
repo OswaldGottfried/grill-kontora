@@ -3,13 +3,16 @@ import {types, Instance, onSnapshot} from 'mobx-state-tree';
 
 import isServer from 'lib/isServer';
 import {Cart} from './Cart';
+import {Checkout, defaultState as checkout} from './Checkout';
 
 const RootModel = types.model({
   cart: Cart,
+  checkout: Checkout,
 });
 
 let initialState = RootModel.create({
   cart: {items: []},
+  checkout,
 });
 
 if (!isServer) {

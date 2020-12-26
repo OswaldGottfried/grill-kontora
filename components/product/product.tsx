@@ -44,7 +44,10 @@ const ProductPage = observer<PropsType>(({product}) => {
   return (
     <>
       <section className={s.wrap}>
-        <Link href={`/category/${product.menu_category_id}`}>
+        <Link
+          href={`/category/${product.menu_category_id}`}
+          as={`/category/${product.menu_category_id}#menu`}
+        >
           <button type="button" className={s.link} aria-label="в категорию" />
         </Link>
         <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.product_name}`}>

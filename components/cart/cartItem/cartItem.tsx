@@ -14,19 +14,19 @@ type PropsType = {item: CartItemType};
 
 const CartItem: FC<PropsType> = ({item}) => {
   return (
-    <li key={`${item.id}_${item.modId}`} className={s.cartItem}>
-      <motion.figure className="image cursor-pointer" layoutId={`image_${item.image}`}>
-        <Link href={`/product/${item.id}`} as={`/product/${item.id}`}>
+    <li className={s.cartItem}>
+      <Link href={`/product/${item.id}`}>
+        <motion.figure className="image cursor-pointer" layoutId={`image_${item.image}`}>
           <Image
             src={item.image ? `https://gril-kontora.joinposter.com${item.image}` : '/burger.svg'}
             width={150}
             height={100}
             alt={item.name}
           />
-        </Link>
-      </motion.figure>
+        </motion.figure>
+      </Link>
       <div className="inline-flex flex-wrap items-center w-full justify-around">
-        <Link href={`/product/${item.id}`} as={`/product/${item.id}`}>
+        <Link href={`/product/${item.id}`}>
           <a
             className="cursor-pointer ml-16 mr-auto text-3xl md:text-xl sm:ml-4 w-2/6 sm:w-full"
             href={`/product/${item.id}`}
