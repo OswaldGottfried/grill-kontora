@@ -1,0 +1,23 @@
+.links {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+margin: 20px 0;
+    
+
+    > li {
+        height: 50px;
+
+        &:not(:last-child) {
+            margin-right: 30px;
+        }
+    }
+}
+
+.link {
+    > svg {
+        fill: var(--color-white);
+        height: 100%;
+        width: auto;
+    }
+}

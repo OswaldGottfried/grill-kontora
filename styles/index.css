@@ -43,3 +43,15 @@ h3 {
         font-size: 20px;
     }
 }
+
+
+@layer utilities {
+    @variants dark {
+      .filter-none {
+        filter: none;
+      }
+      .filter-grayscale {
+        filter: grayscale(100%);
+      }
+    }
+  }

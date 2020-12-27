@@ -1,0 +1,47 @@
+import {PHONE, ADDRESS} from 'constants/contacts';
+
+import Map from '@/common/map/map';
+import VK from './img/vk.svg';
+import Instagram from './img/instagram.svg';
+
+import s from './footer.module.scss';
+
+const LINKS = [
+  {type: 'vk', link: 'https://vk.com/grill_kontora', icon: <VK />},
+  {type: 'instagram', link: 'https://www.instagram.com/grill_kontora/', icon: <Instagram />},
+];
+
+const Footer = (): JSX.Element => {
+  return (
+    <footer className="bg-black text-gray-100 text-xl">
+      <div className="inline-flex w-full justify-center items-center ">
+        <ul className="flex flex-col mr-10">
+          <li>{ADDRESS}</li>
+          <li>Eжедневно с 10-23:00</li>
+        </ul>
+        <ul className="flex flex-col">
+          <li>
+            <a href={`tel:${PHONE.href}`}>{PHONE.value}</a>
+          </li>
+        </ul>
+      </div>
+      <ul className={s.links}>
+        {LINKS.map(({type, link, icon}) => (
+          <li key={link} className={s[type]}>
+            <a
+              href={link}
+              aria-label={`${type} link`}
+              className={s.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {icon}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </footer>
+  );
+};
+
+export default Footer;

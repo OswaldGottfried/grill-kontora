@@ -17,7 +17,6 @@
     "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "framer-motion": "^3.1.1",
-    "grommet": "^2.16.2",
     "mobx": "^6.0.4",
     "mobx-react-lite": "^3.1.6",
     "mobx-state-tree": "^4.0.2",
@@ -25,8 +24,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scroll": "^1.8.1",
+    "react-yandex-maps": "^4.6.0",
     "sass": "^1.29.0",
-    "styled-components": "^5.2.1",
     "swr": "^0.3.9",
     "tailwindcss": "^2.0.1"
   },

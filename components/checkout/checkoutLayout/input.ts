@@ -31,12 +31,12 @@ const takeAway: InputType[] = [
     placeholder: 'Email',
     type: 'email',
   },
-  //   {
-  //     autoComplete: 'off',
-  //     name: 'comment',
-  //     placeholder: 'Комментарий',
-  //     type: 'text',
-  //   },
+  {
+    autoComplete: 'off',
+    name: 'comment',
+    placeholder: 'Комментарий',
+    type: 'text',
+  },
 ];
 
 const delivery: InputType[] = [

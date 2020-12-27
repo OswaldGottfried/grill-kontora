@@ -1,4 +1,5 @@
-import {FC, MouseEvent, ReactElement, ButtonHTMLAttributes} from 'react';
+/* eslint-disable react/button-has-type */
+import {FC, MouseEvent, ReactElement} from 'react';
 import classNames from 'classnames';
 
 import s from './button.module.scss';

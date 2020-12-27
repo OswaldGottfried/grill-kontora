@@ -1,9 +1,12 @@
 import {FC} from 'react';
+import dynamic from 'next/dynamic';
+import {GetStaticProps} from 'next';
 
 import {CategoryType, ProductType} from 'types';
-import HomeLayout from '@/home/home';
 import {fetchCategories} from 'pages/api/category';
 import {fetchProducts} from 'pages/api/products/[id]';
+
+const HomeLayout = dynamic(() => import('@/home/home'));
 
 type PropsType = {
   categories: CategoryType[];
@@ -14,9 +17,10 @@ const Home: FC<PropsType> = ({categories, products}) => (
   <HomeLayout categories={categories} products={products} />
 );
 
-export async function getStaticProps(): Promise<{props: PropsType}> {
+export const getStaticProps: GetStaticProps = async () => {
   const categories = await fetchCategories();
-  const products = await fetchProducts(categories[0].category_id);
+  const productId = categories[0].category_id;
+  const products = await fetchProducts(productId);
 
   return {
     props: {
@@ -24,5 +28,6 @@ export async function getStaticProps(): Promise<{props: PropsType}> {
       products,
     },
   };
-}
+};
+
 export default Home;

@@ -7,6 +7,7 @@ import Tabs from '@/common/tabs/tabs';
 import Tab from '@/common/tabs/tab/tab';
 import Input from '@/common/input/input';
 import Button from '@/common/buttons/button/button';
+import Map from '@/common/map/map';
 import s from './checkoutLayout.module.scss';
 import ORDER_INPUTS from './input';
 
@@ -48,11 +49,11 @@ const CheckoutLayout = observer(() => {
               onSubmit={onSubmit}
             >
               {ORDER_INPUTS[tab.input].map(
-                ({placeholder: label, type, name, inputmode, required, autoComplete}) => (
+                ({placeholder, type, name, inputmode, required, autoComplete}) => (
                   <Input
                     name={name}
                     key={name}
-                    placeholder={label}
+                    placeholder={placeholder}
                     type={type}
                     value={getField(name)}
                     autoComplete={autoComplete}
@@ -63,12 +64,14 @@ const CheckoutLayout = observer(() => {
                 ),
               )}
               <Button type="submit" className="mt-12 sm:mt-8">
-                <span>Сделать заказ</span>
+                <span>{tab.input === 'takeAway' ? 'Забрать  с собой' : 'Заказать доставку'}</span>
               </Button>
             </form>
+            <div className="mt-10" />
           </Tab>
         ))}
       </Tabs>
+      <Map />
     </section>
   );
 });

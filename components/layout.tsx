@@ -1,7 +1,7 @@
 import {FC} from 'react';
 
 import Header from '@/header/header/header';
-import Footer from '@/footer';
+import Footer from '@/footer/footer';
 
 type PropsType = {
   children: JSX.Element;

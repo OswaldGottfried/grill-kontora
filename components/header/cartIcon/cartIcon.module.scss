@@ -24,8 +24,11 @@
     display: inline-flex;
     align-items: center;
     height: 30px;
-
     fill: var(--color-white);
+
+    @media (min-width: 639px) {
+        min-width: 100px;
+    }
 
     svg {
         height: 100%;
