@@ -6,7 +6,9 @@ import {API} from 'constants/endpoint';
 
 export const fetchProducts = async (category_id: string): Promise<ProductType[]> =>
   instance
-    .get<ResponseType<ProductType[]>>(API.getProducts, {params: {category_id, type: 'products'}})
+    .get<ResponseType<ProductType[]>>(API.getProducts, {
+      params: {category_id, type: 'batchtickets'},
+    })
     .then((res) => res.data.response);
 
 export default function handler(request: NextApiRequest, response: NextApiResponse): void {

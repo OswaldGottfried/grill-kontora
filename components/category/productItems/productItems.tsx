@@ -52,8 +52,8 @@ const ProductItems = observer<PropsType>(({products}) => {
             >
               <Image
                 src={
-                  product.photo
-                    ? `https://gril-kontora.joinposter.com${product.photo}`
+                  product.photo_origin
+                    ? `https://gril-kontora.joinposter.com${product.photo_origin}`
                     : '/burger.svg'
                 }
                 width={400}

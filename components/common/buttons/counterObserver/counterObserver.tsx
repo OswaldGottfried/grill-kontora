@@ -86,7 +86,6 @@ const CounterObserver = observer<PropsType>((props) => {
       <motion.span animate={controls} className={s.count}>
         {counter}
       </motion.span>
-      {/* <span className={s.count}></span> */}
       <button
         className={s.button}
         type="button"

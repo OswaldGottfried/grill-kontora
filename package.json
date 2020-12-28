@@ -23,6 +23,7 @@
     "next": "10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-medium-image-zoom": "^4.3.1",
     "react-scroll": "^1.8.1",
     "react-yandex-maps": "^4.6.0",
     "sass": "^1.29.0",

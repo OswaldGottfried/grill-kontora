@@ -19,6 +19,31 @@ export type Modification = {
   fiscal_code: string;
 };
 
+export type IngredientType = {
+  structure_id: string;
+  ingredient_id: string;
+  pr_in_clear: string;
+  pr_in_cook: string;
+  pr_in_fry: string;
+  pr_in_stew: string;
+  pr_in_bake: string;
+  structure_unit: string;
+  structure_type: string;
+  structure_brutto: number;
+  structure_netto: number;
+  structure_lock: string;
+  structure_selfprice: string;
+  structure_selfprice_netto: string;
+  ingredient_name: string;
+  ingredient_unit: string;
+  ingredient_weight: number;
+  ingredients_losses_clear: string;
+  ingredients_losses_cook: string;
+  ingredients_losses_fry: string;
+  ingredients_losses_stew: string;
+  ingredients_losses_bake: string;
+};
+
 export type ProductType = {
   barcode: string;
   category_name: string;
@@ -48,4 +73,5 @@ export type ProductType = {
   price: {1: string};
   profit: {1: string};
   spots: Spot[];
+  ingredients: IngredientType[];
 };

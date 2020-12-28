@@ -3,6 +3,8 @@ import {observer} from 'mobx-react-lite';
 import {useRouter} from 'next/router';
 import {motion} from 'framer-motion';
 import Image from 'next/image';
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 
 import Link from 'next/link';
 
@@ -25,6 +27,10 @@ const ProductPage = observer<PropsType>(({product}) => {
   const {increase, items} = useStore('cart');
   const isHasModifications = product.modifications && product.modifications.length > 0;
   const router = useRouter();
+  const ingridients = product.ingredients
+    .map(({ingredient_name}) => ingredient_name)
+    .join(', ')
+    .toLocaleLowerCase();
 
   const addToCart = useCallback(() => {
     const selectedProduct = items.find((item) => item.id === product.product_id);
@@ -51,15 +57,21 @@ const ProductPage = observer<PropsType>(({product}) => {
           <button type="button" className={s.link} aria-label="в категорию" />
         </Link>
         <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.product_name}`}>
-          <Image
-            src={
-              product.photo ? `https://gril-kontora.joinposter.com${product.photo}` : '/burger.svg'
-            }
-            layout="responsive"
-            width={300}
-            height={200}
-            alt={product.product_name}
-          />
+          <Zoom overlayBgColorEnd="rgba(0, 0, 0, 0.5)" wrapStyle={{width: '100%', height: '100%'}}>
+            <div className="w-full h-full">
+              <Image
+                src={
+                  product.photo_origin
+                    ? `https://gril-kontora.joinposter.com${product.photo_origin}`
+                    : '/burger.svg'
+                }
+                layout="responsive"
+                width={300}
+                height={200}
+                alt={product.photo_origin}
+              />
+            </div>
+          </Zoom>
         </motion.figure>
         <div className={s.description}>
           <motion.h1 className={s.title} layoutId={product.product_name}>
@@ -94,6 +106,14 @@ const ProductPage = observer<PropsType>(({product}) => {
               </div>
               <Price price={getPrice(product)} />
             </div>
+          )}
+
+          {ingridients && (
+            <>
+              <h2 className="text-3xl">
+                Состав: <p className="text-xl">{ingridients}</p>
+              </h2>
+            </>
           )}
 
           <div className="flex w-full justify-center sm:mt-6 sm:mb-6 mt-12 mb-12">

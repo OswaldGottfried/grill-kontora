@@ -15,7 +15,7 @@ const CategoryList: FC<PropsType> = ({categories, selected}) =>
     <ul className={s.tabs} role="tablist">
       {categories.map(({category_id, category_name}) => (
         <li role="tab" key={category_id} className={s.tab} aria-selected={category_id === selected}>
-          <Link href={`/${category_id}`} scroll={false}>
+          <Link href="/category/[id]" as={`/category/${category_id}`} scroll={false}>
             <h3>
               <button type="button">{category_name}</button>
             </h3>
