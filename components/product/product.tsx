@@ -26,7 +26,7 @@ type PropsType = {
 const ProductPage = observer<PropsType>(({product}) => {
   const {increase, items} = useStore('cart');
   const isHasModifications = product.modifications && product.modifications.length > 0;
-  const router = useRouter();
+  const {push} = useRouter();
   const ingridients = product.ingredients
     .map(({ingredient_name}) => ingredient_name)
     .join(', ')
@@ -44,8 +44,8 @@ const ProductPage = observer<PropsType>(({product}) => {
       });
     }
 
-    router.push('/cart');
-  }, [increase, product, isHasModifications, router, items]);
+    push('/cart');
+  }, [increase, product, isHasModifications, push, items]);
 
   return (
     <>

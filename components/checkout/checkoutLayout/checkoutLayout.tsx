@@ -2,16 +2,19 @@ import {observer} from 'mobx-react-lite';
 import {useStore} from 'models';
 import {useCallback, FormEvent, ChangeEvent} from 'react';
 
-import {ServiceMode} from 'types/order';
 import Tabs from '@/common/tabs/tabs';
 import Tab from '@/common/tabs/tab/tab';
 import Input from '@/common/input/input';
 import Button from '@/common/buttons/button/button';
 import Map from '@/common/map/map';
 
+import {ServiceMode, OrderType} from 'types/order';
+import formatPrice from 'lib/formatPrice';
+import {MIN_ORDER_AMOUNT, FREE_ORDER_AMOUNT, DELIVERY_PRICE} from 'constants/price';
+
+import TotalList from './totalList/totalList';
 import s from './checkoutLayout.module.scss';
 import ORDER_INPUTS from './input';
-import TotalList from '../totalList/totalList';
 
 const ORDER_TABS = [
   {title: 'Доставка', value: ServiceMode.Delivery, input: 'delivery'},
@@ -19,10 +22,31 @@ const ORDER_TABS = [
 ] as const;
 
 const CheckoutLayout = observer(() => {
-  const {service_mode: serviceMode, setValue, getField} = useStore('checkout');
+  const {service_mode: serviceMode, setValue, getField, getFields} = useStore('checkout');
+  const {items, totalPrice} = useStore('cart');
+  const finalPrice = formatPrice(totalPrice);
+  const isOrderAvailable =
+    (finalPrice > MIN_ORDER_AMOUNT && serviceMode === ServiceMode.Delivery) ||
+    serviceMode === ServiceMode.Takeaway;
+  const isDeliveryFree =
+    (serviceMode === ServiceMode.Delivery && finalPrice >= FREE_ORDER_AMOUNT) ||
+    serviceMode !== ServiceMode.Delivery;
+  const deliveryCost = isDeliveryFree ? 0 : DELIVERY_PRICE;
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const order: OrderType = {
+      ...getFields,
+      spot_id: 1,
+      products: items.map(({id, modId, count, price}) => ({
+        product_id: id,
+        modificator_id: modId,
+        count,
+        price,
+      })),
+      // @ts-ignore
+      delivery_price: serviceMode === ServiceMode.Delivery ? deliveryCost * 100 : undefined,
+    };
   };
 
   const onChange = useCallback(
@@ -69,17 +93,21 @@ const CheckoutLayout = observer(() => {
                     />
                   ),
                 )}
-                <Button type="submit" className="mt-12 sm:mt-8">
-                  <span>{tab.input === 'takeAway' ? 'Забрать  с собой' : 'Заказать доставку'}</span>
+                <Button type="submit" className="mt-12 sm:mt-8" isDisabled={!isOrderAvailable}>
+                  <span>
+                    {isOrderAvailable
+                      ? `${tab.input === 'takeAway' ? 'Забрать  с собой' : 'Заказать доставку'}`
+                      : `Набери на ${MIN_ORDER_AMOUNT - finalPrice} ${String.fromCharCode(0x20bd)} и
+                      сможешь заказать доставку`}
+                  </span>
                 </Button>
               </form>
               <div className="mt-10" />
             </Tab>
           ))}
         </Tabs>
-
         <div className="w-1/3 lg:w-4/5 ml-auto mr-auto sm:w-full">
-          <TotalList />
+          <TotalList isDeliveryFree={isDeliveryFree} deliveryCost={deliveryCost} />
         </div>
       </div>
       <Map />

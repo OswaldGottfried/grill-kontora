@@ -22,6 +22,9 @@ export const Checkout = types
     getField(key: keyof typeof self) {
       return self[key];
     },
+    get getFields() {
+      return self;
+    },
   }));
 
 export type CheckoutModel = SnapshotOut<typeof Checkout>;

@@ -40,8 +40,15 @@ const CartItem: FC<PropsType> = ({item, isOrder = false}) => {
             </motion.h3>
           </a>
         </Link>
+
         <div className={s.price}>
-          <Price price={formatPrice(item.price)} />
+          {isOrder && item.count > 1 ? (
+            <p className="whitespace-nowrap">
+              {item.count} x <Price price={formatPrice(item.price)} />
+            </p>
+          ) : (
+            <Price price={formatPrice(item.price)} />
+          )}
         </div>
         {!isOrder && (
           <div className={s.counter}>

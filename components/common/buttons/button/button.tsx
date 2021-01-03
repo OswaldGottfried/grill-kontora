@@ -10,6 +10,7 @@ type PropsType = {
   type?: 'submit' | 'reset' | 'button';
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   className?: string;
+  isDisabled?: boolean;
   children: ReactElement;
   color?: 'primary' | 'secondary';
 };
@@ -22,6 +23,7 @@ const Button: FC<PropsType> = ({
   color = 'secondary',
   type = 'button',
   className = '',
+  isDisabled,
 }) => (
   <button
     aria-label={label}
@@ -29,6 +31,7 @@ const Button: FC<PropsType> = ({
     className={classNames(s.button, className, s[color])}
     type={type}
     onClick={onClick}
+    disabled={isDisabled}
   >
     {children}
   </button>

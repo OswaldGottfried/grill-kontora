@@ -7,8 +7,14 @@ type PropsType = {
 };
 const Price: FC<PropsType> = ({price, isExact}) => (
   <span className={s.price}>
-    {isExact && 'от '}
-    {price} {String.fromCharCode(0x20bd)}
+    {price > 0 ? (
+      <>
+        {isExact && 'от '}
+        {price} {String.fromCharCode(0x20bd)}
+      </>
+    ) : (
+      'Бесплатно'
+    )}
   </span>
 );
 

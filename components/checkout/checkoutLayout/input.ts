@@ -5,7 +5,7 @@ type InputType = Omit<Omit<InputPropsType, 'onChange'>, 'value'> & {
   name: keyof CheckoutModel;
 };
 
-const takeAway: InputType[] = [
+const commonInputs: InputType[] = [
   {
     autoComplete: 'given-name',
     name: 'first_name',
@@ -31,6 +31,10 @@ const takeAway: InputType[] = [
     placeholder: 'Email',
     type: 'email',
   },
+];
+
+const takeAway: InputType[] = [
+  ...commonInputs,
   {
     autoComplete: 'off',
     name: 'comment',
@@ -40,12 +44,18 @@ const takeAway: InputType[] = [
 ];
 
 const delivery: InputType[] = [
-  ...takeAway,
+  ...commonInputs,
   {
     autoComplete: 'street-address',
     name: 'address',
     placeholder: 'Адрес доставки',
     required: true,
+    type: 'text',
+  },
+  {
+    autoComplete: 'off',
+    name: 'comment',
+    placeholder: 'Комментарий',
     type: 'text',
   },
 ];
