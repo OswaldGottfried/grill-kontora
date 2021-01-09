@@ -18,11 +18,11 @@ type OrderDineInType = {
   last_name?: string;
   email?: string;
   comment?: string;
+  delivery_price: number;
 };
 
 type OrderDeliveryType = OrderDineInType & {
   service_mode: ServiceMode.Delivery;
-  delivery_price: number;
   address?: string;
 };
 

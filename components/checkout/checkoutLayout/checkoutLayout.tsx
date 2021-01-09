@@ -10,6 +10,7 @@ import Map from '@/common/map/map';
 
 import {ServiceMode, OrderType} from 'types/order';
 import formatPrice from 'lib/formatPrice';
+import {createOrder} from 'pages/api/order';
 import {MIN_ORDER_AMOUNT, FREE_ORDER_AMOUNT, DELIVERY_PRICE} from 'constants/price';
 
 import TotalList from './totalList/totalList';
@@ -33,7 +34,7 @@ const CheckoutLayout = observer(() => {
     serviceMode !== ServiceMode.Delivery;
   const deliveryCost = isDeliveryFree ? 0 : DELIVERY_PRICE;
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const order: OrderType = {
       ...getFields,
@@ -44,9 +45,12 @@ const CheckoutLayout = observer(() => {
         count,
         price,
       })),
-      // @ts-ignore
-      delivery_price: serviceMode === ServiceMode.Delivery ? deliveryCost * 100 : undefined,
+      delivery_price: serviceMode === ServiceMode.Delivery ? deliveryCost * 100 : 0,
     };
+
+    const response = createOrder(order);
+
+    console.log(response);
   };
 
   const onChange = useCallback(
@@ -93,7 +97,12 @@ const CheckoutLayout = observer(() => {
                     />
                   ),
                 )}
-                <Button type="submit" className="mt-12 sm:mt-8" isDisabled={!isOrderAvailable}>
+                <Button
+                  type="submit"
+                  className="mt-12 sm:mt-8"
+                  isDisabled={!isOrderAvailable}
+                  color="primary"
+                >
                   <span>
                     {isOrderAvailable
                       ? `${tab.input === 'takeAway' ? 'Забрать  с собой' : 'Заказать доставку'}`

@@ -5,9 +5,7 @@ import {OrderType} from 'types/order';
 import {NextApiRequest, NextApiResponse} from 'next';
 
 export const createOrder = async (order: OrderType): Promise<OrderType> =>
-  instance
-    .post<ResponseType<OrderType>>(API.createOrder, {params: order})
-    .then((res) => res.data.response);
+  instance.post<ResponseType<OrderType>>(API.createOrder, order).then((res) => res.data.response);
 
 export default function handler(request: NextApiRequest, response: NextApiResponse): void {
   createOrder(request.body).then((res) => response.status(200).json(res));
