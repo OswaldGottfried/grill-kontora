@@ -1,6 +1,6 @@
 import {useCallback, MouseEvent} from 'react';
 import {observer} from 'mobx-react-lite';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import {ProductType} from 'types';
 
@@ -74,7 +74,7 @@ const CounterObserver = observer<PropsType>((props) => {
   return (
     <div className={s.counter}>
       <button
-        className={classNames(s.button, {[s.delete]: counter <= 1})}
+        className={clsx(s.button, {[s.delete]: counter <= 1})}
         type="button"
         disabled={counter === 0}
         onClick={onDecrease}

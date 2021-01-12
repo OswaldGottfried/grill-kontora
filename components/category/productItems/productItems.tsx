@@ -46,10 +46,7 @@ const ProductItems = observer<PropsType>(({products}) => {
       {products.map((product) => (
         <li key={product.product_id} className={s.item}>
           <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
-            <motion.figure
-              className="image cursor-pointer"
-              layoutId={`image_${product.product_name}`}
-            >
+            <motion.figure className={s.image} layoutId={`image_${product.product_name}`}>
               <Image
                 src={
                   product.photo_origin

@@ -1,5 +1,3 @@
-import {FC} from 'react';
-
 import {CategoryType} from 'types';
 
 import Link from 'next/link';
@@ -10,7 +8,7 @@ type PropsType = {
   selected: string;
 };
 
-const CategoryList: FC<PropsType> = ({categories, selected}) =>
+const CategoryList: React.FC<PropsType> = ({categories, selected}) =>
   categories ? (
     <ul className={s.tabs} role="tablist">
       {categories.map(({category_id, category_name}) => (

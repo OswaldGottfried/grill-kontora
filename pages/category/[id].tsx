@@ -1,4 +1,3 @@
-import {FC} from 'react';
 import {GetStaticProps, GetStaticPaths} from 'next';
 import dynamic from 'next/dynamic';
 
@@ -14,7 +13,7 @@ type PropsType = {
   products: ProductType[];
 };
 
-const Category: FC<PropsType> = ({categories, products}) => (
+const Category: React.FC<PropsType> = ({categories, products}) => (
   <HomeLayout categories={categories} products={products} />
 );
 
@@ -40,4 +39,5 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
     },
   };
 };
+
 export default Category;

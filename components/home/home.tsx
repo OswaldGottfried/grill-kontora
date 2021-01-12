@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import {FC} from 'react';
 
 import {CategoryType, ProductType} from 'types';
 
@@ -11,7 +10,7 @@ type PropsType = {
   products: ProductType[];
 };
 
-const Home: FC<PropsType> = ({categories, products}) => {
+const Home: React.FC<PropsType> = ({categories, products}) => {
   if (!categories || !products) return null;
   return (
     <>

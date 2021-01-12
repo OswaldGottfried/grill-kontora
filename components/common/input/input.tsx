@@ -1,4 +1,5 @@
 import {memo, ChangeEvent} from 'react';
+import clsx from 'clsx';
 
 import s from './input.module.scss';
 
@@ -10,12 +11,23 @@ export type PropsType = {
   inputmode?: 'decimal';
   autoComplete?: 'email' | 'street-address' | 'tel' | 'off' | 'family-name' | 'given-name';
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  error?: string;
   required?: boolean;
 };
 
 const Input = memo<PropsType>(
-  ({name, placeholder, value, type, inputmode, autoComplete = 'off', onChange, required}) => (
-    <div className={s.field}>
+  ({
+    name,
+    placeholder,
+    value,
+    type,
+    inputmode,
+    autoComplete = 'off',
+    error,
+    onChange,
+    required,
+  }) => (
+    <div className={clsx(s.field, error && s.error)}>
       <input
         id={`input__${value}`}
         autoComplete={autoComplete}
@@ -31,6 +43,7 @@ const Input = memo<PropsType>(
       <label className={s.label} htmlFor={`input__${value}`}>
         {placeholder}
       </label>
+      {error && <p className={s.error}>{error}</p>}
     </div>
   ),
 );

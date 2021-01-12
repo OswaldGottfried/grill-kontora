@@ -1,6 +1,6 @@
 import {observer} from 'mobx-react-lite';
 import {useStore} from 'models';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import Price from '@/common/price/price';
 import CartItem from '@/cart/cartItem/cartItem';
@@ -27,7 +27,7 @@ const TotalList: React.FC<PropsType> = observer(({deliveryCost, isDeliveryFree})
         ))}
 
         {serviceMode === ServiceMode.Delivery && (
-          <li className={classNames(s.cartItem, 'items-center')}>
+          <li className={clsx(s.cartItem, 'items-center')}>
             <h3 className="ml-2 text-lg">Доставка</h3>
             {!isDeliveryFree && (
               <p className="ml-6">

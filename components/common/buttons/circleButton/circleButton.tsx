@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import {FC, MouseEvent} from 'react';
 
@@ -15,7 +15,7 @@ const CircleButton: FC<PropsType> = ({label, value, onClick, className = ''}) =>
   <button
     aria-label={label}
     value={value}
-    className={classNames(className, s.button)}
+    className={clsx(className, s.button)}
     type="button"
     onClick={onClick}
   >

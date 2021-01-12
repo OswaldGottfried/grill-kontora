@@ -1,4 +1,3 @@
-import {FC} from 'react';
 import Link from 'next/link';
 import {motion} from 'framer-motion';
 import Image from 'next/image';
@@ -12,7 +11,7 @@ import s from './cartItem.module.scss';
 
 type PropsType = {item: CartItemType; isOrder?: boolean};
 
-const CartItem: FC<PropsType> = ({item, isOrder = false}) => {
+const CartItem: React.FC<PropsType> = ({item, isOrder = false}) => {
   return (
     <li className={s.cartItem}>
       <Link href={`/product/${item.id}`}>

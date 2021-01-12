@@ -40,7 +40,7 @@ const Header = (): JSX.Element => {
         <ul className="w-full inline-flex items-center justify-between">
           <li className="ml-auto mr-auto">
             <Link href="/">
-              <h1 className="flex ml-48 sm:ml-0 items-center hover:text-gray-400 transition-colors mt-2 mb-2 cursor-pointer">
+              <h1 className="flex ml-60 sm:ml-0 items-center hover:text-gray-400 transition-colors mt-2 mb-2 cursor-pointer">
                 <Image src="/logo.png" alt="Гриль контора" width={205} height={65} />
               </h1>
             </Link>

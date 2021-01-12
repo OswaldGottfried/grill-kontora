@@ -1,4 +1,3 @@
-import {FC} from 'react';
 import dynamic from 'next/dynamic';
 import {GetStaticProps} from 'next';
 
@@ -13,14 +12,15 @@ type PropsType = {
   products: ProductType[];
 };
 
-const Home: FC<PropsType> = ({categories, products}) => (
+const Home: React.FC<PropsType> = ({categories, products}) => (
   <HomeLayout categories={categories} products={products} />
 );
 
 export const getStaticProps: GetStaticProps = async () => {
   const categories = await fetchCategories();
-  const productId = categories[0].category_id;
-  const products = await fetchProducts(productId);
+  let productId;
+  if (categories[0]) productId = categories[0].category_id;
+  const products = productId ? await fetchProducts(productId) : [];
 
   return {
     props: {

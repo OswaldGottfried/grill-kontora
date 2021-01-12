@@ -1,7 +1,6 @@
-import {FC} from 'react';
 import {AnimateSharedLayout} from 'framer-motion';
 
-import Layout from 'components/layout';
+import Layout from '@/layout/layout';
 
 import 'styles/index.css';
 import {Provider, rootStore} from '../models';
@@ -11,7 +10,7 @@ export type PropsType = {
   pageProps: any;
 };
 
-const App: FC<PropsType> = ({Component, pageProps}) => (
+const App: React.FC<PropsType> = ({Component, pageProps}) => (
   <AnimateSharedLayout>
     <Provider value={rootStore}>
       <Layout>

@@ -1,7 +1,6 @@
 import {GetStaticProps, GetStaticPaths} from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import {FC} from 'react';
 
 import {fetchProduct} from 'pages/api/product/[id]';
 import {ProductType, Maybe} from 'types';
@@ -12,7 +11,7 @@ type PropsType = {
   product: Maybe<ProductType>;
 };
 
-const ProductPage: FC<PropsType> = ({product}) =>
+const ProductPage: React.FC<PropsType> = ({product}) =>
   product ? (
     <>
       <Head>

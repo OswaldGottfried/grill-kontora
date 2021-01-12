@@ -1,5 +1,5 @@
 import {MouseEvent, memo, useContext, useEffect, ReactNode} from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import TabsContext from '../tabsContext';
 import s from './tab.module.scss';
@@ -36,7 +36,7 @@ const Tab = memo<PropsType>(({title, value, children, className}) => {
       aria-expanded={active}
       value={value}
       onClick={onClickTab}
-      className={classNames(s.tab, className)}
+      className={clsx(s.tab, className)}
     >
       {title}
     </button>

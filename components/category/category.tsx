@@ -1,4 +1,3 @@
-import {FC} from 'react';
 import dynamic from 'next/dynamic';
 import {Element} from 'react-scroll';
 import {useRouter} from 'next/router';
@@ -13,7 +12,7 @@ type PropsType = {
   products: ProductType[];
 };
 
-const Category: FC<PropsType> = ({categories, products}) => {
+const Category: React.FC<PropsType> = ({categories, products}) => {
   const {query} = useRouter();
   const selected = typeof query.id === 'string' ? query.id : categories[0].category_id;
 

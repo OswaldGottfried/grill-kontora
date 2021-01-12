@@ -55,6 +55,9 @@ export const Cart = types
       const deletedItem = self.items.find((item) => item.id === id);
       if (deletedItem) destroy(deletedItem);
     },
+    clear() {
+      self.items.length = 0;
+    },
   }))
   .views((self) => ({
     get totalItems() {
