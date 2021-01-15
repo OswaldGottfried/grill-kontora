@@ -48,16 +48,20 @@ export const categorySortRule = {
 } as const;
 
 export const fetchCategories = async (): Promise<CategoryType[]> =>
-  instance.get<ResponseType<CategoryType[]>>(API.getCategories).then((res) =>
-    res.data.response
-      .map((item) => ({
-        ...item,
-        ...categorySortRule[item.category_id as keyof typeof categorySortRule],
-      }))
-      .sort((a, b) => Number(a.sort_order) - Number(b.sort_order))
-      .filter((item) => item.category_hidden !== true),
-  );
+  instance.get<ResponseType<CategoryType[]>>(API.getCategories).then(({data}) => {
+    return data.response
+      ? data.response
+          .map((item) => ({
+            ...item,
+            ...categorySortRule[item.category_id as keyof typeof categorySortRule],
+          }))
+          .sort((a, b) => Number(a.sort_order) - Number(b.sort_order))
+          .filter((item) => item.category_hidden !== true)
+      : [];
+  });
 
 export default function handler(request: NextApiRequest, response: NextApiResponse): void {
-  fetchCategories().then((res) => response.status(200).json(res));
+  fetchCategories().then((res) => {
+    response.status(200).json(res);
+  });
 }

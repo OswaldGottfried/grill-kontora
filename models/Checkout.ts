@@ -11,11 +11,15 @@ export const Checkout = types
     email: types.optional(types.string, ''),
     address: types.optional(types.string, ''),
     comment: types.optional(types.string, ''),
+    orderId: types.maybeNull(types.number),
   })
   .actions((self) => ({
     setValue(key: keyof typeof self, value: string | number) {
       // @ts-ignore
       self[key] = value;
+    },
+    setOrderId(id: number) {
+      self.orderId = id;
     },
   }))
   .views((self) => ({
@@ -36,4 +40,5 @@ export const defaultState: CheckoutModel = {
   address: '',
   comment: '',
   email: '',
+  orderId: null,
 };

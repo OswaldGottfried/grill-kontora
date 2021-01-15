@@ -14,6 +14,7 @@ type PropsType = {
 
 const Category: React.FC<PropsType> = ({categories, products}) => {
   const {query} = useRouter();
+  if (categories.length === 0) return null;
   const selected = typeof query.id === 'string' ? query.id : categories[0].category_id;
 
   return (

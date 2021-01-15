@@ -3,6 +3,7 @@ export const API = {
   getProducts: 'menu.getProducts',
   getProduct: 'menu.getProduct',
   createOrder: 'incomingOrders.createIncomingOrder',
+  getOrder: 'incomingOrders.getIncomingOrder',
 };
 
 export default API;

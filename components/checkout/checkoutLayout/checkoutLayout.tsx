@@ -25,7 +25,9 @@ const ORDER_TABS = [
 ] as const;
 
 const CheckoutLayout = observer(() => {
-  const {service_mode: serviceMode, setValue, getField, getFields} = useStore('checkout');
+  const {service_mode: serviceMode, setValue, getField, getFields, setOrderId} = useStore(
+    'checkout',
+  );
   const {items, totalPrice, clear} = useStore('cart');
   const finalPrice = formatPrice(totalPrice);
   const isOrderAvailable =
@@ -55,10 +57,11 @@ const CheckoutLayout = observer(() => {
 
     instance
       .post('/api/order', order, {baseURL: '/'})
-      .then((data: AxiosResponse<OrderResponseType>) => {
+      .then(({data}: AxiosResponse<OrderResponseType>) => {
         setLoading(false);
         clear();
-        router.push('/thankYou');
+        setOrderId(data.incoming_order_id);
+        router.push(`thankYou/${data.incoming_order_id}`);
       })
       .catch(({response}: AxiosError<OrderErrorType>) => {
         setLoading(false);
