@@ -6,8 +6,6 @@ import Image from 'next/image';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 
-import Link from 'next/link';
-
 import {ProductType} from 'types';
 import Price from '@/common/price/price';
 import {useStore} from 'models';
@@ -26,7 +24,7 @@ type PropsType = {
 const ProductPage = observer<PropsType>(({product}) => {
   const {increase, items} = useStore('cart');
   const isHasModifications = product.modifications && product.modifications.length > 0;
-  const {push} = useRouter();
+  const {push, back} = useRouter();
   const ingridients = product.ingredients
     .map(({ingredient_name}) => ingredient_name)
     .join(', ')
@@ -50,12 +48,15 @@ const ProductPage = observer<PropsType>(({product}) => {
   return (
     <>
       <section className={s.wrap}>
-        <Link
-          href={`/category/${product.menu_category_id}`}
-          as={`/category/${product.menu_category_id}#menu`}
-        >
-          <button type="button" className={s.link} aria-label="в категорию" />
-        </Link>
+        <button
+          type="button"
+          className={s.link}
+          aria-label="в категорию"
+          onClick={() => {
+            back();
+          }}
+        />
+
         <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.product_name}`}>
           <Zoom overlayBgColorEnd="rgba(0, 0, 0, 0.5)" wrapStyle={{width: '100%', height: '100%'}}>
             <div className="w-full h-full">

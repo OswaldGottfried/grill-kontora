@@ -45,7 +45,11 @@ const ProductItems = observer<PropsType>(({products}) => {
     <ul className={s.items}>
       {products.map((product) => (
         <li key={product.product_id} className={s.item}>
-          <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
+          <Link
+            href={`/product/${product.product_id}`}
+            as={`/product/${product.product_id}`}
+            scroll={false}
+          >
             <motion.figure className={s.image} layoutId={`image_${product.product_name}`}>
               <Image
                 src={
@@ -59,7 +63,11 @@ const ProductItems = observer<PropsType>(({products}) => {
               />
             </motion.figure>
           </Link>
-          <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
+          <Link
+            href={`/product/${product.product_id}`}
+            as={`/product/${product.product_id}`}
+            scroll={false}
+          >
             <motion.h3 className={s.title} layoutId={product.product_name}>
               <a href={`/product/${product.product_id}`}>{product.product_name}</a>
             </motion.h3>
