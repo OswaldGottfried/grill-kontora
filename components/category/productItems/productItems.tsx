@@ -45,13 +45,10 @@ const ProductItems = observer<PropsType>(({products}) => {
     <ul className={s.items}>
       {products.map((product) => (
         <li key={product.product_id} className={s.item}>
-          <Link
-            href={`/product/${product.product_id}`}
-            as={`/product/${product.product_id}`}
-            scroll={false}
-          >
-            <motion.figure className={s.image} layoutId={`image_${product.product_name}`}>
+          <Link href={`/product/${product.product_id}`}>
+            <figure className={s.image}>
               <Image
+                className="cursor-pointer"
                 src={
                   product.photo_origin
                     ? `https://gril-kontora.joinposter.com${product.photo_origin}`
@@ -61,7 +58,7 @@ const ProductItems = observer<PropsType>(({products}) => {
                 height={300}
                 alt={product.product_name}
               />
-            </motion.figure>
+            </figure>
           </Link>
           <Link
             href={`/product/${product.product_id}`}

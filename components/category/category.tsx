@@ -24,6 +24,8 @@ const Category: React.FC<PropsType> = ({categories, products}) => {
       </Element>
       <CategoryList categories={categories} selected={selected} />
       <ProductItems products={products} />
+      <ProductItems products={products} />
+      <ProductItems products={products} />
     </section>
   );
 };

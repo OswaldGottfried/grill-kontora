@@ -1,31 +1,31 @@
-import dynamic from 'next/dynamic';
 import {GetStaticProps} from 'next';
+import {useRouter} from 'next/router';
+import {useEffect} from 'react';
 
-import {CategoryType, ProductType} from 'types';
 import {fetchCategories} from 'pages/api/category';
-import {fetchProducts} from 'pages/api/products/[id]';
-
-const HomeLayout = dynamic(() => import('@/home/home'));
 
 type PropsType = {
-  categories: CategoryType[];
-  products: ProductType[];
+  categoryId: number;
 };
 
-const Home: React.FC<PropsType> = ({categories, products}) => (
-  <HomeLayout categories={categories} products={products} />
-);
+const Home: React.FC<PropsType> = ({categoryId}) => {
+  const {push} = useRouter();
+
+  useEffect(() => {
+    // Always do navigations after the first render
+    push(`/category/${categoryId}`, undefined, {shallow: true});
+  }, [categoryId, push]);
+
+  return null;
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   const categories = await fetchCategories();
-  let productId;
-  if (categories[0]) productId = categories[0].category_id;
-  const products = productId ? await fetchProducts(productId) : [];
+  const categoryId = categories[0]?.category_id || 1;
 
   return {
     props: {
-      categories,
-      products,
+      categoryId,
     },
   };
 };

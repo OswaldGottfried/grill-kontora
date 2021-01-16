@@ -110,16 +110,14 @@ const ProductPage = observer<PropsType>(({product}) => {
           )}
 
           {ingridients && (
-            <>
-              <h2 className="text-3xl">
-                Состав: <p className="text-xl">{ingridients}</p>
-              </h2>
-            </>
+            <h2 className="text-3xl">
+              Состав: <p className="text-xl">{ingridients}</p>
+            </h2>
           )}
 
           <div className="flex w-full justify-center sm:mt-6 sm:mb-6 mt-12 mb-12">
             <Button onClick={addToCart} value={product.product_id}>
-              <p className="sm:text-lg">Перейти корзину</p>
+              <p className="sm:text-lg">Перейти в корзину</p>
             </Button>
           </div>
         </div>

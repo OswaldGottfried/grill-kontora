@@ -1,26 +1,36 @@
-import {GetStaticProps, GetStaticPaths} from 'next';
+import {GetStaticProps, GetStaticPaths, GetStaticPathsResult} from 'next';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 
 import {CategoryType, ProductType} from 'types';
 import {fetchCategories} from 'pages/api/category';
 import {fetchProducts} from 'pages/api/products/[id]';
-import {categorySortRule} from '../api/category';
 
 const HomeLayout = dynamic(() => import('@/home/home'));
 
 type PropsType = {
   categories: CategoryType[];
   products: ProductType[];
+  categoryName: string;
 };
 
-const Category: React.FC<PropsType> = ({categories, products}) => (
-  <HomeLayout categories={categories} products={products} />
+const Category: React.FC<PropsType> = ({categories, products, categoryName}) => (
+  <>
+    <Head>
+      <title>{categoryName}</title>
+    </Head>
+    <HomeLayout categories={categories} products={products} />
+  </>
 );
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const ids = Object.keys(categorySortRule);
+  const categories = await fetchCategories();
+  const paths: GetStaticPathsResult['paths'] = categories.map(({category_id}) => ({
+    params: {id: category_id},
+  }));
+
   return {
-    paths: ids.map((id) => ({params: {id}})),
+    paths,
     fallback: false,
   };
 };
@@ -32,10 +42,14 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
     products = await fetchProducts(params.id);
   }
 
+  const categoryName =
+    categories.find(({category_id}) => category_id === params?.id)?.category_name || '';
+
   return {
     props: {
       categories,
       products,
+      categoryName,
     },
   };
 };
