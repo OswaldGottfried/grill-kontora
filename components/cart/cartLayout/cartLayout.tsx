@@ -12,7 +12,7 @@ const CartLayout = observer(() => {
   const isEmptyCart = totalItems === 0;
 
   return (
-    <section className="pl-16 pr-16 pt-16 sm:p-4 sm:mb-12">
+    <section className="lg:pl-16 lg:pr-16 pt-16 sm:p-4 sm:mb-12 max-w-4xl flex flex-col ml-auto mr-auto">
       {isEmptyCart ? (
         <h1>Корзина пуста</h1>
       ) : (

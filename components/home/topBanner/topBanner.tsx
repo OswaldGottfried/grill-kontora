@@ -1,5 +1,6 @@
 import {Link} from 'react-scroll';
 
+import Button from '@/common/buttons/button/button';
 import s from './topBanner.module.scss';
 
 const TopBanner = (): JSX.Element => {
@@ -11,16 +12,12 @@ const TopBanner = (): JSX.Element => {
           <p>кухня на углях</p>
           <p>доставка бургеров</p>
         </h2>
-        <Link className={s.button} to="menu" duration={700} offset={-30} smooth>
-          Посмотреть меню
-        </Link>
+        <Button color="primary">
+          <Link to="menu" duration={700} offset={-30} smooth>
+            Посмотреть меню
+          </Link>
+        </Button>
       </div>
-      {/* <picture className={s.bg}>
-        <source srcSet="/banner.webp" type="image/webp" />
-        <source srcSet="/banner.jpg" type="image/jpg" />
-
-        <img srcSet="/banner.jpg" alt="banner" />
-      </picture> */}
     </section>
   );
 };
