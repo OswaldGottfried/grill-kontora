@@ -1,6 +1,7 @@
-import {Link} from 'react-scroll';
+import {scroller} from 'react-scroll';
 
 import Button from '@/common/buttons/button/button';
+import {useCallback} from 'react';
 import s from './topBanner.module.scss';
 
 const TopBanner = (): JSX.Element => {
@@ -12,10 +13,13 @@ const TopBanner = (): JSX.Element => {
           <p>кухня на углях</p>
           <p>доставка бургеров</p>
         </h2>
-        <Button color="primary">
-          <Link to="menu" duration={700} offset={-30} smooth>
-            Посмотреть меню
-          </Link>
+        <Button
+          color="primary"
+          onClick={useCallback(() => {
+            scroller.scrollTo('menu', {duration: 700, offset: -30, smooth: true});
+          }, [])}
+        >
+          Посмотреть меню
         </Button>
       </div>
     </section>

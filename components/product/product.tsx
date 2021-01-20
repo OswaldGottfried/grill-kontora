@@ -66,7 +66,9 @@ const ProductPage = observer<PropsType>(({product}) => {
                     ? `https://gril-kontora.joinposter.com${product.photo_origin}`
                     : '/burger.svg'
                 }
-                layout="fill"
+                layout="responsive"
+                width={500}
+                height={450}
                 objectFit="cover"
                 alt={product.photo_origin}
               />
