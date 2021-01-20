@@ -5,10 +5,8 @@
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    width: 200px;
-    width: 100%;
-    height: 30px;
-    min-height: 40px;
+    max-width: 150px;
+    height: 35px;
     border-radius: 25px;
     background-color: var(--color-white);
 }
@@ -17,8 +15,6 @@
     z-index: 2;
     height: 100%;
     transition: box-shadow 1s ease;
-    border-radius: 10rem;
-    border-radius: 100%;
     transition: transform .5s ease;
 
     &.delete {
@@ -27,7 +23,7 @@
     }
 
     > svg {
-        height: 40%;
+        height: 50%;
     }
 
     &:active {

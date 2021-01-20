@@ -4,6 +4,8 @@ import {useRouter} from 'next/router';
 
 import {CategoryType, ProductType} from 'types';
 
+import s from './category.module.scss';
+
 const CategoryList = dynamic(() => import('@/category/categoryList/categoryList'), {ssr: false});
 const ProductItems = dynamic(() => import('@/category/productItems/productItems'), {ssr: false});
 
@@ -18,7 +20,7 @@ const Category: React.FC<PropsType> = ({categories, products}) => {
   const selected = typeof query.id === 'string' ? query.id : categories[0].category_id;
 
   return (
-    <section className="p-16 xl:p-12 md:p-6 sm:p-4 bg-black">
+    <section className={s.wrap}>
       <Element id="menu" className="sm: mt-6" name="menu">
         <h2>Меню</h2>
       </Element>

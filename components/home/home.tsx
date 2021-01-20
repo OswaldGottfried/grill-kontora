@@ -13,10 +13,10 @@ type PropsType = {
 const Home: React.FC<PropsType> = ({categories, products}) => {
   if (!categories || !products) return null;
   return (
-    <>
+    <div className="bg-black">
       <TopBanner />
       <Category categories={categories} products={products} />
-    </>
+    </div>
   );
 };
 

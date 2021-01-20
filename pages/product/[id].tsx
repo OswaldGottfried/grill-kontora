@@ -15,7 +15,7 @@ const ProductPage: React.FC<PropsType> = ({product}) =>
   product ? (
     <>
       <Head>
-        <title>{product.product_name}</title>
+        <title>{product.product_name} в Ревде - Гриль контора</title>
       </Head>
       <Product product={product} />
     </>

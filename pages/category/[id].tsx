@@ -17,7 +17,7 @@ type PropsType = {
 const Category: React.FC<PropsType> = ({categories, products, categoryName}) => (
   <>
     <Head>
-      <title>{categoryName}</title>
+      <title>{categoryName} в Ревде - Гриль контора</title>
     </Head>
     <HomeLayout categories={categories} products={products} />
   </>

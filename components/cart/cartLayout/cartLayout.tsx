@@ -33,7 +33,7 @@ const CartLayout = observer(() => {
           <div className="flex w-full justify-end mt-12 mb-12 sm:mt-6 sm:mb-6">
             <Button>
               <Link href="/checkout">
-                <p className="sm:text-lg">Оформить заказ</p>
+                <p className="sm:text-lg">Перейти к оформлению</p>
               </Link>
             </Button>
           </div>

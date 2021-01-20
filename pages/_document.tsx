@@ -17,7 +17,7 @@ class MyDocument extends Document {
     return (
       <Html lang="ru">
         <Head>
-          <link href="https://fonts.googleapis.com/css2?family=Lato" as="style" rel="preload" />
+          <link href="https://fonts.googleapis.com/css2?family=Lato" as="style" />
           <link rel="icon" href="/favicon.jpg" />
           <meta
             name="description"
@@ -25,7 +25,7 @@ class MyDocument extends Document {
           />
           <meta
             name="keywords"
-            content="grill contora, гриль контора, доставка еды, ревда, бургеры"
+            content="grill contora, гриль контора, доставка еды, ревда, бургеры, ревда доставка"
           />
         </Head>
         <body>

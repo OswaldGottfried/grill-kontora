@@ -20,6 +20,7 @@ const CartItem: React.FC<PropsType> = ({item, isOrder = false}) => {
             src={item.image ? `https://gril-kontora.joinposter.com${item.image}` : '/burger.svg'}
             width={150}
             height={100}
+            objectFit="contain"
             alt={item.name}
           />
         </motion.figure>

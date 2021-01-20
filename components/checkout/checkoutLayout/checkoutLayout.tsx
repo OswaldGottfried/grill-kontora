@@ -89,18 +89,15 @@ const CheckoutLayout = observer(() => {
   return (
     <section className={s.checkout}>
       <h1 className="mb-12 sm:text-3xl sm:ml-0 ml-20 sm:mb-8">Оформление заказа</h1>
-      <div className="inline-flex w-full lg:flex-col">
+      <div className="inline-flex lg:flex-col w-full justify-between">
         <Tabs
-          className="w-2/3 lg:w-full"
+          className="w-2/4 lg:w-full"
           activeIndex={serviceMode === ServiceMode.Delivery ? 0 : 1}
           onClick={setServiceMode}
         >
           {ORDER_TABS.map((tab) => (
             <Tab key={tab.input} title={tab.title} value={tab.value} className="w-1/3 sm:w-1/2">
-              <form
-                className="mt-8 w-4/5 sm:w-full flex flex-col ml-auto mr-auto"
-                onSubmit={onSubmit}
-              >
+              <form className="mt-8 mr-8 w-full flex flex-col " onSubmit={onSubmit}>
                 {ORDER_INPUTS[tab.input].map(
                   ({placeholder, type, name, inputmode, required, autoComplete}) => (
                     <Input
@@ -131,12 +128,19 @@ const CheckoutLayout = observer(() => {
                       сможешь заказать доставку`}
                   </span>
                 </Button>
+                {isOrderAvailable && (
+                  <p className="mt-6 leading-3 text-sm text-gray-300">
+                    Нажимая на кнопку &quot;
+                    {tab.input === 'takeAway' ? 'Забрать с собой' : 'Заказать доставку'}&quot;, вы
+                    даете согласие на обработку своих персональных данных
+                  </p>
+                )}
               </form>
               <div className="mt-10" />
             </Tab>
           ))}
         </Tabs>
-        <div className="w-1/3 lg:w-4/5 ml-auto mr-auto sm:w-full">
+        <div className="w-1/3 lg:w-full ml-auto mr-auto sm:w-full">
           <TotalList isDeliveryFree={isDeliveryFree} deliveryCost={deliveryCost} />
         </div>
       </div>

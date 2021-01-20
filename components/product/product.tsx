@@ -22,7 +22,7 @@ type PropsType = {
 };
 
 const ProductPage = observer<PropsType>(({product}) => {
-  const {increase, items} = useStore('cart');
+  const {increase, items, count} = useStore('cart');
   const isHasModifications = product.modifications && product.modifications.length > 0;
   const {push, back} = useRouter();
   const ingridients = product.ingredients
@@ -66,9 +66,8 @@ const ProductPage = observer<PropsType>(({product}) => {
                     ? `https://gril-kontora.joinposter.com${product.photo_origin}`
                     : '/burger.svg'
                 }
-                layout="responsive"
-                width={300}
-                height={200}
+                layout="fill"
+                objectFit="cover"
                 alt={product.photo_origin}
               />
             </div>
@@ -117,7 +116,9 @@ const ProductPage = observer<PropsType>(({product}) => {
 
           <div className="flex w-full justify-center sm:mt-6 sm:mb-6 mt-12 mb-12">
             <Button onClick={addToCart} value={product.product_id}>
-              <p className="sm:text-lg">Перейти в корзину</p>
+              <p className="sm:text-lg">
+                {count(product.product_id) === 0 ? 'Добавить в корзину' : 'Перейти в корзину'}
+              </p>
             </Button>
           </div>
         </div>

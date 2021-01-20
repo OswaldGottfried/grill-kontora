@@ -39,6 +39,9 @@ const Footer = (): JSX.Element => {
           </li>
         ))}
       </ul>
+      <p className="w-full text-center text-base leading-8">
+        &copy; {new Date().getUTCFullYear()} Гриль контора
+      </p>
     </footer>
   );
 };

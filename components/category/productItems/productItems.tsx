@@ -54,8 +54,9 @@ const ProductItems = observer<PropsType>(({products}) => {
                     ? `https://gril-kontora.joinposter.com${product.photo_origin}`
                     : '/burger.svg'
                 }
-                width={400}
-                height={300}
+                width={product.photo_origin ? 400 : 200}
+                height={product.photo_origin ? 300 : 200}
+                objectFit="cover"
                 alt={product.product_name}
               />
             </figure>
@@ -82,7 +83,7 @@ const ProductItems = observer<PropsType>(({products}) => {
                 </a>
               </Link>
             ) : (
-              <div className="max-w-xs h-14 flex items-center">
+              <>
                 {count(product.product_id) === 0 ? (
                   <CircleButton
                     label="Добавить в корзину"
@@ -92,7 +93,7 @@ const ProductItems = observer<PropsType>(({products}) => {
                 ) : (
                   <CounterObserver product={product} value={product.product_id} />
                 )}
-              </div>
+              </>
             )}
           </div>
         </li>

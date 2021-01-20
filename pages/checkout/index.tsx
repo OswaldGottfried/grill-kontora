@@ -22,7 +22,9 @@ const Checkout = observer(() => {
       <Head>
         <title>Чекаут</title>
       </Head>
-      <CheckoutLayout />
+      <div className="w-full h-full bg-black">
+        <CheckoutLayout />
+      </div>
     </>
   );
 });
