@@ -25,10 +25,12 @@ const ProductPage = observer<PropsType>(({product}) => {
   const {increase, items, count} = useStore('cart');
   const isHasModifications = product.modifications && product.modifications.length > 0;
   const {push, back} = useRouter();
-  const ingridients = product.ingredients
-    .map(({ingredient_name}) => ingredient_name)
-    .join(', ')
-    .toLocaleLowerCase();
+  const ingredients = product.ingredients
+    ? product.ingredients
+        .map(({ingredient_name}) => ingredient_name)
+        .join(', ')
+        .toLocaleLowerCase()
+    : [];
 
   const addToCart = useCallback(() => {
     const selectedProduct = items.find((item) => item.id === product.product_id);
@@ -110,9 +112,9 @@ const ProductPage = observer<PropsType>(({product}) => {
             </div>
           )}
 
-          {ingridients && (
+          {ingredients.length > 0 && (
             <h2 className="text-3xl">
-              Состав: <p className="text-xl">{ingridients}</p>
+              Состав: <p className="text-xl">{ingredients}</p>
             </h2>
           )}
 
