@@ -5,7 +5,6 @@ import {motion} from 'framer-motion';
 import Image from 'next/image';
 
 import Price from '@/common/price/price';
-import CircleButton from '@/common/buttons/circleButton/circleButton';
 import {useStore} from 'models';
 import {ProductType} from 'types';
 import getPrice from 'lib/getPriceFromProduct';
