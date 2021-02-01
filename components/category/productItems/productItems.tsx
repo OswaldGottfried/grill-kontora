@@ -11,6 +11,7 @@ import {ProductType} from 'types';
 import getPrice from 'lib/getPriceFromProduct';
 
 import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
+import Button from '@/common/buttons/button/button';
 import s from './productItems.module.scss';
 
 type PropsType = {
@@ -75,21 +76,21 @@ const ProductItems = observer<PropsType>(({products}) => {
 
             {product.modifications ? (
               <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
-                <a href={`/product/${product.product_id}`}>
-                  <CircleButton
-                    label={`ссылка на ${product.product_name}`}
-                    value={product.product_id}
-                  />
-                </a>
+                <Button size="small" color="secondary">
+                  Выбрать объем
+                </Button>
               </Link>
             ) : (
               <>
                 {count(product.product_id) === 0 ? (
-                  <CircleButton
-                    label="Добавить в корзину"
-                    value={product.product_id}
+                  <Button
+                    color="secondary"
+                    size="small"
                     onClick={onClick}
-                  />
+                    value={product.product_id}
+                  >
+                    Добавить в корзину
+                  </Button>
                 ) : (
                   <CounterObserver product={product} value={product.product_id} />
                 )}
