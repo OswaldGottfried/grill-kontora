@@ -73,5 +73,5 @@ export type ProductType = {
   price: {1: string};
   profit: {1: string};
   spots: Spot[];
-  ingredients: IngredientType[];
+  ingredients?: IngredientType[];
 };

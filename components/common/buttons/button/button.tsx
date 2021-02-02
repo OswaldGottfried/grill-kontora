@@ -8,6 +8,7 @@ type PropsType = {
   label?: string;
   value?: string | number;
   type?: 'submit' | 'reset' | 'button';
+  size?: 'small' | 'medium';
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   isDisabled?: boolean;
@@ -25,12 +26,13 @@ const Button: FC<PropsType> = ({
   color = 'secondary',
   type = 'button',
   className = '',
+  size = 'medium',
   isDisabled,
 }) => (
   <button
     aria-label={label}
     value={value}
-    className={clsx(s.button, className, s[color])}
+    className={clsx(className, s.button, s[color], s[size])}
     type={type}
     onClick={onClick}
     disabled={isDisabled || isLoading}

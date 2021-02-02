@@ -25,10 +25,12 @@ const ProductPage = observer<PropsType>(({product}) => {
   const {increase, items, count} = useStore('cart');
   const isHasModifications = product.modifications && product.modifications.length > 0;
   const {push, back} = useRouter();
-  const ingridients = product.ingredients
-    .map(({ingredient_name}) => ingredient_name)
-    .join(', ')
-    .toLocaleLowerCase();
+  const ingredients = product.ingredients
+    ? product.ingredients
+        .map(({ingredient_name}) => ingredient_name)
+        .join(', ')
+        .toLocaleLowerCase()
+    : [];
 
   const addToCart = useCallback(() => {
     const selectedProduct = items.find((item) => item.id === product.product_id);
@@ -57,7 +59,7 @@ const ProductPage = observer<PropsType>(({product}) => {
           }}
         />
 
-        <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.product_name}`}>
+        <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.photo}`}>
           <Zoom overlayBgColorEnd="rgba(0, 0, 0, 0.5)" wrapStyle={{width: '100%', height: '100%'}}>
             <div className="w-full h-full">
               <Image
@@ -66,9 +68,11 @@ const ProductPage = observer<PropsType>(({product}) => {
                     ? `https://gril-kontora.joinposter.com${product.photo_origin}`
                     : '/burger.svg'
                 }
-                layout="fill"
+                layout="responsive"
+                width={500}
+                height={450}
                 objectFit="cover"
-                alt={product.photo_origin}
+                alt={product.product_name}
               />
             </div>
           </Zoom>
@@ -108,9 +112,9 @@ const ProductPage = observer<PropsType>(({product}) => {
             </div>
           )}
 
-          {ingridients && (
+          {ingredients.length > 0 && (
             <h2 className="text-3xl">
-              Состав: <p className="text-xl">{ingridients}</p>
+              Состав: <p className="text-xl">{ingredients}</p>
             </h2>
           )}
 

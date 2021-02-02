@@ -1,9 +1,8 @@
 .links {
     display: flex;
-    width: 100%;
     justify-content: center;
-margin: 20px 0;
-    
+    width: 100%;
+    margin: 20px 0;
 
     > li {
         height: 30px;
@@ -16,8 +15,9 @@ margin: 20px 0;
 
 .link {
     > svg {
-        fill: var(--color-white);
-        height: 100%;
         width: auto;
+        height: 100%;
+
+        fill: var(--color-white);
     }
 }

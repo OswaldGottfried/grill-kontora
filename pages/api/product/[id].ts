@@ -2,17 +2,16 @@ import {NextApiRequest, NextApiResponse} from 'next';
 import instance from 'lib/axios';
 import {ResponseType, ProductType} from 'types';
 import {API} from 'constants/endpoint';
+import {hiddenProducts} from 'pages/api/products/[id]';
 
-const productRule = {
-  '93': {hidden: true},
-};
-
-export const fetchProduct = async (product_id: string): Promise<ProductType> =>
+export const fetchProduct = async (product_id: string): Promise<ProductType | null> =>
   instance
     .get<ResponseType<ProductType>>(API.getProduct, {params: {product_id}})
     .then(({data: {response}}) =>
-      productRule[response.product_id as keyof typeof productRule]
-        ? {...response, ...productRule[response.product_id as keyof typeof productRule]}
+      hiddenProducts[response.menu_category_id as keyof typeof hiddenProducts]?.includes(
+        response.product_id as never,
+      )
+        ? null
         : response,
     );
 

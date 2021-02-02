@@ -4,12 +4,24 @@ import instance from 'lib/axios';
 import {ProductType, ResponseType} from 'types';
 import {API} from 'constants/endpoint';
 
+export const hiddenProducts = {
+  '5': ['95', '96'],
+  '14': ['215'],
+} as const;
+
 export const fetchProducts = async (category_id: string): Promise<ProductType[]> =>
   instance
     .get<ResponseType<ProductType[]>>(API.getProducts, {
-      params: {category_id, type: 'batchtickets'},
+      params: {category_id},
     })
-    .then((res) => res.data.response);
+    .then((res) => {
+      return res.data.response.filter(
+        ({menu_category_id, product_id}) =>
+          !hiddenProducts[menu_category_id as keyof typeof hiddenProducts]?.includes(
+            product_id as never,
+          ),
+      );
+    });
 
 export default function handler(request: NextApiRequest, response: NextApiResponse): void {
   fetchProducts(request.query.id.toString()).then((res) => {

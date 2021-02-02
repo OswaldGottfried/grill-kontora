@@ -1,6 +1,7 @@
 import {CategoryType} from 'types';
 
 import Link from 'next/link';
+import {motion} from 'framer-motion';
 import s from './categoryList.module.scss';
 
 type PropsType = {
@@ -16,6 +17,9 @@ const CategoryList: React.FC<PropsType> = ({categories, selected}) =>
           <Link href={`/category/${category_id}`} scroll={false}>
             <h3>
               <button type="button">{category_name}</button>
+              {category_id === selected && (
+                <motion.div layoutId="outline" className={s.selected} initial={false} />
+              )}
             </h3>
           </Link>
         </li>

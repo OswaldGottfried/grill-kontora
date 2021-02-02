@@ -10,15 +10,15 @@
         grid-gap: 2em;
 
         @media (max-width: 1920px) {
-            --box-min-width: 340px;
+            --box-min-width: 330px;
         }
 
         @media (max-width: 1200px) {
-            --box-min-width: 260px
+            --box-min-width: 280px
         }
 
         @media (max-width: 880px) {
-            --box-min-width: 235px;
+            --box-min-width: 240px;
         }
     }
 
@@ -60,12 +60,5 @@
         position: relative;
         overflow: hidden;
         width: 500px;
-    }
-
-    .cta {
-        display: inline-flex;
-        justify-content: space-between;
-        width: calc(100% - 2em);
-        margin: 0 1em 1em;
     }
 }
