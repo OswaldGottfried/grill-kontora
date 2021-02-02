@@ -6,6 +6,7 @@ import Document, {
   DocumentInitialProps,
   DocumentContext,
 } from 'next/document';
+import {YMInitializer} from 'react-yandex-metrika';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -29,6 +30,15 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
+          <YMInitializer
+            accounts={[71763937]}
+            options={{
+              clickmap: true,
+              trackLinks: true,
+              accurateTrackBounce: true,
+              webvisor: true,
+            }}
+          />
           <Main />
           <NextScript />
         </body>

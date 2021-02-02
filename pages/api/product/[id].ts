@@ -2,7 +2,7 @@ import {NextApiRequest, NextApiResponse} from 'next';
 import instance from 'lib/axios';
 import {ResponseType, ProductType} from 'types';
 import {API} from 'constants/endpoint';
-import {hiddenProducts} from 'pages/api/products/[id]';
+import hiddenProducts from 'pages/api/hiddenProducts';
 
 export const fetchProduct = async (product_id: string): Promise<ProductType | null> =>
   instance
