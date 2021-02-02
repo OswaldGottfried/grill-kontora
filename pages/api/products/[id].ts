@@ -3,11 +3,7 @@ import {NextApiRequest, NextApiResponse} from 'next';
 import instance from 'lib/axios';
 import {ProductType, ResponseType} from 'types';
 import {API} from 'constants/endpoint';
-
-export const hiddenProducts = {
-  '5': ['95', '96'],
-  '14': ['215'],
-} as const;
+import hiddenProducts from 'pages/api/hiddenProducts';
 
 export const fetchProducts = async (category_id: string): Promise<ProductType[]> =>
   instance
