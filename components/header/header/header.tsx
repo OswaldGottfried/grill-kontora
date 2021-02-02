@@ -35,18 +35,18 @@ const Header = (): JSX.Element => {
   });
 
   return (
-    <header ref={ref} className="w-full">
+    <header ref={ref} className="w-full h-20">
       <nav className="h-full pr-20 sm:pr-0 items-center inline-flex w-full justify-between uppercase bg-transparent">
         <ul className="w-full inline-flex items-center justify-between">
-          <li className="ml-auto mr-auto">
+          <li className="sm:ml-3 ml-auto mr-auto mb-3">
             <Link href="/">
-              <h1 className="flex ml-60 sm:ml-0 items-center hover:text-gray-400 transition-colors mt-2 mb-2 cursor-pointer">
+              <h1 className="flex ml-60 sm:m-0 items-center hover:text-gray-400 transition-colors mt-2 mb-2 cursor-pointer">
                 <Image src="/logo.png" alt="Гриль контора" width={205} height={65} />
               </h1>
             </Link>
           </li>
           <li className="ml-4">
-            <a href={`tel:${PHONE.href}`} aria-label="заказ по телефону">
+            <a href={`tel:${PHONE.href}`} aria-label={`заказ по телефону ${PHONE.href}`}>
               <svg
                 width="30"
                 height="30"

@@ -5,7 +5,6 @@ import {motion} from 'framer-motion';
 import Image from 'next/image';
 
 import Price from '@/common/price/price';
-import CircleButton from '@/common/buttons/circleButton/circleButton';
 import {useStore} from 'models';
 import {ProductType} from 'types';
 import getPrice from 'lib/getPriceFromProduct';
@@ -62,18 +61,17 @@ const ProductItems = observer<PropsType>(({products}) => {
               />
             </figure>
           </Link>
-          <Link
-            href={`/product/${product.product_id}`}
-            as={`/product/${product.product_id}`}
-            scroll={false}
-          >
-            <motion.h3 className={s.title} layoutId={product.product_name}>
-              <a href={`/product/${product.product_id}`}>{product.product_name}</a>
-            </motion.h3>
-          </Link>
-          <div className={s.cta}>
-            <Price price={getPrice(product)} isExact={Boolean(product.modifications)} />
-
+          <div className="inline-flex w-full justify-between items-center h-16">
+            <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
+              <motion.h3 className={s.title} layoutId={product.product_name}>
+                <a href={`/product/${product.product_id}`}>{product.product_name}</a>
+              </motion.h3>
+            </Link>
+            <div className="mr-4">
+              <Price price={getPrice(product)} isExact={Boolean(product.modifications)} />
+            </div>
+          </div>
+          <div className="flex justify-end mr-4">
             {product.modifications ? (
               <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
                 <Button size="small" color="secondary">

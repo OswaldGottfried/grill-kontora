@@ -59,7 +59,7 @@ const ProductPage = observer<PropsType>(({product}) => {
           }}
         />
 
-        <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.product_name}`}>
+        <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.photo}`}>
           <Zoom overlayBgColorEnd="rgba(0, 0, 0, 0.5)" wrapStyle={{width: '100%', height: '100%'}}>
             <div className="w-full h-full">
               <Image
@@ -72,7 +72,7 @@ const ProductPage = observer<PropsType>(({product}) => {
                 width={500}
                 height={450}
                 objectFit="cover"
-                alt={product.photo_origin}
+                alt={product.product_name}
               />
             </div>
           </Zoom>

@@ -12,7 +12,7 @@ const LINKS = [
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="bg-black text-gray-100 text-xl mt-10">
+    <footer>
       <div className="inline-flex w-full justify-center items-center sm:flex-col">
         <ul className="flex flex-col mr-10 sm:mr-0">
           <li>{ADDRESS}</li>
