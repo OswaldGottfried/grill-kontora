@@ -26,6 +26,7 @@
     "react-medium-image-zoom": "^4.3.1",
     "react-scroll": "^1.8.1",
     "react-yandex-maps": "^4.6.0",
+    "react-yandex-metrika": "^2.6.0",
     "sass": "^1.29.0",
     "swr": "^0.3.9",
     "tailwindcss": "^2.0.1"
