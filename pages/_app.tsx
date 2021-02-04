@@ -1,3 +1,5 @@
+import {useEffect} from 'react';
+import Router from 'next/router';
 import {AnimateSharedLayout} from 'framer-motion';
 import {YMInitializer} from 'react-yandex-metrika';
 
@@ -14,32 +16,43 @@ export type PropsType = {
 Router.events.on('routeChangeComplete', (url: string) => {
   // To hit only in production and only on client side (in browser)
   if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
+    // @ts-ignore
     ym('hit', url);
   }
 });
 
-const App: React.FC<PropsType> = ({Component, pageProps}) => (
-  <>
-    {process.env.NODE_ENV === 'production' && (
-      <YMInitializer
-        accounts={[parseInt(process.env.YM_COUNTER_ID as string, 10)]}
-        options={{
-          clickmap: true,
-          trackLinks: true,
-          accurateTrackBounce: true,
-          webvisor: true,
-        }}
-        version="2"
-      />
-    )}
-    <AnimateSharedLayout>
-      <Provider value={rootStore}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Provider>
-    </AnimateSharedLayout>
-  </>
-);
+const App: React.FC<PropsType> = ({Component, pageProps}) => {
+  useEffect(() => {
+    // To hit only in production and only on client side (in browser)
+    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
+      const url = window.location.pathname + window.location.search;
+      // @ts-ignore
+      ym('hit', url);
+    }
+  }, []);
+  return (
+    <>
+      {process.env.NODE_ENV === 'production' && (
+        <YMInitializer
+          accounts={[parseInt(process.env.YM_COUNTER_ID as string, 10)]}
+          options={{
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true,
+          }}
+          version="2"
+        />
+      )}
+      <AnimateSharedLayout>
+        <Provider value={rootStore}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Provider>
+      </AnimateSharedLayout>
+    </>
+  );
+};
 
 export default App;
