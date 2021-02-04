@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import Router from 'next/router';
 import {AnimateSharedLayout} from 'framer-motion';
-import {YMInitializer} from 'react-yandex-metrika';
+import ym, {YMInitializer} from 'react-yandex-metrika';
 
 import Layout from '@/layout/layout';
 
@@ -16,7 +16,6 @@ export type PropsType = {
 Router.events.on('routeChangeComplete', (url: string) => {
   // To hit only in production and only on client side (in browser)
   if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
-    // @ts-ignore
     ym('hit', url);
   }
 });
@@ -26,7 +25,6 @@ const App: React.FC<PropsType> = ({Component, pageProps}) => {
     // To hit only in production and only on client side (in browser)
     if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
       const url = window.location.pathname + window.location.search;
-      // @ts-ignore
       ym('hit', url);
     }
   }, []);
