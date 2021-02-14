@@ -1,4 +1,5 @@
 import {useCallback, FormEvent, ChangeEvent, useState} from 'react';
+import {AxiosError, AxiosResponse} from 'axios';
 import {useRouter} from 'next/router';
 import {observer} from 'mobx-react-lite';
 
@@ -10,11 +11,11 @@ import Map from '@/common/map/map';
 
 import {ServiceMode, OrderType, OrderErrorType, OrderResponseType} from 'types/order';
 import formatPrice from 'lib/formatPrice';
+import instance from 'lib/axios';
 import {useStore} from 'models';
 import {MIN_ORDER_AMOUNT, FREE_ORDER_AMOUNT, DELIVERY_PRICE} from 'constants/price';
-import instance from 'lib/axios';
+import * as gtag from 'lib/gtag';
 
-import {AxiosError, AxiosResponse} from 'axios';
 import TotalList from './totalList/totalList';
 import s from './checkoutLayout.module.scss';
 import ORDER_INPUTS from './input';
@@ -54,6 +55,11 @@ const CheckoutLayout = observer(() => {
       })),
       delivery_price: serviceMode === ServiceMode.Delivery ? deliveryCost * 100 : undefined,
     };
+
+    gtag.event({
+      action: 'purchase',
+      value: formatPrice(totalPrice),
+    });
 
     instance
       .post('/api/order', order, {baseURL: '/'})

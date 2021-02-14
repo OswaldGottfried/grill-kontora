@@ -91,7 +91,7 @@ const CounterObserver = observer<PropsType>((props) => {
         type="button"
         onClick={onIncrease}
         value={value}
-        aria-label="добавить в корзину"
+        aria-label="увеличить"
       >
         <Plus />
       </button>

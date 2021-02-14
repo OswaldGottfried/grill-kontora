@@ -8,13 +8,13 @@ import 'react-medium-image-zoom/dist/styles.css';
 
 import {ProductType} from 'types';
 import Price from '@/common/price/price';
+import Button from '@/common/buttons/button/button';
+import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 import {useStore} from 'models';
 import formatPrice from 'lib/formatPrice';
-
-import Button from '@/common/buttons/button/button';
-
-import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
+import {event} from 'lib/gtag';
 import getPrice from 'lib/getPriceFromProduct';
+
 import s from './product.module.scss';
 
 type PropsType = {
@@ -35,6 +35,10 @@ const ProductPage = observer<PropsType>(({product}) => {
   const addToCart = useCallback(() => {
     const selectedProduct = items.find((item) => item.id === product.product_id);
     if (!isHasModifications && !selectedProduct) {
+      event({
+        action: 'add_to_cart',
+        label: product.product_name,
+      });
       increase({
         name: product.product_name,
         id: product.product_id,
