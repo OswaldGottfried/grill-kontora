@@ -32,7 +32,7 @@ const App: React.FC<PropsType> = ({Component, pageProps}) => {
     <>
       {process.env.NODE_ENV === 'production' && (
         <YMInitializer
-          accounts={[parseInt(process.env.YM_COUNTER_ID as string, 10)]}
+          accounts={[process.env.YM_COUNTER_ID]}
           options={{
             clickmap: true,
             trackLinks: true,
