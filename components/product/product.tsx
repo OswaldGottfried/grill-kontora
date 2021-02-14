@@ -80,6 +80,7 @@ const ProductPage = observer<PropsType>(({product}) => {
         <div className={s.description}>
           <motion.h1 className={s.title} layoutId={product.product_name}>
             {product.product_name}
+            {product.out > 0 && ` ${product.out} гр.`}
           </motion.h1>
 
           {isHasModifications ? (

@@ -65,6 +65,7 @@ const ProductItems = observer<PropsType>(({products}) => {
             <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
               <motion.h3 className={s.title} layoutId={product.product_name}>
                 <a href={`/product/${product.product_id}`}>{product.product_name}</a>
+                {product.out > 0 && ` ${product.out} гр.`}
               </motion.h3>
             </Link>
             <div className="mr-4">
