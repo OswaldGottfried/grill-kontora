@@ -19,6 +19,7 @@ class MyDocument extends Document {
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Lato" as="style" />
           <link rel="icon" href="/favicon.jpg" />
+          <c name="yandex-verification" content="29b765a5f517b22c" />
           <meta
             name="description"
             content="Доставка еды в Ревде. Гриль контора - это вкусно, уютно, тепло."
