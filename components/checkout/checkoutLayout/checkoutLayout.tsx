@@ -65,9 +65,9 @@ const CheckoutLayout = observer(() => {
       .post('/api/order', order, {baseURL: '/'})
       .then(({data}: AxiosResponse<OrderResponseType>) => {
         setLoading(false);
-        clear();
         setOrderId(data.incoming_order_id);
         router.push(`thankYou/${data.incoming_order_id}`);
+        clear();
       })
       .catch(({response}: AxiosError<OrderErrorType>) => {
         setLoading(false);
