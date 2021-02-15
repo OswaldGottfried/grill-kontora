@@ -8,6 +8,7 @@ import Price from '@/common/price/price';
 import {useStore} from 'models';
 import {ProductType} from 'types';
 import getPrice from 'lib/getPriceFromProduct';
+import * as gtag from 'lib/gtag';
 
 import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 import Button from '@/common/buttons/button/button';
@@ -33,6 +34,11 @@ const ProductItems = observer<PropsType>(({products}) => {
           count: 1,
           price: Number(selectedProduct.price[1]),
           image: selectedProduct.photo || '',
+        });
+
+        gtag.event({
+          action: 'add_to_cart',
+          label: selectedProduct.product_name,
         });
       }
     },

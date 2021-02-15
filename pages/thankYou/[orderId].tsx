@@ -6,6 +6,8 @@ import {useStore} from 'models';
 import Button from '@/common/buttons/button/button';
 import {fetchOrder} from 'pages/api/order/[orderId]';
 import HeartIcon from '@/thankYou/heart/heart';
+import {useRouter} from 'next/router';
+import isServer from 'lib/isServer';
 
 export type PropsType = {
   orderId: number;
@@ -16,8 +18,12 @@ export type PropsType = {
 
 const ThankYouPage = observer<PropsType>((props) => {
   const {orderId} = useStore('checkout');
+  const {push} = useRouter();
 
-  if (orderId !== props.orderId) return null;
+  if (orderId !== props.orderId && !isServer) {
+    push('/');
+    return null;
+  }
 
   return (
     <div className="flex items-center justify-center w-full mt-20 flex-col pl-6 md:pr-6">
@@ -29,7 +35,7 @@ const ThankYouPage = observer<PropsType>((props) => {
 
       <p className="text-2xl mt-10">Спасибо за заказ</p>
       <p className="text-xl mt-10">Оператор перезвонит по номеру {props.phone} как можно скорее</p>
-      <Button className="mt-10">
+      <Button className="mt-10 mb-10">
         <Link href="/">Вернуться на главную</Link>
       </Button>
     </div>
