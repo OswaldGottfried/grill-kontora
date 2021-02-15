@@ -1,11 +1,4 @@
-export const GA_TRACKING_ID = 'G-10E85VMSMJ';
-
-// https://developers.google.com/analytics/devguides/collection/gtagjs/pages
-export const pageview = (url: string): void => {
-  window.gtag('config', GA_TRACKING_ID, {
-    page_path: url,
-  });
-};
+export const GA_TRACKING_ID = process.env.GA_TRACKING_ID || 'G-X3KHDV92CT';
 
 type EventNames =
   | 'add_payment_info'
@@ -37,6 +30,13 @@ type EventType = {
   category?: string;
   label?: string;
   value?: number;
+};
+
+// https://developers.google.com/analytics/devguides/collection/gtagjs/pages
+export const pageview = (url: string): void => {
+  window.gtag('config', GA_TRACKING_ID, {
+    page_path: url,
+  });
 };
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
