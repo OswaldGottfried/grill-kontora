@@ -20,7 +20,9 @@ const App: React.FC<PropsType> = ({Component, pageProps}) => {
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
-      pageview(url);
+      if (process.env.NODE_ENV === 'production') {
+        pageview(url);
+      }
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
