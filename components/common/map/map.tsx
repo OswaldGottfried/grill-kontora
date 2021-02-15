@@ -17,7 +17,14 @@ const Map: React.FC<PropsType> = ({width = '100%'}) => (
   <div className="filter-grayscale ">
     <YMaps>
       <YMap height={500} width={width} defaultState={mapData} options={options}>
-        <Placemark geometry={coordinate} />
+        <Placemark
+          geometry={coordinate}
+          options={{
+            iconLayout: 'default#image',
+            iconImageHref: '/roundLogo.png',
+            iconImageSize: [40, 40],
+          }}
+        />
       </YMap>
     </YMaps>
   </div>

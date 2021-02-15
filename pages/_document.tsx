@@ -21,14 +21,13 @@ class MyDocument extends Document {
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Lato" as="style" />
           <link rel="icon" href="/favicon.jpg" />
-          <meta name="yandex-verification" content="690e0ebf52500cb1" />
           <meta
             name="description"
-            content="Доставка еды в Ревде. Гриль контора - это вкусно, уютно, тепло."
+            content="Бомбические вкусы в Ревде! От классики до нереальных сочетаний. Приходи в гости и испытай гастрономическое удовольствие🔥"
           />
           <meta
             name="keywords"
-            content="grill contora, гриль контора, доставка еды, ревда, бургеры, ревда доставка"
+            content="grill contora, гриль контора, доставка еды, ревда, бургеры, ревда доставка, доставка бургеров, бургер, шаурма"
           />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
@@ -46,7 +45,7 @@ class MyDocument extends Document {
             }}
           />
           {/* Yandex.Metrika counter */}
-          <script
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `
               (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -61,7 +60,7 @@ class MyDocument extends Document {
               });
           `,
             }}
-          />
+          /> */}
         </Head>
         <body>
           <Main />

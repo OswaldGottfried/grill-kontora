@@ -1,6 +1,7 @@
 import {GetStaticProps} from 'next';
 import {useRouter} from 'next/router';
 import {useEffect} from 'react';
+import Head from 'next/head';
 
 import {fetchCategories} from 'pages/api/category';
 
@@ -16,7 +17,19 @@ const Home: React.FC<PropsType> = ({categoryId}) => {
     push(`/category/${categoryId}`, undefined, {shallow: true});
   }, [categoryId, push]);
 
-  return null;
+  return (
+    <Head>
+      <title>Гриль контора - Ревда</title>
+      <meta
+        name="description"
+        content="Бомбические вкусы в Ревде! От классики до нереальных сочетаний. Приходи в гости и испытай гастрономическое удовольствие🔥"
+      />
+      <meta
+        name="keywords"
+        content="grill contora, гриль контора, доставка еды, ревда, бургеры, ревда доставка, доставка бургеров, бургер, шаурма"
+      />
+    </Head>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
