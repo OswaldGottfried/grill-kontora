@@ -75,7 +75,6 @@ const CheckoutLayout = observer(() => {
         setLoading(false);
         setOrderId(data.incoming_order_id);
         router.push(`thankYou/${data.incoming_order_id}`);
-        clear();
       })
       .catch(({response}: AxiosError<OrderErrorType>) => {
         setLoading(false);
