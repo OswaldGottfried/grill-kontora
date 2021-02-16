@@ -35,11 +35,6 @@ const ProductItems = observer<PropsType>(({products}) => {
           price: Number(selectedProduct.price[1]),
           image: selectedProduct.photo || '',
         });
-
-        gtag.event({
-          action: 'add_to_cart',
-          label: selectedProduct.product_name,
-        });
       }
     },
     [products, increase],

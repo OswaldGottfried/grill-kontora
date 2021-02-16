@@ -29,7 +29,7 @@ const CheckoutLayout = observer(() => {
   const {service_mode: serviceMode, setValue, getField, getFields, setOrderId} = useStore(
     'checkout',
   );
-  const {items, totalPrice, clear} = useStore('cart');
+  const {items, totalPrice} = useStore('cart');
   const finalPrice = formatPrice(totalPrice);
   const isOrderAvailable =
     (finalPrice > MIN_ORDER_AMOUNT && serviceMode === ServiceMode.Delivery) ||
@@ -56,14 +56,22 @@ const CheckoutLayout = observer(() => {
       delivery_price: serviceMode === ServiceMode.Delivery ? deliveryCost * 100 : undefined,
     };
 
-    gtag.event({
-      action: 'purchase',
-      value: formatPrice(totalPrice),
-    });
-
     instance
       .post('/api/order', order, {baseURL: '/'})
       .then(({data}: AxiosResponse<OrderResponseType>) => {
+        window.gtag('event', 'purchase', {
+          transaction_id: data.incoming_order_id,
+          value: items.reduce((acc, {price}) => price + acc, 0),
+          shipping: order.delivery_price,
+          revenue: totalPrice,
+          items: items.map(({id, modId, count, name, price}) => ({
+            id,
+            variant: modId || undefined,
+            quantity: count,
+            name,
+            price,
+          })),
+        });
         setLoading(false);
         setOrderId(data.incoming_order_id);
         router.push(`thankYou/${data.incoming_order_id}`);
