@@ -43,13 +43,4 @@ const App: React.FC<PropsType> = ({Component, pageProps}) => {
   );
 };
 
-export const reportWebVitals = ({id, name, label, value}: NextWebVitalsMetric): void => {
-  window.gtag('event', name, {
-    event_category: label === 'web-vital' ? 'Web Vitals' : 'Next.js custom metric',
-    value: Math.round(name === 'CLS' ? value * 1000 : value),
-    event_label: id,
-    non_interaction: true,
-  });
-};
-
 export default App;

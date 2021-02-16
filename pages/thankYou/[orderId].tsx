@@ -8,6 +8,7 @@ import {fetchOrder} from 'pages/api/order/[orderId]';
 import HeartIcon from '@/thankYou/heart/heart';
 import {useRouter} from 'next/router';
 import isServer from 'lib/isServer';
+import {useEffect} from 'react';
 
 export type PropsType = {
   orderId: number;
@@ -18,7 +19,12 @@ export type PropsType = {
 
 const ThankYouPage = observer<PropsType>((props) => {
   const {orderId} = useStore('checkout');
+  const {clear} = useStore('cart');
   const {push} = useRouter();
+
+  useEffect(() => {
+    clear();
+  }, [clear]);
 
   if (orderId !== props.orderId && !isServer) {
     push('/');

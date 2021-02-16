@@ -1,26 +1,15 @@
 /* eslint-disable no-param-reassign */
 import {types, SnapshotIn, destroy, Instance} from 'mobx-state-tree';
+import * as gtag from 'lib/gtag';
 
-export const CartItem = types
-  .model({
-    id: types.string,
-    name: types.string,
-    price: types.number,
-    count: types.number,
-    image: types.string,
-    modId: types.optional(types.string, ''),
-  })
-  .actions((self) => ({
-    changePrice(price: number) {
-      self.price = price;
-    },
-    increaseCount() {
-      self.count += 1;
-    },
-    decreaseCount() {
-      self.count -= 1;
-    },
-  }));
+export const CartItem = types.model({
+  id: types.string,
+  name: types.string,
+  price: types.number,
+  count: types.number,
+  image: types.string,
+  modId: types.optional(types.string, ''),
+});
 
 export const Cart = types
   .model({
@@ -34,8 +23,10 @@ export const Cart = types
 
       if (index === -1) {
         self.items.push(cartItem);
+        gtag.addToCart(cartItem as CartItemType);
       } else {
         self.items[index].count += 1;
+        gtag.addToCart(self.items[index]);
       }
     },
     decrease(cartItem: SnapshotIn<typeof CartItem> | Instance<typeof CartItem>) {
@@ -53,7 +44,10 @@ export const Cart = types
     },
     remove(id: string) {
       const deletedItem = self.items.find((item) => item.id === id);
-      if (deletedItem) destroy(deletedItem);
+      if (deletedItem) {
+        gtag.removeFromCart(deletedItem);
+        destroy(deletedItem);
+      }
     },
     clear() {
       self.items.length = 0;

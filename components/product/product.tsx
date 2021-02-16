@@ -1,4 +1,4 @@
-import {useCallback} from 'react';
+import {useCallback, useEffect} from 'react';
 import {observer} from 'mobx-react-lite';
 import {useRouter} from 'next/router';
 import {motion} from 'framer-motion';
@@ -12,7 +12,6 @@ import Button from '@/common/buttons/button/button';
 import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 import {useStore} from 'models';
 import formatPrice from 'lib/formatPrice';
-import {event} from 'lib/gtag';
 import getPrice from 'lib/getPriceFromProduct';
 
 import s from './product.module.scss';
@@ -32,13 +31,23 @@ const ProductPage = observer<PropsType>(({product}) => {
         .toLocaleLowerCase()
     : [];
 
+  useEffect(() => {
+    window.gtag('event', 'view_item', {
+      content_type: 'product',
+      items: [
+        {
+          id: product.product_id,
+          name: product.product_name,
+          category: product.category_name,
+          price: getPrice(product),
+        },
+      ],
+    });
+  }, [product]);
+
   const addToCart = useCallback(() => {
     const selectedProduct = items.find((item) => item.id === product.product_id);
     if (!isHasModifications && !selectedProduct) {
-      event({
-        action: 'add_to_cart',
-        label: product.product_name,
-      });
       increase({
         name: product.product_name,
         id: product.product_id,

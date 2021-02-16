@@ -1,3 +1,5 @@
+import {CartItemType} from 'models/Cart';
+
 export const GA_TRACKING_ID = process.env.GA_TRACKING_ID || 'G-X3KHDV92CT';
 
 type EventNames =
@@ -47,3 +49,7 @@ export const event = ({action, category, label, value}: EventType): void => {
     value,
   });
 };
+
+export const addToCart = (item: CartItemType): void => window.gtag('event', 'add_to_cart', item);
+export const removeFromCart = (item: CartItemType): void =>
+  window.gtag('event', 'remove_from_cart', item);
