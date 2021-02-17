@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 import {types, SnapshotIn, destroy, Instance} from 'mobx-state-tree';
-import * as gtag from 'lib/gtag';
 
 export const CartItem = types.model({
   id: types.string,
@@ -23,10 +22,10 @@ export const Cart = types
 
       if (index === -1) {
         self.items.push(cartItem);
-        gtag.addToCart(cartItem as CartItemType);
+        window.gtag('event', 'add_to_cart', self.items[index]);
       } else {
         self.items[index].count += 1;
-        gtag.addToCart(self.items[index]);
+        window.gtag('event', 'add_to_cart', self.items[index]);
       }
     },
     decrease(cartItem: SnapshotIn<typeof CartItem> | Instance<typeof CartItem>) {
@@ -45,7 +44,7 @@ export const Cart = types
     remove(id: string) {
       const deletedItem = self.items.find((item) => item.id === id);
       if (deletedItem) {
-        gtag.removeFromCart(deletedItem);
+        window.gtag('event', 'remove_from_cart', deletedItem);
         destroy(deletedItem);
       }
     },

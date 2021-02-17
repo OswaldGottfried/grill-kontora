@@ -1,6 +1,5 @@
 import {useEffect} from 'react';
 import {useRouter} from 'next/router';
-import {NextWebVitalsMetric} from 'next/dist/next-server/lib/utils';
 import {AnimateSharedLayout} from 'framer-motion';
 
 import Layout from '@/layout/layout';
