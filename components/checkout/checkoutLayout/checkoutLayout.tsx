@@ -61,9 +61,9 @@ const CheckoutLayout = observer(() => {
       .then(({data}: AxiosResponse<OrderResponseType>) => {
         window.gtag('event', 'purchase', {
           transaction_id: data.incoming_order_id,
-          value: items.reduce((acc, {price}) => price + acc, 0),
+          value: totalPrice,
           shipping: order.delivery_price,
-          revenue: totalPrice,
+          currency: 'RUB',
           items: items.map(({id, modId, count, name, price}) => ({
             id,
             variant: modId || undefined,
