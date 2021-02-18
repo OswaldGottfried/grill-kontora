@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+import formatPrice from 'lib/formatPrice';
 import {types, SnapshotIn, destroy, Instance} from 'mobx-state-tree';
 
 export const CartItem = types.model({
@@ -22,10 +23,16 @@ export const Cart = types
 
       if (index === -1) {
         self.items.push(cartItem);
-        window.gtag('event', 'add_to_cart', self.items[index]);
+        window.gtag('event', 'add_to_cart', {
+          ...self.items[index],
+          price: formatPrice(cartItem.price),
+        });
       } else {
         self.items[index].count += 1;
-        window.gtag('event', 'add_to_cart', self.items[index]);
+        window.gtag('event', 'add_to_cart', {
+          ...self.items[index],
+          price: formatPrice(self.items[index].price),
+        });
       }
     },
     decrease(cartItem: SnapshotIn<typeof CartItem> | Instance<typeof CartItem>) {

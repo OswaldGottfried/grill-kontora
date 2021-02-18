@@ -61,7 +61,7 @@ const CheckoutLayout = observer(() => {
       .then(({data}: AxiosResponse<OrderResponseType>) => {
         window.gtag('event', 'purchase', {
           transaction_id: data.incoming_order_id,
-          value: totalPrice,
+          value: formatPrice(totalPrice),
           shipping: order.delivery_price,
           currency: 'RUB',
           items: items.map(({id, modId, count, name, price}) => ({
@@ -69,7 +69,7 @@ const CheckoutLayout = observer(() => {
             variant: modId || undefined,
             quantity: count,
             name,
-            price,
+            price: formatPrice(price),
           })),
         });
         setLoading(false);
