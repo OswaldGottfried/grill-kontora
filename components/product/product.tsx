@@ -101,9 +101,9 @@ const ProductPage = observer<PropsType>(({product}) => {
               {product.modifications &&
                 product.modifications.map(({modificator_id, modificator_name, spots}) => (
                   <li key={modificator_id} className={s.modification}>
-                    <div className="w-full inline-flex whitespace-nowrap items-center justify-between">
+                    <div className="w-full inline-flex items-center justify-between">
                       <div>
-                        <h3 className={s.title}>{modificator_name}</h3>
+                        <h3 className="mb-4">{modificator_name}</h3>
                         <div className="w-40">
                           <CounterObserver
                             value={modificator_id}
