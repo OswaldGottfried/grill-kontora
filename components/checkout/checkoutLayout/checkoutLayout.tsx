@@ -136,7 +136,7 @@ const CheckoutLayout = observer(() => {
                   <span>
                     {isOrderAvailable
                       ? `${tab.input === 'takeAway' ? 'Забрать с собой' : 'Заказать доставку'}`
-                      : `Набери на ${MIN_ORDER_AMOUNT - finalPrice} ${String.fromCharCode(0x20bd)} и
+                      : `Набери на ${MIN_ORDER_AMOUNT - finalPrice} ${(<Rouble />)} и
                       сможешь заказать доставку`}
                   </span>
                 </Button>

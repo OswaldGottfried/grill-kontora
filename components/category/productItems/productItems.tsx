@@ -21,7 +21,7 @@ type PropsType = {
 const ProductItems = observer<PropsType>(({products}) => {
   const {increase, count} = useStore('cart');
 
-  const onClick = useCallback(
+  const addToCart = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       const selectedProduct = products.find(
         ({product_id}) => product_id === event.currentTarget.value,
@@ -90,7 +90,7 @@ const ProductItems = observer<PropsType>(({products}) => {
                   <Button
                     color="secondary"
                     size="small"
-                    onClick={onClick}
+                    onClick={addToCart}
                     value={product.product_id}
                   >
                     Добавить в корзину

@@ -41,12 +41,12 @@ const Header = (): JSX.Element => {
         <ul className="w-full inline-flex items-center justify-between">
           <li className="sm:ml-3 ml-auto mr-auto mb-3">
             <Link href="/">
-              <h1 className="flex ml-60 sm:m-0 items-center hover:text-gray-400 transition-colors mt-2 mb-2 cursor-pointer">
+              <h1 className="flex ml-12 sm:m-0 items-center hover:text-gray-400 transition-colors mt-2 mb-2 cursor-pointer">
                 <Image src="/logo.png" alt="Гриль контора" width={205} height={65} />
               </h1>
             </Link>
           </li>
-          <li className="ml-4">
+          <li className="ml-4 mr-4">
             <a href={`tel:${PHONE.href}`} aria-label={`заказ по телефону ${PHONE.href}`}>
               <svg
                 width="30"
@@ -60,9 +60,9 @@ const Header = (): JSX.Element => {
               </svg>
             </a>
           </li>
-          <li className="ml-8 sm:ml-4">
+          {/* <li className="ml-8 sm:ml-4">
             <CartIcon />
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>
