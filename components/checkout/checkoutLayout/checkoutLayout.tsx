@@ -14,7 +14,7 @@ import formatPrice from 'lib/formatPrice';
 import instance from 'lib/axios';
 import {useStore} from 'models';
 import {MIN_ORDER_AMOUNT, FREE_ORDER_AMOUNT, DELIVERY_PRICE} from 'constants/price';
-import * as gtag from 'lib/gtag';
+import Rouble from '@/common/price/rouble/rouble';
 
 import TotalList from './totalList/totalList';
 import s from './checkoutLayout.module.scss';
@@ -136,7 +136,7 @@ const CheckoutLayout = observer(() => {
                   <span>
                     {isOrderAvailable
                       ? `${tab.input === 'takeAway' ? 'Забрать с собой' : 'Заказать доставку'}`
-                      : `Набери на ${MIN_ORDER_AMOUNT - finalPrice} ${String.fromCharCode(0x20bd)} и
+                      : `Набери на ${MIN_ORDER_AMOUNT - finalPrice} ${(<Rouble />)} и
                       сможешь заказать доставку`}
                   </span>
                 </Button>

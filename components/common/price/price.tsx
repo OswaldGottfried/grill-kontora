@@ -1,4 +1,5 @@
 import s from './price.module.scss';
+import Rouble from './rouble/rouble';
 
 type PropsType = {
   price: number;
@@ -9,7 +10,7 @@ const Price: React.FC<PropsType> = ({price, isExact}) => (
     {price > 0 ? (
       <>
         {isExact && 'от '}
-        {price} {String.fromCharCode(0x20bd)}
+        {price} <Rouble />
       </>
     ) : (
       'Бесплатно'

@@ -1,8 +1,10 @@
 .main {
-    background-image: linear-gradient(170deg, rgba(var(--color-california-rgb), 0.2) 0%, var(--color-black) 76%);
     min-height: calc(100vh - 70px);
     color: var(--color-white);
     margin-top: -10rem;
     padding-top: 10rem;
-
+    
+    @media (min-width: 767px) {
+        background-image: linear-gradient(170deg, rgba(var(--color-california-rgb), 0.2) 0%, var(--color-black) 76%);
+    }
 }

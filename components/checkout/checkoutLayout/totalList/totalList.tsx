@@ -8,6 +8,7 @@ import s from '@/cart/cartItem/cartItem.module.scss';
 import formatPrice from 'lib/formatPrice';
 import {ServiceMode} from 'types/order';
 import {FREE_ORDER_AMOUNT} from 'constants/price';
+import Rouble from '@/common/price/rouble/rouble';
 
 type PropsType = {
   deliveryCost: number;
@@ -33,7 +34,7 @@ const TotalList: React.FC<PropsType> = observer(({deliveryCost, isDeliveryFree})
               <p className="ml-6">
                 Закажи ещё на{' '}
                 <span className="text-red-500">
-                  {FREE_ORDER_AMOUNT - finalPrice} {String.fromCharCode(0x20bd)}
+                  {FREE_ORDER_AMOUNT - finalPrice} <Rouble />
                 </span>{' '}
                 для бесплатной доставки
               </p>

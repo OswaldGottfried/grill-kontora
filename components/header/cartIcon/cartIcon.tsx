@@ -2,6 +2,7 @@ import Link from 'next/link';
 import {observer} from 'mobx-react-lite';
 import {useStore} from 'models';
 
+import Rouble from '@/common/price/rouble/rouble';
 import formatPrice from 'lib/formatPrice';
 import s from './cartIcon.module.scss';
 
@@ -20,7 +21,7 @@ const CartIcon = observer(() => {
             {price <= MAX_DISPLAYABLE_CART_ITEMS_QUANTITY
               ? price
               : `${MAX_DISPLAYABLE_CART_ITEMS_QUANTITY}+`}
-            {String.fromCharCode(0x20bd)}
+            <Rouble />
           </span>
         )}
         <svg

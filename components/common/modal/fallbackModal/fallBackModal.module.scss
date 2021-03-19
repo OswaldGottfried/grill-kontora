@@ -1,0 +1,47 @@
+.modal {
+  padding: 40px 52px 30px;
+  position: relative;
+  overflow: hidden;
+
+    animation: fadein .3s ease-in;
+    border-radius: 8px;
+    max-width: 600px;
+
+    > h1 {
+      text-align: center;
+    }
+
+    
+}
+
+.text {
+  margin-top: 30px;
+      font-size: 22px;
+      
+}
+
+.emodji {
+  font-size: 80px;
+}
+
+.closeButton {
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  
+  
+  > svg {
+    transform: rotate(45deg);
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

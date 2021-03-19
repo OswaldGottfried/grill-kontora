@@ -4,6 +4,17 @@
 
 @import "./colors.css";
 
+@font-face { 
+    font-family: "rouble";
+    src: url("/fonts/rouble.otf") format("opentype");
+}
+
+@font-face {
+    font-family: ALSRubl;
+    src: url("/fonts/rouble.ttf") format("opentype");
+}
+
+
 html,
 body {
     transition: background-color 400ms ease;
