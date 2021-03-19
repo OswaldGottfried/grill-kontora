@@ -10,8 +10,8 @@ import {CartType} from 'types/cart';
 
 import {CartItemType} from 'models/Cart';
 import {motion, useAnimation} from 'framer-motion';
-import Plus from './svg/plus.svg';
-import Minus from './svg/minus.svg';
+import Plus from 'public/svg/plus.svg';
+import Minus from 'public/svg/minus.svg';
 
 import s from './counterObserver.module.scss';
 
