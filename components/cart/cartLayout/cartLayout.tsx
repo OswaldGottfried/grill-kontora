@@ -19,7 +19,16 @@ const CartLayout = observer(() => {
   return (
     <section className="lg:pl-16 lg:pr-16 pt-16 sm:p-4 sm:mb-12 max-w-4xl flex flex-col ml-auto mr-auto">
       {isEmptyCart ? (
-        <h1>Корзина пуста</h1>
+        <>
+          <h1>Корзина пуста</h1>
+          <div className="flex w-full mt-16 justify-center">
+            <Button>
+              <Link href="/">
+                <p className="sm:text-lg">Вернуться на главную</p>
+              </Link>
+            </Button>
+          </div>
+        </>
       ) : (
         <>
           <h1>У вас отличный вкус!</h1>
