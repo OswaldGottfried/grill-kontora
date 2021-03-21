@@ -1,7 +1,7 @@
 .modal {
-  padding: 40px 52px 30px;
+  padding: 40px 20px 30px;
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
 
     animation: fadein .3s ease-in;
     border-radius: 8px;
@@ -27,8 +27,8 @@
 .closeButton {
   position: absolute;
   z-index: 1;
-  top: 20px;
-  right: 20px;
+  top: 0px;
+  right: 0px;
   width: 30px;
   height: 30px;
   padding: 4px;
