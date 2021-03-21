@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import s from './rouble.module.scss';
 
 const Rouble: React.FC = () => (

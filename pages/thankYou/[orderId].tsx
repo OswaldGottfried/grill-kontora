@@ -1,14 +1,15 @@
 import {GetStaticPaths, GetStaticProps} from 'next';
 import {observer} from 'mobx-react-lite';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
+import {useEffect} from 'react';
 
 import {useStore} from 'models';
-import Button from '@/common/buttons/button/button';
 import {fetchOrder} from 'pages/api/order/[orderId]';
-import HeartIcon from '@/thankYou/heart/heart';
-import {useRouter} from 'next/router';
 import isServer from 'lib/isServer';
-import {useEffect} from 'react';
+
+import Button from '@/common/buttons/button/button';
+import HeartIcon from '@/thankYou/heart/heart';
 
 export type PropsType = {
   orderId: number;
@@ -40,7 +41,7 @@ const ThankYouPage = observer<PropsType>((props) => {
       <HeartIcon />
 
       <p className="text-2xl mt-10">Спасибо за заказ</p>
-      <p className="text-xl mt-10">Оператор перезвонит по номеру {props.phone} как можно скорее</p>
+      <p className="text-xl mt-10">Оператор перезвонит по номеру{props.phone} как можно скорее</p>
       <Button className="mt-10 mb-10">
         <Link href="/">Вернуться на главную</Link>
       </Button>

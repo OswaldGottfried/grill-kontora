@@ -1,15 +1,12 @@
 import {useCallback, MouseEvent} from 'react';
 import {observer} from 'mobx-react-lite';
 import clsx from 'clsx';
+import {motion, useAnimation} from 'framer-motion';
 
 import {ProductType} from 'types';
-
 import {useStore} from 'models';
-
 import {CartType} from 'types/cart';
-
 import {CartItemType} from 'models/Cart';
-import {motion, useAnimation} from 'framer-motion';
 import Plus from 'public/svg/plus.svg';
 import Minus from 'public/svg/minus.svg';
 

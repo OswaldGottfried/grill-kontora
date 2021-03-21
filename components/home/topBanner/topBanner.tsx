@@ -1,7 +1,8 @@
 import {scroller} from 'react-scroll';
+import {useCallback} from 'react';
 
 import Button from '@/common/buttons/button/button';
-import {useCallback} from 'react';
+
 import s from './topBanner.module.scss';
 
 const TopBanner = (): JSX.Element => {

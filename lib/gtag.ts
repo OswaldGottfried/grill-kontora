@@ -1,5 +1,3 @@
-import {CartItemType} from 'models/Cart';
-
 export const GA_TRACKING_ID = process.env.GA_TRACKING_ID || 'G-X3KHDV92CT';
 
 type EventNames =

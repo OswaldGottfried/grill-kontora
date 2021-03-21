@@ -1,8 +1,9 @@
 import {MouseEvent, memo, useContext, useEffect, ReactNode} from 'react';
 import clsx from 'clsx';
 
-import TabsContext from '../tabsContext';
 import s from './tab.module.scss';
+
+import TabsContext from '../tabsContext';
 
 type PropsType = {
   title: string;

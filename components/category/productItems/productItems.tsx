@@ -4,15 +4,15 @@ import {observer} from 'mobx-react-lite';
 import {motion} from 'framer-motion';
 import Image from 'next/image';
 
-import Price from '@/common/price/price';
 import {useStore} from 'models';
 import {ProductType} from 'types';
 import getPrice from 'lib/getPriceFromProduct';
 
+import Price from '@/common/price/price';
 import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 import Button from '@/common/buttons/button/button';
+
 import s from './productItems.module.scss';
-import FallBackModal from '@/common/modal/fallbackModal/fallbackModal';
 
 type PropsType = {
   products: ProductType[];
@@ -20,10 +20,6 @@ type PropsType = {
 
 const ProductItems = observer<PropsType>(({products}) => {
   const {increase, count} = useStore('cart');
-  const [isOpen, setIsOpen] = useState(false);
-
-  const showModal = useCallback(() => setIsOpen(!isOpen), [setIsOpen, isOpen]);
-
   const addToCart = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       const selectedProduct = products.find(
@@ -89,7 +85,7 @@ const ProductItems = observer<PropsType>(({products}) => {
                   <Button
                     color="secondary"
                     size="small"
-                    onClick={showModal}
+                    onClick={addToCart}
                     value={product.product_id}
                   >
                     Добавить в корзину
@@ -102,7 +98,6 @@ const ProductItems = observer<PropsType>(({products}) => {
           </div>
         </li>
       ))}
-      <FallBackModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} />
     </ul>
   );
 });

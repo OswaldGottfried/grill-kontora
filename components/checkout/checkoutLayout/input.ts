@@ -1,5 +1,6 @@
-import {PropsType as InputPropsType} from '@/common/input/input';
 import {CheckoutModel} from 'models/Checkout';
+
+import {PropsType as InputPropsType} from '@/common/input/input';
 
 type InputType = Omit<Omit<InputPropsType, 'onChange'>, 'value'> & {
   name: keyof CheckoutModel;

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+
 import s from './heart.module.scss';
 
 const HeartIcon: React.FC = () => (

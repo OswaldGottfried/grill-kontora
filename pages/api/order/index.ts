@@ -1,7 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
-import instance from 'lib/axios';
 import {AxiosResponse} from 'axios';
 
+import instance from 'lib/axios';
 import {API} from 'constants/endpoint';
 import {OrderType, OrderResponseType, OrderErrorType} from 'types/order';
 import {ResponseType} from 'types';
@@ -27,7 +27,7 @@ export default async function handler(
             response.status(200).json(res.data.response);
           }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error)); // eslint-disable-line no-console
       break;
 
     default:

@@ -1,24 +1,61 @@
 {
-  "overrides": [
-    {
-      "files": ["**/*.ts", "**/*.tsx"],
-      "parser": "@typescript-eslint/parser",
-      "plugins": ["jsx-a11y", "@typescript-eslint"],
-      "rules": {
-        "prettier/prettier": ["error", {}],
-        "react/react-in-jsx-scope": 0,
-        "indent": "off",
-        "react/jsx-props-no-spreading": 0,
-        "react/prop-types": 0,
-        "no-console": "error",
-        "react/jsx-one-expression-per-line": 0,
-        "@typescript-eslint/ban-ts-comment": 1,
-        "@typescript-eslint/indent": 0
-      },
-      "parserOptions": {
-        "project": "./tsconfig.json"
-      },
-      "extends": ["plugin:jsx-a11y/recommended", "airbnb/hooks", "react-app", "airbnb-typescript", "plugin:prettier/recommended", "plugin:@typescript-eslint/recommended"]
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["jsx-a11y", "@typescript-eslint", "import", "prettier"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": 1,
+    "react/prop-types": 0,
+    "react/jsx-props-no-spreading": 0,
+    "import/no-unresolved": "error",
+    "@typescript-eslint/ban-ts-comment": 1,
+    "import/order": ["error", {
+      "newlines-between": "always",
+      "groups": [
+        "external",
+        "builtin",
+        "internal",
+        "sibling",
+        "index",
+        "object"
+      ],
+          "pathGroups": [
+      {
+        "pattern": "@/**",
+        "group": "internal",
+        "position": "after"
+      }
+    ],
+    "pathGroupsExcludedImportTypes": ["builtin"]
+    }]
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "plugin:jsx-a11y/recommended",
+    "airbnb/hooks",
+    "react-app",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./"
+      }
     }
-  ]
+  }
 }

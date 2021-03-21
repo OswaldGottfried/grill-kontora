@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect} from 'react';
 import {observer} from 'mobx-react-lite';
 import {useRouter} from 'next/router';
 import {motion} from 'framer-motion';
@@ -7,15 +7,15 @@ import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 
 import {ProductType} from 'types';
-import Price from '@/common/price/price';
-import Button from '@/common/buttons/button/button';
-import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 import {useStore} from 'models';
 import formatPrice from 'lib/formatPrice';
 import getPrice from 'lib/getPriceFromProduct';
 
+import Price from '@/common/price/price';
+import Button from '@/common/buttons/button/button';
+import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
+
 import s from './product.module.scss';
-import FallBackModal from '@/common/modal/fallbackModal/fallbackModal';
 
 type PropsType = {
   product: ProductType;
@@ -25,8 +25,6 @@ const ProductPage = observer<PropsType>(({product}) => {
   const {increase, items, count} = useStore('cart');
   const isHasModifications = product.modifications && product.modifications.length > 0;
   const {push, back} = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
-  const showModal = useCallback(() => setIsOpen(!isOpen), [setIsOpen, isOpen]);
 
   const ingredients = product.ingredients
     ? product.ingredients
@@ -137,7 +135,7 @@ const ProductPage = observer<PropsType>(({product}) => {
           )}
 
           <div className="flex w-full justify-center sm:mt-6 sm:mb-6 mt-12 mb-12">
-            <Button onClick={showModal} value={product.product_id}>
+            <Button onClick={addToCart} value={product.product_id}>
               <p className="sm:text-lg">
                 {count(product.product_id) === 0 ? 'Добавить в корзину' : 'Перейти в корзину'}
               </p>
@@ -145,7 +143,6 @@ const ProductPage = observer<PropsType>(({product}) => {
           </div>
         </div>
       </section>
-      <FallBackModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} />
     </>
   );
 });

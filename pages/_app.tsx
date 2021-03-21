@@ -2,9 +2,9 @@ import {useEffect} from 'react';
 import {useRouter} from 'next/router';
 import {AnimateSharedLayout} from 'framer-motion';
 
-import Layout from '@/layout/layout';
-
 import {pageview} from 'lib/gtag';
+
+import Layout from '@/layout/layout';
 
 import 'styles/index.css';
 import {Provider, rootStore} from '../models';
@@ -30,15 +30,13 @@ const App: React.FC<PropsType> = ({Component, pageProps}) => {
   }, [router.events]);
 
   return (
-    <>
-      <AnimateSharedLayout>
-        <Provider value={rootStore}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </Provider>
-      </AnimateSharedLayout>
-    </>
+    <AnimateSharedLayout>
+      <Provider value={rootStore}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
+    </AnimateSharedLayout>
   );
 };
 
