@@ -20,7 +20,6 @@ type PropsType = {
 
 const ProductItems = observer<PropsType>(({products}) => {
   const {increase, count} = useStore('cart');
-
   const addToCart = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       const selectedProduct = products.find(
