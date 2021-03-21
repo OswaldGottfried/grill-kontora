@@ -1,7 +1,8 @@
-import {CategoryType} from 'types';
-
 import Link from 'next/link';
 import {motion} from 'framer-motion';
+
+import {CategoryType} from 'types';
+
 import s from './categoryList.module.scss';
 
 type PropsType = {

@@ -3,8 +3,9 @@ import Link from 'next/link';
 import {useCallback, useState} from 'react';
 
 import {useStore} from 'models';
-import Price from '@/common/price/price';
 import formatPrice from 'lib/formatPrice';
+
+import Price from '@/common/price/price';
 import Button from '@/common/buttons/button/button';
 import FallBackModal from '@/common/modal/fallbackModal/fallbackModal';
 import CartItem from '@/cart/cartItem/cartItem';

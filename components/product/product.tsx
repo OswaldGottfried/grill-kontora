@@ -7,12 +7,13 @@ import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 
 import {ProductType} from 'types';
-import Price from '@/common/price/price';
-import Button from '@/common/buttons/button/button';
-import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 import {useStore} from 'models';
 import formatPrice from 'lib/formatPrice';
 import getPrice from 'lib/getPriceFromProduct';
+
+import Price from '@/common/price/price';
+import Button from '@/common/buttons/button/button';
+import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 
 import s from './product.module.scss';
 

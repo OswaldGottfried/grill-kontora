@@ -1,0 +1,30 @@
+---
+overrides:
+- files:
+  - "**/*.ts"
+  - "**/*.tsx"
+  parser: "@typescript-eslint/parser"
+  plugins:
+  - jsx-a11y
+  - "@typescript-eslint"
+  rules:
+    prettier/prettier:
+    - error
+    - {}
+    react/react-in-jsx-scope: 0
+    indent: 'off'
+    react/jsx-props-no-spreading: 0
+    react/prop-types: 0
+    no-console: error
+    react/jsx-one-expression-per-line: 0
+    "@typescript-eslint/ban-ts-comment": 1
+    "@typescript-eslint/indent": 0
+  parserOptions:
+    project: "./tsconfig.json"
+  extends:
+  - plugin:jsx-a11y/recommended
+  - airbnb/hooks
+  - react-app
+  - airbnb-typescript
+  - plugin:prettier/recommended
+  - plugin:@typescript-eslint/recommended

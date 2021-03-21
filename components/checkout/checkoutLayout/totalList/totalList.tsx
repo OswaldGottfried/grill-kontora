@@ -1,13 +1,14 @@
 import {observer} from 'mobx-react-lite';
-import {useStore} from 'models';
 import clsx from 'clsx';
+
+import {useStore} from 'models';
+import formatPrice from 'lib/formatPrice';
+import {ServiceMode} from 'types/order';
+import {FREE_ORDER_AMOUNT} from 'constants/price';
 
 import Price from '@/common/price/price';
 import CartItem from '@/cart/cartItem/cartItem';
 import s from '@/cart/cartItem/cartItem.module.scss';
-import formatPrice from 'lib/formatPrice';
-import {ServiceMode} from 'types/order';
-import {FREE_ORDER_AMOUNT} from 'constants/price';
 import Rouble from '@/common/price/rouble/rouble';
 
 type PropsType = {

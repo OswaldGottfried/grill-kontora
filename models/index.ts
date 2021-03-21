@@ -2,6 +2,7 @@ import {useContext, createContext} from 'react';
 import {types, Instance, onSnapshot} from 'mobx-state-tree';
 
 import isServer from 'lib/isServer';
+
 import {Cart} from './Cart';
 import {Checkout, defaultState as checkout} from './Checkout';
 

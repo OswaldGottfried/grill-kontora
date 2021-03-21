@@ -2,9 +2,9 @@ import {useEffect} from 'react';
 import {useRouter} from 'next/router';
 import {AnimateSharedLayout} from 'framer-motion';
 
-import Layout from '@/layout/layout';
-
 import {pageview} from 'lib/gtag';
+
+import Layout from '@/layout/layout';
 
 import 'styles/index.css';
 import {Provider, rootStore} from '../models';

@@ -2,7 +2,6 @@ import {PHONE, ADDRESS} from 'constants/contacts';
 
 import VK from './img/vk.svg';
 import Instagram from './img/instagram.svg';
-
 import s from './footer.module.scss';
 
 const LINKS = [

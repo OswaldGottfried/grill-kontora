@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import {types, SnapshotOut} from 'mobx-state-tree';
+
 import {ServiceMode} from 'types/order';
 
 export const Checkout = types

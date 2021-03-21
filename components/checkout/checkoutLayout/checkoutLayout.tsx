@@ -3,17 +3,17 @@ import {AxiosError, AxiosResponse} from 'axios';
 import {useRouter} from 'next/router';
 import {observer} from 'mobx-react-lite';
 
-import Tabs from '@/common/tabs/tabs';
-import Tab from '@/common/tabs/tab/tab';
-import Input from '@/common/input/input';
-import Button from '@/common/buttons/button/button';
-import Map from '@/common/map/map';
-
 import {ServiceMode, OrderType, OrderErrorType, OrderResponseType} from 'types/order';
 import formatPrice from 'lib/formatPrice';
 import instance from 'lib/axios';
 import {useStore} from 'models';
 import {MIN_ORDER_AMOUNT, FREE_ORDER_AMOUNT, DELIVERY_PRICE} from 'constants/price';
+
+import Tabs from '@/common/tabs/tabs';
+import Tab from '@/common/tabs/tab/tab';
+import Input from '@/common/input/input';
+import Button from '@/common/buttons/button/button';
+import Map from '@/common/map/map';
 import Rouble from '@/common/price/rouble/rouble';
 
 import TotalList from './totalList/totalList';
@@ -143,8 +143,8 @@ const CheckoutLayout = observer(() => {
                 {isOrderAvailable && (
                   <p className="mt-6 leading-3 text-sm text-gray-300">
                     Нажимая на кнопку &quot;
-                    {tab.input === 'takeAway' ? 'Забрать с собой' : 'Заказать доставку'}&quot;, вы
-                    даете согласие на обработку своих персональных данных
+                    {tab.input === 'takeAway' ? 'Забрать с собой' : 'Заказать доставку'}
+                    &quot;, вы даете согласие на обработку своих персональных данных
                   </p>
                 )}
               </form>

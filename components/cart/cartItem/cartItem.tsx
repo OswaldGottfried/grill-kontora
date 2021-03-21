@@ -4,9 +4,10 @@ import Image from 'next/image';
 
 import {CartItemType} from 'models/Cart';
 import formatPrice from 'lib/formatPrice';
-import Price from '@/common/price/price';
 
+import Price from '@/common/price/price';
 import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
+
 import s from './cartItem.module.scss';
 
 type PropsType = {item: CartItemType; isOrder?: boolean};
@@ -44,7 +45,8 @@ const CartItem: React.FC<PropsType> = ({item, isOrder = false}) => {
         <div className={s.price}>
           {isOrder && item.count > 1 ? (
             <p className="whitespace-nowrap">
-              {item.count} x <Price price={formatPrice(item.price)} />
+              {item.count} x
+              <Price price={formatPrice(item.price)} />
             </p>
           ) : (
             <Price price={formatPrice(item.price)} />

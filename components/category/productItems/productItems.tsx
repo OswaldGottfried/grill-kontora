@@ -4,14 +4,14 @@ import {observer} from 'mobx-react-lite';
 import {motion} from 'framer-motion';
 import Image from 'next/image';
 
-import Price from '@/common/price/price';
 import {useStore} from 'models';
 import {ProductType} from 'types';
 import getPrice from 'lib/getPriceFromProduct';
-import * as gtag from 'lib/gtag';
 
+import Price from '@/common/price/price';
 import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 import Button from '@/common/buttons/button/button';
+
 import s from './productItems.module.scss';
 
 type PropsType = {

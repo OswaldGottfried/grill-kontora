@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
-import formatPrice from 'lib/formatPrice';
 import {types, SnapshotIn, destroy, Instance} from 'mobx-state-tree';
+
+import formatPrice from 'lib/formatPrice';
 
 export const CartItem = types.model({
   id: types.string,

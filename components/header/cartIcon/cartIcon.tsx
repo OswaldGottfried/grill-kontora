@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import {observer} from 'mobx-react-lite';
+
 import {useStore} from 'models';
+import formatPrice from 'lib/formatPrice';
 
 import Rouble from '@/common/price/rouble/rouble';
-import formatPrice from 'lib/formatPrice';
+
 import s from './cartIcon.module.scss';
 
 const MAX_DISPLAYABLE_CART_ITEMS_QUANTITY = 9999;

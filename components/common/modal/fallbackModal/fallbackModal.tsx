@@ -1,15 +1,16 @@
 import Modal, {Styles} from 'react-modal';
-
-import Plus from 'public/svg/plus.svg';
-
-import s from './fallBackModal.module.scss';
-import {PHONE} from 'constants/contacts';
 import {observer} from 'mobx-react-lite';
+import {AnimatePresence, motion} from 'framer-motion';
+
+import {PHONE} from 'constants/contacts';
+import Plus from 'public/svg/plus.svg';
 import {useStore} from 'models';
+import formatPrice from 'lib/formatPrice';
+
 import CartItem from '@/cart/cartItem/cartItem';
 import Price from '@/common/price/price';
-import formatPrice from 'lib/formatPrice';
-import {AnimatePresence, motion} from 'framer-motion';
+
+import s from './fallBackModal.module.scss';
 
 type PropsType = {
   isOpen: boolean;
@@ -58,12 +59,14 @@ const FallBackModal: React.FC<PropsType> = observer(({isOpen, onRequestClose}) =
           animate={{opacity: 1, scale: 1}}
           exit={{opacity: 0, scale: 0}}
         >
-          <button onClick={onRequestClose} className={s.closeButton}>
+          <button type="button" onClick={onRequestClose} className={s.closeButton}>
             <Plus />
           </button>
           <h1>
             Упсс...
-            <span className={s.emodji}>&#129335;&#8205;&#9792;&#65039;</span>
+            <span role="img" aria-label="мужчина с поднятой рукой Emoji" className={s.emodji}>
+              &#129335;&#8205;&#9792;&#65039;
+            </span>
           </h1>
           <p className={s.text}>
             Мы меняем страницу заказа, она вот-вот будет готова.

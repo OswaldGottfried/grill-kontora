@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
+import {createRef, RefObject, useEffect} from 'react';
+
 import {PHONE} from 'constants/contacts';
 
-import {createRef, RefObject, useEffect} from 'react';
 import s from './header.module.scss';
 
 const CartIcon = dynamic(() => import('../cartIcon/cartIcon'), {ssr: false});
