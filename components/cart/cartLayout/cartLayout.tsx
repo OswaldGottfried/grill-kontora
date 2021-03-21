@@ -37,7 +37,7 @@ const CartLayout = observer(() => {
           </ul>
           <div className="flex w-full justify-end mt-12 mb-12 sm:mt-6 sm:mb-6">
             <Button onClick={showModal}>
-              <p className="sm:text-lg">Перейти к оформлению</p>
+              <p className="sm:text-lg sm:content-center">Перейти к оформлению</p>
               {/* <Link href="/checkout">
                 <p className="sm:text-lg">Перейти к оформлению</p>
               </Link> */}

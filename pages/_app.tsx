@@ -30,15 +30,13 @@ const App: React.FC<PropsType> = ({Component, pageProps}) => {
   }, [router.events]);
 
   return (
-    <>
-      <AnimateSharedLayout>
-        <Provider value={rootStore}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </Provider>
-      </AnimateSharedLayout>
-    </>
+    <AnimateSharedLayout>
+      <Provider value={rootStore}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
+    </AnimateSharedLayout>
   );
 };
 
