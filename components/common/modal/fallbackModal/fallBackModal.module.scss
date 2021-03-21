@@ -1,7 +1,6 @@
 .modal {
-  padding: 40px 20px 30px;
+  padding: 40px 20px 60px;
   position: relative;
-  animation: fadein .3s ease-in;
   border-radius: 8px;
   max-width: 600px;
 
@@ -32,12 +31,8 @@
   
   > svg {
     transform: rotate(45deg);
+    fill: var(--color-white);
     height: 100%;
     width: 100%;
   }
-}
-
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
 }
