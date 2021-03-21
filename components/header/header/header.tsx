@@ -59,9 +59,9 @@ const Header = (): JSX.Element => {
               </svg>
             </a>
           </li>
-          {/* <li className="ml-8 sm:ml-4">
+          <li className="ml-8 sm:ml-4">
             <CartIcon />
-          </li> */}
+          </li>
         </ul>
       </nav>
     </header>
