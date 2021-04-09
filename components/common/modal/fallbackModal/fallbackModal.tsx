@@ -72,7 +72,7 @@ const FallBackModal: React.FC<PropsType> = observer(({isOpen, onRequestClose}) =
             Мы меняем страницу заказа, она вот-вот будет готова.
             <br /> Вы всегда можете сделать заказ по телефону:
             <br />
-            <a className="underline" href={`tel:${PHONE.href}`}>
+            <a className="underline text-center" href={`tel:${PHONE.href}`}>
               {PHONE.value}
             </a>
           </p>
