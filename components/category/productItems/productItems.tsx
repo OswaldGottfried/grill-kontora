@@ -2,7 +2,7 @@ import {useCallback, MouseEvent} from 'react';
 import Link from 'next/link';
 import {observer} from 'mobx-react-lite';
 import {motion} from 'framer-motion';
-import Image from 'next/image';
+import Image, {ImageLoaderProps, ImageProps} from 'next/image';
 
 import {useStore} from 'models';
 import {ProductType} from 'types';
@@ -40,6 +40,10 @@ const ProductItems = observer<PropsType>(({products}) => {
     [products, increase],
   );
 
+  // const imageLoader = ({src, width, quality}: ImageLoaderProps) => {
+  //   return `${src}?w=${width}&q=${quality || 75}`;
+  // };
+
   if (!products) return null;
 
   return (
@@ -50,6 +54,7 @@ const ProductItems = observer<PropsType>(({products}) => {
             <figure className={s.image}>
               <Image
                 className="cursor-pointer"
+                quality={30}
                 src={
                   product.photo_origin
                     ? `https://gril-kontora.joinposter.com${product.photo_origin}`
@@ -57,7 +62,7 @@ const ProductItems = observer<PropsType>(({products}) => {
                 }
                 width={product.photo_origin ? 400 : 200}
                 height={product.photo_origin ? 300 : 200}
-                objectFit="cover"
+                layout="intrinsic"
                 alt={product.product_name}
               />
             </figure>

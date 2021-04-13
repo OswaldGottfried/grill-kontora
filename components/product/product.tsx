@@ -86,6 +86,7 @@ const ProductPage = observer<PropsType>(({product}) => {
                 width={500}
                 height={450}
                 objectFit="cover"
+                quality={60}
                 alt={product.product_name}
               />
             </div>

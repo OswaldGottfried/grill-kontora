@@ -31,7 +31,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -51,6 +51,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
       products,
       categoryName,
     },
+    revalidate: 60 * 60 * 24,
   };
 };
 
