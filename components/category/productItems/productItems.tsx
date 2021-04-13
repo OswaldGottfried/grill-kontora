@@ -58,7 +58,7 @@ const ProductItems = observer<PropsType>(({products}) => {
                 }
                 width={product.photo_origin ? 400 : 200}
                 height={product.photo_origin ? 300 : 200}
-                layout="intrinsic"
+                objectFit="cover"
                 alt={product.product_name}
               />
             </figure>
