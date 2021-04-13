@@ -9,7 +9,7 @@ import 'react-medium-image-zoom/dist/styles.css';
 import {ProductType} from 'types';
 import {useStore} from 'models';
 import formatPrice from 'lib/formatPrice';
-import getPrice from 'lib/getPriceFromProduct';
+import getPriceFromProduct from 'lib/getPriceFromProduct';
 
 import Price from '@/common/price/price';
 import Button from '@/common/buttons/button/button';
@@ -40,7 +40,7 @@ const ProductPage = observer<PropsType>(({product}) => {
           id: product.product_id,
           name: product.product_name,
           category: product.category_name,
-          price: getPrice(product),
+          price: getPriceFromProduct(product),
         },
       ],
     });
@@ -124,7 +124,7 @@ const ProductPage = observer<PropsType>(({product}) => {
               <div className="max-w-md">
                 <CounterObserver value={product.product_id} product={product} />
               </div>
-              <Price price={getPrice(product)} />
+              <Price price={getPriceFromProduct(product)} />
             </div>
           )}
 
