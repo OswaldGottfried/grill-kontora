@@ -10,8 +10,8 @@ import 'styles/index.css';
 import {Provider, rootStore} from '../models';
 
 export type PropsType = {
-  Component: any;
-  pageProps: any;
+  Component: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  pageProps: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 };
 
 const App: React.FC<PropsType> = ({Component, pageProps}) => {

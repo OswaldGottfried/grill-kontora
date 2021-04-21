@@ -32,7 +32,7 @@ const CheckoutLayout = observer(() => {
   const {items, totalPrice} = useStore('cart');
   const finalPrice = formatPrice(totalPrice);
   const isOrderAvailable =
-    (finalPrice > MIN_ORDER_AMOUNT && serviceMode === ServiceMode.Delivery) ||
+    (finalPrice >= MIN_ORDER_AMOUNT && serviceMode === ServiceMode.Delivery) ||
     serviceMode === ServiceMode.Takeaway;
   const isDeliveryFree =
     (serviceMode === ServiceMode.Delivery && finalPrice >= FREE_ORDER_AMOUNT) ||

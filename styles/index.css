@@ -7,11 +7,13 @@
 @font-face { 
     font-family: "rouble";
     src: url("/fonts/rouble.otf") format("opentype");
+    font-display: swap;
 }
 
 @font-face {
     font-family: ALSRubl;
     src: url("/fonts/rouble.ttf") format("opentype");
+    font-display: swap;
 }
 
 
