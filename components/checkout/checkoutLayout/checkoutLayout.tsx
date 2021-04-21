@@ -32,7 +32,7 @@ const CheckoutLayout = observer(() => {
   const {items, totalPrice} = useStore('cart');
   const finalPrice = formatPrice(totalPrice);
   const isOrderAvailable =
-    (finalPrice > MIN_ORDER_AMOUNT && serviceMode === ServiceMode.Delivery) ||
+    (finalPrice >= MIN_ORDER_AMOUNT && serviceMode === ServiceMode.Delivery) ||
     serviceMode === ServiceMode.Takeaway;
   const isDeliveryFree =
     (serviceMode === ServiceMode.Delivery && finalPrice >= FREE_ORDER_AMOUNT) ||
@@ -136,7 +136,7 @@ const CheckoutLayout = observer(() => {
                   <span>
                     {isOrderAvailable
                       ? `${tab.input === 'takeAway' ? 'Забрать с собой' : 'Заказать доставку'}`
-                      : `Набери на ${MIN_ORDER_AMOUNT - finalPrice} ${(<Rouble />)} и
+                      : `Набери на ${MIN_ORDER_AMOUNT - finalPrice} ${String.fromCharCode(0x20bd)} и
                       сможешь заказать доставку`}
                   </span>
                 </Button>
