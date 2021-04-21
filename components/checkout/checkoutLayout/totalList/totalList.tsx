@@ -8,13 +8,8 @@ import {FREE_ORDER_AMOUNT} from 'constants/price';
 
 import Price from '@/common/price/price';
 import CartItem from '@/cart/cartItem/cartItem';
-import s from '@/cart/cartItem/cartItem.module.scss';
 import Rouble from '@/common/price/rouble/rouble';
-
-import Price from '@/common/price/price';
-import CartItem from '@/cart/cartItem/cartItem';
 import s from '@/cart/cartItem/cartItem.module.scss';
-import Rouble from '@/common/price/rouble/rouble';
 
 type PropsType = {
   deliveryCost: number;

@@ -6,7 +6,6 @@ import formatPrice from 'lib/formatPrice';
 
 import Price from '@/common/price/price';
 import Button from '@/common/buttons/button/button';
-import FallBackModal from '@/common/modal/fallbackModal/fallbackModal';
 import CartItem from '@/cart/cartItem/cartItem';
 
 const CartLayout = observer(() => {
@@ -50,7 +49,6 @@ const CartLayout = observer(() => {
           </div>
         </>
       )}
-      <FallBackModal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} />
     </section>
   );
 });
