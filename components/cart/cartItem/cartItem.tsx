@@ -22,6 +22,7 @@ const CartItem: React.FC<PropsType> = ({item, isOrder = false}) => {
             width={150}
             height={100}
             objectFit="contain"
+            quality={20}
             alt={item.name}
           />
         </motion.figure>

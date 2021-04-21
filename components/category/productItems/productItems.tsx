@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 import {useStore} from 'models';
 import {ProductType} from 'types';
-import getPrice from 'lib/getPriceFromProduct';
+import getPriceFromProduct from 'lib/getPriceFromProduct';
 
 import Price from '@/common/price/price';
 import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
@@ -49,6 +49,7 @@ const ProductItems = observer<PropsType>(({products}) => {
             <figure className={s.image}>
               <Image
                 className="cursor-pointer"
+                quality={30}
                 src={
                   product.photo_origin
                     ? `https://gril-kontora.joinposter.com${product.photo_origin}`
@@ -69,7 +70,10 @@ const ProductItems = observer<PropsType>(({products}) => {
               </motion.h3>
             </Link>
             <div className="mr-4">
-              <Price price={getPrice(product)} isExact={Boolean(product.modifications)} />
+              <Price
+                price={getPriceFromProduct(product)}
+                isExact={Boolean(product.modifications)}
+              />
             </div>
           </div>
           <div className="flex justify-end mr-4">
