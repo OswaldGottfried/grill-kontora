@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import {useStore} from 'models';
 import formatPrice from 'lib/formatPrice';
+import {isLunchTime, LAUNCH_CATEGORY_NAME} from 'constants/lunch';
 
 import Price from '@/common/price/price';
 import Button from '@/common/buttons/button/button';
@@ -11,6 +12,10 @@ import CartItem from '@/cart/cartItem/cartItem';
 const CartLayout = observer(() => {
   const {totalPrice, items, totalItems} = useStore('cart');
   const isEmptyCart = totalItems === 0;
+  const isDisabledForOrder = (categoryName: string) => {
+    return categoryName === LAUNCH_CATEGORY_NAME && !isLunchTime();
+  };
+  const isOneOfItemIsDisabled = items.some(({category}) => isDisabledForOrder(category));
 
   return (
     <section className="lg:pl-16 lg:pr-16 pt-16 sm:p-4 sm:mb-12 max-w-4xl flex flex-col ml-auto mr-auto">
@@ -28,9 +33,18 @@ const CartLayout = observer(() => {
       ) : (
         <>
           <h1>У вас отличный вкус!</h1>
-          <ul className="mt-12 md:mt-8">
+          {isOneOfItemIsDisabled && (
+            <h3 className="text-punch mt-4 pb-2 text-xg">
+              Ланчи доступны к заказу с 12:00 до 16:00
+            </h3>
+          )}
+          <ul className="mt-14 md:mt-8">
             {items.map((item) => (
-              <CartItem key={`${item.id}_${item.modId}`} item={item} />
+              <CartItem
+                key={`${item.id}_${item.modId}`}
+                item={item}
+                isDisabledForOrder={isDisabledForOrder(item.category)}
+              />
             ))}
             <li className="mt-8 text-2xl flex justify-end w-full">
               {totalItems > 0 && (

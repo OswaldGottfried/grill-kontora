@@ -1,4 +1,5 @@
-import {useCallback, MouseEvent, useState} from 'react';
+import {useCallback, MouseEvent} from 'react';
+import {useRouter} from 'next/router';
 import Link from 'next/link';
 import {observer} from 'mobx-react-lite';
 import {motion} from 'framer-motion';
@@ -7,6 +8,7 @@ import Image from 'next/image';
 import {useStore} from 'models';
 import {ProductType} from 'types';
 import getPriceFromProduct from 'lib/getPriceFromProduct';
+import {isLunchCategory, isLunchTime} from 'constants/lunch';
 
 import Price from '@/common/price/price';
 import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
@@ -18,8 +20,53 @@ type PropsType = {
   products: ProductType[];
 };
 
+type AddToCartButtonProps = {
+  product: ProductType;
+  addToCart: (event: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+const AddToCartButton = observer<AddToCartButtonProps>(({product, addToCart}) => {
+  const router = useRouter();
+  const {id} = router.query;
+  const isLunch = isLunchCategory(String(id));
+  const isAvailableForLunch = isLunch && isLunchTime();
+  const {count} = useStore('cart');
+
+  return (
+    <div className="flex justify-end mr-4 mb-4">
+      {product.modifications ? (
+        <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
+          <Button size="small" color="secondary" isDisabled={isLunch && !isAvailableForLunch}>
+            Выбрать объем
+          </Button>
+        </Link>
+      ) : (
+        <>
+          {count(product.product_id) === 0 ? (
+            <Button
+              color="secondary"
+              size="small"
+              isDisabled={isLunch && !isAvailableForLunch}
+              onClick={addToCart}
+              value={product.product_id}
+            >
+              Добавить в корзину
+            </Button>
+          ) : (
+            <CounterObserver
+              product={product}
+              value={product.product_id}
+              isDisabled={isLunch && !isAvailableForLunch}
+            />
+          )}
+        </>
+      )}
+    </div>
+  );
+});
+
 const ProductItems = observer<PropsType>(({products}) => {
-  const {increase, count} = useStore('cart');
+  const {increase} = useStore('cart');
   const addToCart = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       const selectedProduct = products.find(
@@ -31,6 +78,7 @@ const ProductItems = observer<PropsType>(({products}) => {
           name: selectedProduct.product_name,
           id: selectedProduct.product_id,
           count: 1,
+          category: selectedProduct.category_name,
           price: Number(selectedProduct.price[1]),
           image: selectedProduct.photo || '',
         });
@@ -76,30 +124,7 @@ const ProductItems = observer<PropsType>(({products}) => {
               />
             </div>
           </div>
-          <div className="flex justify-end mr-4">
-            {product.modifications ? (
-              <Link href={`/product/${product.product_id}`} as={`/product/${product.product_id}`}>
-                <Button size="small" color="secondary">
-                  Выбрать объем
-                </Button>
-              </Link>
-            ) : (
-              <>
-                {count(product.product_id) === 0 ? (
-                  <Button
-                    color="secondary"
-                    size="small"
-                    onClick={addToCart}
-                    value={product.product_id}
-                  >
-                    Добавить в корзину
-                  </Button>
-                ) : (
-                  <CounterObserver product={product} value={product.product_id} />
-                )}
-              </>
-            )}
-          </div>
+          <AddToCartButton product={product} addToCart={addToCart} />
         </li>
       ))}
     </ul>

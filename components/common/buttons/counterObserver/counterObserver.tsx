@@ -22,7 +22,9 @@ type ProductObserverType = {
   value: string;
   modId?: string;
 };
-type PropsType = CartObserverType | ProductObserverType;
+type PropsType = (CartObserverType | ProductObserverType) & {
+  isDisabled?: boolean;
+};
 
 const formatToCartType = (product: ProductType, id: string): CartType => {
   const activeMod = product.modifications?.find(({modificator_id}) => modificator_id === id);
@@ -31,6 +33,7 @@ const formatToCartType = (product: ProductType, id: string): CartType => {
     id: product.product_id,
     modId: activeMod ? activeMod.modificator_id : '',
     count: 1,
+    category: product.category_name,
     price: activeMod ? Number(activeMod.spots[0].price) : Number(product.price[1]),
     image: product.photo || '',
   };
@@ -43,7 +46,7 @@ const CounterObserver = observer<PropsType>((props) => {
       'product' in props ? formatToCartType(props.product, value) : props.cartItem,
     [props],
   );
-  const {value, modId = ''} = props;
+  const {value, modId = '', isDisabled} = props;
   const {increase, count, decrease} = useStore('cart');
   const counter = count(id, modId);
   const controls = useAnimation();
@@ -84,11 +87,12 @@ const CounterObserver = observer<PropsType>((props) => {
         {counter}
       </motion.span>
       <button
-        className={s.button}
+        className={clsx(s.button, {[s.disabled]: isDisabled})}
         type="button"
         onClick={onIncrease}
         value={value}
         aria-label="увеличить"
+        disabled={isDisabled}
       >
         <Plus />
       </button>

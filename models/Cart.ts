@@ -9,6 +9,7 @@ export const CartItem = types.model({
   price: types.number,
   count: types.number,
   image: types.string,
+  category: types.string,
   modId: types.optional(types.string, ''),
 });
 

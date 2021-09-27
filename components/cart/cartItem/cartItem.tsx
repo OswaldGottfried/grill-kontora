@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import {motion} from 'framer-motion';
 import Image from 'next/image';
+import clsx from 'clsx';
 
 import {CartItemType} from 'models/Cart';
 import formatPrice from 'lib/formatPrice';
@@ -10,11 +11,11 @@ import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
 
 import s from './cartItem.module.scss';
 
-type PropsType = {item: CartItemType; isOrder?: boolean};
+type PropsType = {item: CartItemType; isOrder?: boolean; isDisabledForOrder?: boolean};
 
-const CartItem: React.FC<PropsType> = ({item, isOrder = false}) => {
+const CartItem: React.FC<PropsType> = ({item, isOrder = false, isDisabledForOrder = false}) => {
   return (
-    <li className={s.cartItem}>
+    <li className={clsx(s.cartItem, {[s.disabled]: isDisabledForOrder})}>
       <Link href={`/product/${item.id}`}>
         <motion.figure className="image cursor-pointer" layoutId={`image_${item.image}`}>
           <Image
@@ -55,7 +56,12 @@ const CartItem: React.FC<PropsType> = ({item, isOrder = false}) => {
         </div>
         {!isOrder && (
           <div className={s.counter}>
-            <CounterObserver value={item.id} modId={item.modId} cartItem={item} />
+            <CounterObserver
+              value={item.id}
+              modId={item.modId}
+              cartItem={item}
+              isDisabled={isDisabledForOrder}
+            />
           </div>
         )}
       </div>
