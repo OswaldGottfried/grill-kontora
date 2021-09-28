@@ -4,5 +4,6 @@ export type CartType = {
   price: number;
   count: number;
   modId: string;
+  category: string;
   image: string;
 };

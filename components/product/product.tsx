@@ -54,6 +54,7 @@ const ProductPage = observer<PropsType>(({product}) => {
         name: product.product_name,
         id: product.product_id,
         count: 1,
+        category: product.category_name,
         price: Number(product.price['1']),
         image: product.photo || '',
       });

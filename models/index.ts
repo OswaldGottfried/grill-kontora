@@ -12,8 +12,8 @@ const RootModel = types.model({
 });
 
 let initialState = RootModel.create({
-  cart: {items: []},
   checkout,
+  cart: {items: []},
 });
 
 if (!isServer) {

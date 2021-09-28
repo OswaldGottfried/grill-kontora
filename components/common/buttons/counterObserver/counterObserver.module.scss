@@ -17,6 +17,10 @@
     transition: box-shadow 1s ease;
     transition: transform .5s ease;
 
+    &.disabled {
+        fill: var(--color-white-rgb);
+    }
+
     &.delete {
         fill: var(--color-punch);
         transform: rotate(45deg);

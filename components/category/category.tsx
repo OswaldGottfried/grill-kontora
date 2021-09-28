@@ -4,6 +4,7 @@ import {useRouter} from 'next/router';
 
 import {CategoryType, ProductType} from 'types';
 
+import LunchMessage from './lunchMessage/lunchMessage';
 import s from './category.module.scss';
 
 const CategoryList = dynamic(() => import('@/category/categoryList/categoryList'), {ssr: false});
@@ -25,6 +26,7 @@ const Category: React.FC<PropsType> = ({categories, products}) => {
         <h2>Меню</h2>
       </Element>
       <CategoryList categories={categories} selected={selected} />
+      <LunchMessage categoryId={selected} />
       <ProductItems products={products} />
     </section>
   );

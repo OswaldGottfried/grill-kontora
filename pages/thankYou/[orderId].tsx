@@ -41,7 +41,7 @@ const ThankYouPage = observer<PropsType>((props) => {
       <HeartIcon />
 
       <p className="text-2xl mt-10">Спасибо за заказ</p>
-      <p className="text-xl mt-10">Оператор перезвонит по номеру{props.phone} как можно скорее</p>
+      <p className="text-xl mt-10">Оператор перезвонит по номеру {props.phone} как можно скорее</p>
       <Button className="mt-10 mb-10">
         <Link href="/">Вернуться на главную</Link>
       </Button>
