@@ -1,6 +1,7 @@
 import {useCallback, FormEvent, ChangeEvent, useState} from 'react';
 import {AxiosError, AxiosResponse} from 'axios';
 import {useRouter} from 'next/router';
+import {observer} from 'mobx-react-lite';
 
 import {ServiceMode, OrderType, OrderErrorType, OrderResponseType} from 'types/order';
 import formatPrice from 'lib/formatPrice';
@@ -15,7 +16,7 @@ import Button from '@/common/buttons/button/button';
 
 import ORDER_INPUTS from './input';
 
-const CheckoutForm = () => {
+const CheckoutForm = observer(() => {
   const {service_mode: serviceMode, setValue, getField, getFields, setOrderId} = useStore(
     'checkout',
   );
@@ -145,7 +146,7 @@ const CheckoutForm = () => {
       ))}
     </Tabs>
   );
-};
+});
 
 CheckoutForm.displayName = 'CheckoutForm';
 

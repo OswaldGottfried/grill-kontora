@@ -36,3 +36,4 @@ yarn-error.log*
 .env
 .eslintcache
 .vscode
+tsconfig.tsbuildinfo

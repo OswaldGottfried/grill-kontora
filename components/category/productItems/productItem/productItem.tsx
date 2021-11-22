@@ -22,7 +22,7 @@ const ProductItem = memo<ProductItemProps>(({product, addToCart}) => {
     <li key={product.product_id} className={s.item}>
       <Link href={`/product/${product.product_id}`}>
         <figure className={s.image}>
-          <ProductImage name={product.product_name} src={product.photo_origin} objectFit="cover" />
+          <ProductImage name={product.product_name} src={product.photo} objectFit="cover" />
         </figure>
       </Link>
       <div className="inline-flex w-full justify-between items-center h-16">
