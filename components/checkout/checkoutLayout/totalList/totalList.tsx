@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import {useStore} from 'models';
 import formatPrice from 'lib/formatPrice';
 import {ServiceMode} from 'types/order';
-import {FREE_ORDER_AMOUNT} from 'constants/price';
+import {DELIVERY_PRICE, FREE_ORDER_AMOUNT} from 'constants/price';
 
 import Price from '@/common/price/price';
 import CartItem from '@/cart/cartItem/cartItem';
@@ -12,17 +12,20 @@ import Rouble from '@/common/price/rouble/rouble';
 import s from '@/cart/cartItem/cartItem.module.scss';
 
 type PropsType = {
-  deliveryCost: number;
-  isDeliveryFree: boolean;
+  className?: string;
 };
 
-const TotalList: React.FC<PropsType> = observer(({deliveryCost, isDeliveryFree}) => {
+const TotalList: React.FC<PropsType> = observer(({className}) => {
   const {totalPrice, items} = useStore('cart');
   const {service_mode: serviceMode} = useStore('checkout');
   const finalPrice = formatPrice(totalPrice);
+  const isDeliveryFree =
+    (serviceMode === ServiceMode.Delivery && finalPrice >= FREE_ORDER_AMOUNT) ||
+    serviceMode !== ServiceMode.Delivery;
+  const deliveryCost = isDeliveryFree ? 0 : DELIVERY_PRICE;
 
   return (
-    <section>
+    <section className={className}>
       <ul>
         {items.map((item) => (
           <CartItem key={`${item.id}_${item.modId}`} item={item} isOrder />

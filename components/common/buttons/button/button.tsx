@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import {FC, MouseEvent, ReactElement} from 'react';
 import clsx from 'clsx';
 
@@ -27,7 +26,7 @@ const Button: FC<PropsType> = ({
   type = 'button',
   className = '',
   size = 'medium',
-  isDisabled,
+  isDisabled = false,
 }) => (
   <button
     aria-label={label}
