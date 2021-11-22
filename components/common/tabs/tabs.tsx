@@ -16,6 +16,8 @@ const Tabs = memo<PropsType>(({activeIndex = 0, children, onClick, className}) =
 
   const tabs = Children.map(children, (child, index) => (
     <TabsContext.Provider
+      // I've to pass arguments index to find the active tab
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         active: activeTab === index,
         activeIndex,

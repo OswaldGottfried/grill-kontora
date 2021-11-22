@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import Link from 'next/link';
 import {motion} from 'framer-motion';
 import Image from 'next/image';
@@ -13,7 +14,7 @@ import s from './cartItem.module.scss';
 
 type PropsType = {item: CartItemType; isOrder?: boolean; isDisabledForOrder?: boolean};
 
-const CartItem: React.FC<PropsType> = ({item, isOrder = false, isDisabledForOrder = false}) => {
+const CartItem = memo<PropsType>(({item, isOrder = false, isDisabledForOrder = false}) => {
   return (
     <li className={clsx(s.cartItem, {[s.disabled]: isDisabledForOrder})}>
       <Link href={`/product/${item.id}`}>
@@ -67,6 +68,8 @@ const CartItem: React.FC<PropsType> = ({item, isOrder = false, isDisabledForOrde
       </div>
     </li>
   );
-};
+});
+
+CartItem.displayName = 'CartItem';
 
 export default CartItem;

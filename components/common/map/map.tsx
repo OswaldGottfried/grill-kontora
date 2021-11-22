@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import {YMaps, Map as YMap, Placemark} from 'react-yandex-maps';
 
 type PropsType = {
@@ -13,7 +14,7 @@ const options = {
   searchControlProvider: 'гриль контора ревда',
 };
 
-const Map: React.FC<PropsType> = ({width = '100%'}) => (
+const Map: React.FC<PropsType> = memo(({width = '100%'}) => (
   <div className="filter-grayscale ">
     <YMaps>
       <YMap height={500} width={width} defaultState={mapData} options={options}>
@@ -28,6 +29,8 @@ const Map: React.FC<PropsType> = ({width = '100%'}) => (
       </YMap>
     </YMaps>
   </div>
-);
+));
+
+Map.displayName = 'Map';
 
 export default Map;
