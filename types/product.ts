@@ -55,7 +55,7 @@ export type ProductType = {
   menu_category_id: string;
   workshop: string;
   nodiscount: string;
-  photo?: string | null;
+  // photo?: string | null;
   photo_origin: string | null;
   product_code: string;
   product_id: string;

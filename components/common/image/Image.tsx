@@ -12,7 +12,7 @@ const ProductImage: React.FC<Props> = ({src, name, className, ...props}) => (
     src={src ? `https://gril-kontora.joinposter.com${src}` : '/burger.svg'}
     width={src ? 500 : 200}
     height={src ? 500 : 200}
-    quality={60}
+    quality={30}
     alt={name}
     {...props}
   />

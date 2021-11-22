@@ -51,7 +51,7 @@ const ProductPage: React.FC<PropsType> = ({product}) => {
         <Arrow />
       </button>
 
-      <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.photo}`}>
+      <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.photo_origin}`}>
         <Zoom overlayBgColorEnd="rgba(0, 0, 0, 0.5)" wrapStyle={{width: '100%', height: '100%'}}>
           <div className="w-full h-full">
             <ProductImage

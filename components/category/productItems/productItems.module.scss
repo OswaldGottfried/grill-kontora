@@ -49,6 +49,7 @@
         height: 300px;
         cursor: pointer;
         transition: all .3s ease-in-out;
+        overflow: hidden;
 
         &:hover {
             transform: scale(1.05);

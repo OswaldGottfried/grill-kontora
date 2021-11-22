@@ -26,7 +26,7 @@ const ProductItems = observer<PropsType>(({products}) => {
           count: 1,
           category: selectedProduct.category_name,
           price: Number(selectedProduct.price[1]),
-          image: selectedProduct.photo || '',
+          image: selectedProduct.photo_origin || '',
         });
       }
     },
