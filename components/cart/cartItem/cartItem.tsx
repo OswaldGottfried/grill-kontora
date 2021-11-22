@@ -1,7 +1,6 @@
-import {memo} from 'react';
+import React, {memo} from 'react';
 import Link from 'next/link';
 import {motion} from 'framer-motion';
-import Image from 'next/image';
 import clsx from 'clsx';
 
 import {CartItemType} from 'models/Cart';
@@ -9,6 +8,7 @@ import formatPrice from 'lib/formatPrice';
 
 import Price from '@/common/price/price';
 import CounterObserver from '@/common/buttons/counterObserver/counterObserver';
+import ProductImage from '@/common/image/Image';
 
 import s from './cartItem.module.scss';
 
@@ -18,15 +18,8 @@ const CartItem = memo<PropsType>(({item, isOrder = false, isDisabledForOrder = f
   return (
     <li className={clsx(s.cartItem, {[s.disabled]: isDisabledForOrder})}>
       <Link href={`/product/${item.id}`}>
-        <motion.figure className="image cursor-pointer" layoutId={`image_${item.image}`}>
-          <Image
-            src={item.image ? `https://gril-kontora.joinposter.com${item.image}` : '/burger.svg'}
-            width={150}
-            height={100}
-            objectFit="contain"
-            quality={20}
-            alt={item.name}
-          />
+        <motion.figure className="image cursor-pointer w-36" layoutId={`image_${item.image}`}>
+          <ProductImage src={item.image} name={item.name} objectFit="contain" />
         </motion.figure>
       </Link>
       <div

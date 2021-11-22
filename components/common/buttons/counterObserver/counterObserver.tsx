@@ -35,7 +35,7 @@ const formatToCartType = (product: ProductType, id: string): CartType => {
     count: 1,
     category: product.category_name,
     price: activeMod ? Number(activeMod.spots[0].price) : Number(product.price[1]),
-    image: product.photo || '',
+    image: product.photo_origin || '',
   };
 };
 

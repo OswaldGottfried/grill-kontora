@@ -24,7 +24,7 @@ const AddToCartButton: React.FC<PropsType> = ({product, isHasModifications}) => 
         count: 1,
         category: product.category_name,
         price: Number(product.price['1']),
-        image: product.photo || '',
+        image: product.photo_origin || '',
       });
     }
 
