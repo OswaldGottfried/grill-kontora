@@ -51,17 +51,16 @@ const ProductPage: React.FC<PropsType> = ({product}) => {
         <Arrow />
       </button>
 
-      <motion.figure className="image md:w-full w-2/5" layoutId={`image_${product.photo_origin}`}>
+      <div>
         <Zoom overlayBgColorEnd="rgba(0, 0, 0, 0.5)" wrapStyle={{width: '100%', height: '100%'}}>
-          <div className="w-full h-full">
-            <ProductImage
-              name={product.product_name}
-              src={product.photo_origin}
-              objectFit="contain"
-            />
-          </div>
+          <ProductImage
+            className="w-full h-full"
+            name={product.product_name}
+            src={product.photo_origin}
+            objectFit="contain"
+          />
         </Zoom>
-      </motion.figure>
+      </div>
       <div className={s.description}>
         <motion.h1 className={s.title} layoutId={product.product_name}>
           {product.product_name}
