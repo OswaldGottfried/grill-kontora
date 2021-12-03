@@ -3,4 +3,4 @@ export const PHONE = {
   value: '+7 (906) 801-51-31',
 } as const;
 
-export const ADDRESS = 'Ул. Мичурина 21, Ревда';
+export const ADDRESS = 'Ул. Мичурина 11, Ревда';
