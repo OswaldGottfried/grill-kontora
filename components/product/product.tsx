@@ -57,7 +57,6 @@ const ProductPage: React.FC<PropsType> = ({product}) => {
             <ProductImage
               name={product.product_name}
               src={product.photo_origin}
-              layout="responsive"
               objectFit="contain"
             />
           </div>
