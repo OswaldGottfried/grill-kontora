@@ -18,9 +18,12 @@ const CartItem = memo<PropsType>(({item, isOrder = false, isDisabledForOrder = f
   return (
     <li className={clsx(s.cartItem, {[s.disabled]: isDisabledForOrder})}>
       <Link href={`/product/${item.id}`}>
-        <motion.figure className="image cursor-pointer w-36" layoutId={`image_${item.image}`}>
-          <ProductImage src={item.image} name={item.name} objectFit="contain" />
-        </motion.figure>
+        <ProductImage
+          className="image cursor-pointer w-36"
+          src={item.image}
+          name={item.name}
+          objectFit="contain"
+        />
       </Link>
       <div
         className={`inline-flex items-center w-full justify-around ${isOrder ? '' : 'flex-wrap'}`}
@@ -41,7 +44,7 @@ const CartItem = memo<PropsType>(({item, isOrder = false, isDisabledForOrder = f
         <div className={s.price}>
           {isOrder && item.count > 1 ? (
             <p className="whitespace-nowrap">
-              {item.count} x
+              {`${item.count}`} x
               <Price price={formatPrice(item.price)} />
             </p>
           ) : (
