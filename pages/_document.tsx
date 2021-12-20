@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import Document, {
   Html,
   Head,
@@ -32,7 +33,6 @@ class MyDocument extends Document {
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
           <script
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];
@@ -47,7 +47,6 @@ class MyDocument extends Document {
           />
           {/* Yandex.Metrika counter */}
           <script
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: `
               (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -61,6 +60,23 @@ class MyDocument extends Document {
                    webvisor:true
               });
           `,
+            }}
+          />
+          {/* <!-- Facebook Pixel Code --> */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window,document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', ${process.env.PIXEL_ID}); 
+              fbq('track', 'PageView');
+            `,
             }}
           />
         </Head>
