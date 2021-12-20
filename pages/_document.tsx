@@ -30,6 +30,7 @@ class MyDocument extends Document {
             name="keywords"
             content="grill contora, гриль контора, доставка еды, ревда, бургеры, ревда доставка, доставка бургеров, бургер, шаурма"
           />
+          <meta name="facebook-domain-verification" content="hdlcfm5t4oc42o6zao5ubrt15ekipy" />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
           <script
