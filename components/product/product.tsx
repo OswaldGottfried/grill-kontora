@@ -30,6 +30,7 @@ const ProductPage: React.FC<PropsType> = ({product}) => {
         .join(', ')
         .toLocaleLowerCase()
     : [];
+  const shouldShowWeight = product.out > 0;
 
   useEffect(() => {
     window.gtag('event', 'view_item', {
@@ -64,7 +65,7 @@ const ProductPage: React.FC<PropsType> = ({product}) => {
       <div className={s.description}>
         <motion.h1 className={s.title} layoutId={product.product_name}>
           {product.product_name}
-          {product.out > 0 && ` ${product.out} гр.`}
+          {shouldShowWeight && ` ${product.out} гр.*`}
         </motion.h1>
 
         {isHasModifications ? (
@@ -87,6 +88,7 @@ const ProductPage: React.FC<PropsType> = ({product}) => {
                   </div>
                 </li>
               ))}
+            {shouldShowWeight && <li>Вес блюда может отличаться от заявленного</li>}
           </ul>
         ) : (
           <div className="mt-12 mb-12 sm:mt-6 sm:mb-6 inline-flex w-full justify-between">
@@ -101,6 +103,9 @@ const ProductPage: React.FC<PropsType> = ({product}) => {
           <h2 className="text-3xl">
             Состав: <p className="text-base">{ingredients}</p>
           </h2>
+        )}
+        {shouldShowWeight && (
+          <p className="mt-4 text-sm">*вес блюда может отличаться от заявленного</p>
         )}
 
         <AddToCartButton product={product} isHasModifications={isHasModifications} />
