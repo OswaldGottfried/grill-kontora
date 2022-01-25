@@ -6,11 +6,11 @@ import Document, {
   NextScript,
   DocumentInitialProps,
   DocumentContext,
-} from 'next/document';
+} from 'next/dist/pages/_document';
 
 import {GA_TRACKING_ID} from 'lib/gtag';
 
-class MyDocument {
+class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx);
     return {...initialProps};
