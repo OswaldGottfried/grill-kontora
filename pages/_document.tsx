@@ -10,7 +10,7 @@ import Document, {
 
 import {GA_TRACKING_ID} from 'lib/gtag';
 
-class MyDocument extends Document {
+class MyDocument {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx);
     return {...initialProps};
