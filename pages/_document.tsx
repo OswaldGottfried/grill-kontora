@@ -6,7 +6,7 @@ import Document, {
   NextScript,
   DocumentInitialProps,
   DocumentContext,
-} from 'next/document';
+} from 'next/dist/pages/_document';
 
 import {GA_TRACKING_ID} from 'lib/gtag';
 
