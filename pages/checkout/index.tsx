@@ -18,15 +18,18 @@ const Checkout = observer(() => {
   const router = useRouter();
   const isEmptyCart = totalItems === 0;
 
-  if (isEmptyCart && !isServer) router.push('/cart', undefined, {shallow: true});
-
+  // if (isEmptyCart && !isServer) router.push('/cart', undefined, {shallow: true});
   useEffect(() => {
-    items.forEach(({id, category}) => {
-      if (category === LAUNCH_CATEGORY_NAME) {
-        remove(id);
-      }
-    });
-  }, [items, remove]);
+    router.replace('/cart', undefined, {shallow: true});
+  }, []);
+
+  // useEffect(() => {
+  //   items.forEach(({id, category}) => {
+  //     if (category === LAUNCH_CATEGORY_NAME) {
+  //       remove(id);
+  //     }
+  //   });
+  // }, [items, remove]);
 
   return (
     <>

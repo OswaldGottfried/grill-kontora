@@ -11,7 +11,7 @@ export const fetchProducts = async (category_id: string): Promise<ProductType[]>
       params: {category_id},
     })
     .then((res) => {
-      return res.data.response.filter(
+      return res.data.response?.filter(
         ({menu_category_id, product_id}) =>
           !hiddenProducts[menu_category_id as keyof typeof hiddenProducts]?.includes(
             product_id as never,
